@@ -1,0 +1,464 @@
+<mat-card class="branch-card">
+  <mat-card-header class="branch-card-header">
+    <div class="header-information">
+      <mat-card-title>
+        Branch Performance
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Compare customer growth, deposits and revenue
+        across branches.
+      </mat-card-subtitle>
+    </div>
+
+    <button
+      mat-stroked-button
+      type="button"
+      class="view-all-branches"
+      (click)="viewAllBranches()"
+    >
+      View All Branches
+
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content>
+    <section class="table-toolbar">
+      <div class="branch-search">
+        <mat-icon>search</mat-icon>
+
+        <input
+          type="search"
+          aria-label="Search branches"
+          placeholder="Search branch, manager or location..."
+          [value]="searchText"
+          (input)="applySearch($event)"
+        />
+
+        <button
+          *ngIf="searchText"
+          mat-icon-button
+          type="button"
+          aria-label="Clear search"
+          matTooltip="Clear search"
+          (click)="clearFilters()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <mat-form-field
+        appearance="outline"
+        class="status-filter"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>Status</mat-label>
+
+        <mat-select
+          [value]="selectedStatus"
+          (selectionChange)="
+            applyStatusFilter($event.value)
+          "
+        >
+          <mat-option value="All">
+            All Status
+          </mat-option>
+
+          <mat-option value="Active">
+            Active
+          </mat-option>
+
+          <mat-option value="Inactive">
+            Inactive
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-button
+        type="button"
+        class="clear-filter-button"
+        *ngIf="
+          searchText ||
+          selectedStatus !== 'All'
+        "
+        (click)="clearFilters()"
+      >
+        <mat-icon>filter_alt_off</mat-icon>
+        Clear
+      </button>
+    </section>
+
+    <div class="table-container">
+      <table
+        mat-table
+        matSort
+        [dataSource]="dataSource"
+        class="branch-table"
+      >
+        <!-- Branch column -->
+
+        <ng-container matColumnDef="branch">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Branch
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            <div class="branch-information">
+              <span class="branch-icon">
+                <mat-icon>account_balance</mat-icon>
+              </span>
+
+              <div>
+                <strong>
+                  {{ branch.branchName }}
+                </strong>
+
+                <span>
+                  {{ branch.branchCode }} ·
+                  {{ branch.location }}
+                </span>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Manager column -->
+
+        <ng-container matColumnDef="manager">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Manager
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            <div class="manager-information">
+              <span class="manager-avatar">
+                {{
+                  branch.managerName
+                    .charAt(0)
+                    .toUpperCase()
+                }}
+              </span>
+
+              <span>
+                {{ branch.managerName }}
+              </span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Customers column -->
+
+        <ng-container matColumnDef="customers">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Customers
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            {{ branch.customers | number }}
+          </td>
+        </ng-container>
+
+        <!-- Accounts column -->
+
+        <ng-container matColumnDef="accounts">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Accounts
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            {{ branch.accounts | number }}
+          </td>
+        </ng-container>
+
+        <!-- Deposits column -->
+
+        <ng-container matColumnDef="deposits">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Deposits
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            <strong class="financial-value">
+              {{
+                formatCompactCurrency(
+                  branch.deposits
+                )
+              }}
+            </strong>
+          </td>
+        </ng-container>
+
+        <!-- Revenue column -->
+
+        <ng-container matColumnDef="revenue">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Revenue
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            <strong class="financial-value">
+              {{
+                formatCompactCurrency(
+                  branch.revenue
+                )
+              }}
+            </strong>
+          </td>
+        </ng-container>
+
+        <!-- Growth column -->
+
+        <ng-container matColumnDef="growth">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Growth
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            <span
+              class="growth-value"
+              [class.negative-growth]="
+                branch.growth < 0
+              "
+            >
+              <mat-icon>
+                {{
+                  branch.growth >= 0
+                    ? 'trending_up'
+                    : 'trending_down'
+                }}
+              </mat-icon>
+
+              {{
+                branch.growth
+                  | number: '1.1-1'
+              }}%
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Status column -->
+
+        <ng-container matColumnDef="status">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Status
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+          >
+            <span
+              class="status-badge"
+              [class.active-status]="
+                branch.status === 'Active'
+              "
+              [class.inactive-status]="
+                branch.status === 'Inactive'
+              "
+            >
+              <span class="status-dot"></span>
+
+              {{ branch.status }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Actions column -->
+
+        <ng-container matColumnDef="actions">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="actions-header"
+          >
+            Actions
+          </th>
+
+          <td
+            mat-cell
+            *matCellDef="let branch"
+            class="actions-cell"
+          >
+            <button
+              mat-icon-button
+              type="button"
+              matTooltip="View branch"
+              aria-label="View branch"
+              class="view-action"
+              (click)="viewBranch(branch)"
+            >
+              <mat-icon>visibility</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              type="button"
+              matTooltip="Edit branch"
+              aria-label="Edit branch"
+              class="edit-action"
+              (click)="editBranch(branch)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="More branch actions"
+              matTooltip="More actions"
+              [matMenuTriggerFor]="branchActionsMenu"
+              [matMenuTriggerData]="{
+                branch: branch
+              }"
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        ></tr>
+
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: displayedColumns
+          "
+        ></tr>
+
+        <!-- No data row -->
+
+        <tr
+          class="mat-row no-data-row"
+          *matNoDataRow
+        >
+          <td
+            class="mat-cell"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div class="no-data-content">
+              <mat-icon>search_off</mat-icon>
+
+              <strong>No branches found</strong>
+
+              <span>
+                Change the search text or status
+                filter.
+              </span>
+
+              <button
+                mat-stroked-button
+                type="button"
+                (click)="clearFilters()"
+              >
+                Clear filters
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 20]"
+      [showFirstLastButtons]="true"
+      aria-label="Select branch table page"
+      (page)="trackPageChange($event)"
+    ></mat-paginator>
+  </mat-card-content>
+</mat-card>
+
+<mat-menu
+  #branchActionsMenu="matMenu"
+  xPosition="before"
+>
+  <ng-template
+    matMenuContent
+    let-branch="branch"
+  >
+    <button
+      mat-menu-item
+      (click)="viewBranch(branch)"
+    >
+      <mat-icon>visibility</mat-icon>
+      <span>View Details</span>
+    </button>
+
+    <button
+      mat-menu-item
+      (click)="editBranch(branch)"
+    >
+      <mat-icon>edit</mat-icon>
+      <span>Edit Branch</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>analytics</mat-icon>
+      <span>View Performance</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>group</mat-icon>
+      <span>View Employees</span>
+    </button>
+  </ng-template>
+</mat-menu>

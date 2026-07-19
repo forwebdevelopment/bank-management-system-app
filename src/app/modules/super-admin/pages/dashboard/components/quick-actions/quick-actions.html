@@ -1,0 +1,87 @@
+<mat-card class="quick-actions-card">
+  <mat-card-header class="quick-actions-header">
+    <div>
+      <mat-card-title>
+        Quick Actions
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Frequently used administrative operations
+      </mat-card-subtitle>
+    </div>
+
+    <button
+      mat-icon-button
+      type="button"
+      aria-label="Quick actions menu"
+      matTooltip="More actions"
+      [matMenuTriggerFor]="quickActionsMenu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="quick-actions-grid">
+      <button
+        type="button"
+        class="quick-action-item"
+        *ngFor="
+          let action of quickActions;
+          trackBy: trackQuickAction
+        "
+        [ngClass]="'theme-' + action.theme"
+        (click)="navigateToAction(action)"
+      >
+        <span class="action-icon">
+          <mat-icon>
+            {{ action.icon }}
+          </mat-icon>
+        </span>
+
+        <span class="action-content">
+          <strong>
+            {{ action.title }}
+          </strong>
+
+          <small>
+            {{ action.description }}
+          </small>
+        </span>
+
+        <mat-icon class="action-arrow">
+          arrow_forward_ios
+        </mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-menu
+  #quickActionsMenu="matMenu"
+  xPosition="before"
+>
+  <button
+    mat-menu-item
+    routerLink="/super-admin/branches/add"
+  >
+    <mat-icon>add_business</mat-icon>
+    <span>Add Branch</span>
+  </button>
+
+  <button
+    mat-menu-item
+    routerLink="/super-admin/users/add"
+  >
+    <mat-icon>person_add</mat-icon>
+    <span>Add User</span>
+  </button>
+
+  <button
+    mat-menu-item
+    routerLink="/super-admin/reports"
+  >
+    <mat-icon>assessment</mat-icon>
+    <span>View Reports</span>
+  </button>
+</mat-menu>

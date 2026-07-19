@@ -1,0 +1,144 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.dashboard-card {
+  height: 100%;
+  border: 1px solid #e5eaf2;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(29, 46, 78, 0.05);
+}
+
+mat-card-header {
+  padding: 16px 16px 0;
+}
+
+mat-card-header ::ng-deep .mat-mdc-card-header-text {
+  margin: 0;
+}
+
+mat-card-title {
+  color: #17233c;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+mat-card-content {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  padding: 17px 16px 14px;
+}
+
+.activity-list {
+  flex: 1;
+}
+
+.activity-item {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 48px;
+}
+
+.activity-timeline {
+  --activity-color: #176df4;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.activity-icon {
+  position: relative;
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: color-mix(
+    in srgb,
+    var(--activity-color) 11%,
+    white
+  );
+  color: var(--activity-color);
+}
+
+.activity-icon mat-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.timeline-line {
+  width: 1px;
+  flex: 1;
+  min-height: 23px;
+  background: color-mix(
+    in srgb,
+    var(--activity-color) 35%,
+    #e5eaf2
+  );
+}
+
+.activity-information {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: 2px 0 13px;
+}
+
+.activity-information p {
+  margin: 0;
+  color: #32415c;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.activity-information time {
+  padding-top: 1px;
+  color: #7b879a;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.theme-blue {
+  --activity-color: #176df4;
+}
+
+.theme-purple {
+  --activity-color: #7a4ff0;
+}
+
+.theme-orange {
+  --activity-color: #ff8a25;
+}
+
+.theme-green {
+  --activity-color: #19bf76;
+}
+
+.theme-teal {
+  --activity-color: #17b8b4;
+}
+
+.view-all-button {
+  width: 100%;
+  height: 36px;
+  margin-top: 8px;
+  border-radius: 7px;
+  background: #f7f9fc;
+  color: #1264e8;
+  font-size: 11px;
+}
+
+.view-all-button mat-icon {
+  width: 17px;
+  height: 17px;
+  margin-left: 8px;
+  font-size: 17px;
+}

@@ -1,0 +1,167 @@
+<mat-toolbar class="topbar">
+  <button
+    mat-icon-button
+    class="menu-toggle"
+    type="button"
+    aria-label="Toggle sidebar"
+    matTooltip="Toggle sidebar"
+    (click)="onSidebarToggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="search-container">
+    <mat-icon>search</mat-icon>
+
+    <input
+      type="search"
+      placeholder="Search for anything..."
+      aria-label="Search"
+    />
+
+    <span class="search-shortcut">Ctrl + K</span>
+  </div>
+
+  <span class="topbar-spacer"></span>
+
+  <div class="topbar-actions">
+    <button
+      mat-icon-button
+      class="action-button"
+      matTooltip="Notifications"
+      [matMenuTriggerFor]="notificationMenu"
+    >
+      <mat-icon
+        [matBadge]="notificationCount"
+        matBadgeColor="primary"
+        matBadgeSize="small"
+      >
+        notifications_none
+      </mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      class="action-button"
+      matTooltip="Messages"
+    >
+      <mat-icon
+        [matBadge]="messageCount"
+        matBadgeColor="primary"
+        matBadgeSize="small"
+      >
+        chat_bubble_outline
+      </mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      class="action-button optional-action"
+      matTooltip="Fullscreen"
+    >
+      <mat-icon>fullscreen</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      class="action-button optional-action"
+      matTooltip="Change theme"
+      (click)="toggleDarkMode()"
+    >
+      <mat-icon>
+        {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+      </mat-icon>
+    </button>
+
+    <div class="topbar-divider"></div>
+
+    <div class="date-section">
+      <mat-icon>calendar_today</mat-icon>
+
+      <div class="date-information">
+        <strong>
+          {{ currentDate }}
+        </strong>
+
+        <span>
+          {{ currentDate }}
+        </span>
+      </div>
+    </div>
+
+    <div class="topbar-divider"></div>
+
+    <button
+      mat-button
+      class="profile-button"
+      [matMenuTriggerFor]="profileMenu"
+    >
+      <span class="profile-avatar">
+        <mat-icon>person</mat-icon>
+      </span>
+
+      <span class="profile-information">
+        <strong>Super Admin</strong>
+        <small>Super Administrator</small>
+      </span>
+
+      <mat-icon class="dropdown-icon">
+        keyboard_arrow_down
+      </mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu
+  #notificationMenu="matMenu"
+  xPosition="before"
+  class="notification-menu"
+>
+  <div class="menu-header" (click)="$event.stopPropagation()">
+    <strong>Notifications</strong>
+    <span>{{ notificationCount }} new</span>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <button mat-menu-item>
+    <mat-icon>account_balance</mat-icon>
+    <span>New branch was created</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>person_add</mat-icon>
+    <span>New user was registered</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>warning_amber</mat-icon>
+    <span>Pending account verification</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button mat-menu-item routerLink="/super-admin/notifications">
+    <mat-icon>visibility</mat-icon>
+    <span>View all notifications</span>
+  </button>
+</mat-menu>
+
+<mat-menu #profileMenu="matMenu" xPosition="before">
+  <button mat-menu-item>
+    <mat-icon>person_outline</mat-icon>
+    <span>My Profile</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span>Account Settings</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button mat-menu-item class="logout-item" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

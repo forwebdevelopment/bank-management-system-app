@@ -1,0 +1,93 @@
+<aside class="sidebar" [class.collapsed]="collapsed">
+  <div class="brand">
+    <div class="brand-icon">
+      <mat-icon>account_balance</mat-icon>
+    </div>
+
+    <div class="brand-content" *ngIf="!collapsed">
+      <span class="brand-title">Banking Management</span>
+      <span class="brand-subtitle">System</span>
+    </div>
+  </div>
+
+  <div class="admin-profile">
+    <div class="profile-details" *ngIf="!collapsed">
+      <strong>Super Admin</strong>
+      <span>Super Administrator</span>
+    </div>
+
+    <mat-icon
+      class="verified-icon"
+      matTooltip="Verified administrator"
+    >
+      verified_user
+    </mat-icon>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <nav class="sidebar-navigation">
+    <section
+      class="menu-group"
+      *ngFor="let group of menuGroups"
+    >
+      <p
+        class="menu-heading"
+        *ngIf="group.title && !collapsed"
+      >
+        {{ group.title }}
+      </p>
+
+      <a
+        class="menu-link"
+        *ngFor="let item of group.items"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: item.route === '/super-admin/dashboard'
+        }"
+        [matTooltip]="collapsed ? item.label : ''"
+        matTooltipPosition="right"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+
+        <span class="menu-label" *ngIf="!collapsed">
+          {{ item.label }}
+        </span>
+
+        <span
+          class="menu-badge"
+          *ngIf="item.badge && !collapsed"
+        >
+          {{ item.badge }}
+        </span>
+      </a>
+    </section>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <a
+      class="menu-link notification-link"
+      routerLink="/super-admin/notifications"
+      routerLinkActive="active"
+      [matTooltip]="collapsed ? 'Notifications' : ''"
+      matTooltipPosition="right"
+    >
+      <mat-icon
+        [matBadge]="collapsed ? 12 : null"
+        matBadgeColor="warn"
+        matBadgeSize="small"
+      >
+        notifications_none
+      </mat-icon>
+
+      <span class="menu-label" *ngIf="!collapsed">
+        Notifications
+      </span>
+
+      <span class="notification-count" *ngIf="!collapsed">
+        12
+      </span>
+    </a>
+  </div>
+</aside>

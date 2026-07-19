@@ -1,0 +1,181 @@
+:host {
+  display: block;
+}
+
+.dashboard-page {
+  width: 100%;
+}
+
+.dashboard-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.page-eyebrow {
+  color: #176df4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dashboard-page-header h1 {
+  margin: 5px 0 4px;
+  color: #17233c;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.dashboard-page-header p {
+  margin: 0;
+  color: #718096;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-header-actions button {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.dashboard-header-actions mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+.date-filter-button {
+  color: #293a58;
+  border-color: #dfe5ee;
+  background: #ffffff;
+}
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dashboard-middle-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 2.05fr)
+    minmax(280px, 1fr)
+    minmax(280px, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.deposit-withdrawal-panel,
+.account-distribution-panel,
+.recent-activities-panel {
+  min-width: 0;
+}
+
+.dashboard-bottom-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 2.7fr)
+    minmax(280px, 0.9fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.branch-performance-panel,
+.dashboard-side-widgets {
+  min-width: 0;
+}
+
+.dashboard-side-widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 1350px) {
+  .dashboard-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-side-widgets {
+    display: grid;
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+@media (max-width: 750px) {
+  .dashboard-side-widgets {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 1450px) {
+  .dashboard-middle-grid {
+    grid-template-columns:
+      minmax(0, 1.7fr)
+      minmax(300px, 1fr);
+  }
+
+  .recent-activities-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1050px) {
+  .dashboard-middle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-activities-panel {
+    grid-column: auto;
+  }
+}
+@media (max-width: 1500px) {
+  .statistics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1050px) {
+  .statistics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-header-actions {
+    width: 100%;
+  }
+
+  .dashboard-header-actions button {
+    flex: 1;
+  }
+
+  .statistics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 440px) {
+  .dashboard-header-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

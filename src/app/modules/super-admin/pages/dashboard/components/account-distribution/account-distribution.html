@@ -1,0 +1,50 @@
+<mat-card class="dashboard-card distribution-card">
+  <mat-card-header>
+    <mat-card-title>Account Distribution</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="distribution-content">
+      <div class="doughnut-wrapper">
+        <canvas
+          baseChart
+          [type]="'doughnut'"
+          [data]="doughnutChartData"
+          [options]="doughnutChartOptions"
+        ></canvas>
+
+        <div class="chart-center">
+          <strong>
+            {{ totalAccounts | number }}
+          </strong>
+
+          <span>Total Accounts</span>
+        </div>
+      </div>
+
+      <div class="account-list">
+        <div
+          class="account-item"
+          *ngFor="
+            let account of accountTypes;
+            trackBy: trackAccountType
+          "
+        >
+          <span
+            class="account-color"
+            [style.backgroundColor]="account.color"
+          ></span>
+
+          <div class="account-information">
+            <strong>{{ account.label }}</strong>
+
+            <span>
+              {{ account.percentage }}%
+              <small>{{ account.count | number }}</small>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

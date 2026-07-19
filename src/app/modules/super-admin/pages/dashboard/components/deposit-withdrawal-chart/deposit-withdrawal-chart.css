@@ -1,0 +1,99 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.dashboard-card {
+  height: 100%;
+  border: 1px solid #e5eaf2;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(29, 46, 78, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 0;
+}
+
+.card-header ::ng-deep .mat-mdc-card-header-text {
+  flex: 1;
+  margin: 0;
+}
+
+mat-card-title {
+  color: #17233c;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.period-button {
+  height: 34px;
+  border-color: #dce3ed;
+  border-radius: 7px;
+  color: #32425e;
+  font-size: 11px;
+}
+
+.period-button mat-icon {
+  width: 17px;
+  height: 17px;
+  margin-left: 4px;
+  font-size: 17px;
+}
+
+mat-card-content {
+  padding: 10px 16px 16px;
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #536179;
+  font-size: 11px;
+}
+
+.legend-line {
+  width: 16px;
+  height: 3px;
+  border-radius: 99px;
+}
+
+.deposit-line {
+  background: #176df4;
+}
+
+.withdrawal-line {
+  background: #f7436b;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 265px;
+}
+
+@media (max-width: 575px) {
+  .card-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  mat-card-title {
+    font-size: 14px;
+  }
+
+  .chart-wrapper {
+    height: 240px;
+  }
+}

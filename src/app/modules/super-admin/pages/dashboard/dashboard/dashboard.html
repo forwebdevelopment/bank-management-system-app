@@ -1,1 +1,81 @@
-<p>dashboard works!</p>
+<section class="dashboard-page">
+  <header class="dashboard-page-header">
+    <div>
+      <span class="page-eyebrow">Overview</span>
+
+      <h1>Super Admin Dashboard</h1>
+
+      <p>
+        Monitor branches, customers, accounts and daily
+        banking activities.
+      </p>
+    </div>
+
+    <div class="dashboard-header-actions">
+      <button
+        mat-stroked-button
+        type="button"
+        class="date-filter-button"
+      >
+        <mat-icon>calendar_today</mat-icon>
+        This Year
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+      >
+        <mat-icon>download</mat-icon>
+        Export Report
+      </button>
+    </div>
+  </header>
+
+  <section
+    class="statistics-grid"
+    aria-label="Dashboard statistics"
+  >
+    <app-statistics-card
+      *ngFor="
+        let statistic of dashboardStatistics;
+        trackBy: trackStatistic
+      "
+      [statistic]="statistic"
+    ></app-statistics-card>
+  </section>
+
+   <section
+    class="dashboard-middle-grid"
+    aria-label="Banking analytics"
+  >
+    <app-deposit-withdrawal-chart
+      class="deposit-withdrawal-panel"
+    ></app-deposit-withdrawal-chart>
+
+    <app-account-distribution
+      class="account-distribution-panel"
+    ></app-account-distribution>
+
+    <app-recent-activities
+      class="recent-activities-panel"
+    ></app-recent-activities>
+  </section>
+<section class="dashboard-bottom-grid">
+
+    <app-branch-performance  class="branch-performance-panel"></app-branch-performance>
+
+    <div class="dashboard-side-widgets">
+  <app-quick-actions></app-quick-actions>
+
+  <!-- System health will be added next. -->
+</div>
+
+    <app-system-health></app-system-health>
+
+</section>
+
+  <!-- The next dashboard sections will be added here. -->
+   
+</section>

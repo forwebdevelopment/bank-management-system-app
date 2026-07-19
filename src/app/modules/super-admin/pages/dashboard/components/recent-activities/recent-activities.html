@@ -1,0 +1,48 @@
+<mat-card class="dashboard-card activity-card">
+  <mat-card-header>
+    <mat-card-title>Recent Activities</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="activity-list">
+      <article
+        class="activity-item"
+        *ngFor="
+          let activity of activities;
+          let last = last;
+          trackBy: trackActivity
+        "
+        [class.last-item]="last"
+      >
+        <div
+          class="activity-timeline"
+          [ngClass]="'theme-' + activity.theme"
+        >
+          <span class="activity-icon">
+            <mat-icon>{{ activity.icon }}</mat-icon>
+          </span>
+
+          <span
+            class="timeline-line"
+            *ngIf="!last"
+          ></span>
+        </div>
+
+        <div class="activity-information">
+          <p>{{ activity.title }}</p>
+          <time>{{ activity.time }}</time>
+        </div>
+      </article>
+    </div>
+
+    <button
+      mat-button
+      type="button"
+      class="view-all-button"
+      routerLink="/super-admin/audit-logs"
+    >
+      View All Activities
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>

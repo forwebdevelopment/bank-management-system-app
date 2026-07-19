@@ -1,0 +1,70 @@
+<mat-card class="dashboard-card chart-card">
+  <mat-card-header class="card-header">
+    <mat-card-title>
+      Monthly Deposits vs Withdrawals
+    </mat-card-title>
+
+    <button
+      mat-stroked-button
+      type="button"
+      [matMenuTriggerFor]="periodMenu"
+      class="period-button"
+    >
+      {{
+        selectedPeriod === 'year'
+          ? 'This Year'
+          : selectedPeriod === 'month'
+          ? 'This Month'
+          : 'This Week'
+      }}
+
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-menu #periodMenu="matMenu">
+    <button
+      mat-menu-item
+      (click)="onPeriodChange('week')"
+    >
+      This Week
+    </button>
+
+    <button
+      mat-menu-item
+      (click)="onPeriodChange('month')"
+    >
+      This Month
+    </button>
+
+    <button
+      mat-menu-item
+      (click)="onPeriodChange('year')"
+    >
+      This Year
+    </button>
+  </mat-menu>
+
+  <mat-card-content>
+    <div class="chart-legend">
+      <span class="legend-item">
+        <span class="legend-line deposit-line"></span>
+        Deposits
+      </span>
+
+      <span class="legend-item">
+        <span class="legend-line withdrawal-line"></span>
+        Withdrawals
+      </span>
+    </div>
+
+    <div class="chart-wrapper">
+      <canvas
+        baseChart
+        [type]="'line'"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+      ></canvas>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './modules/super-admin/components/sidebar/sidebar/sidebar';
+import { AdminLayout } from './modules/super-admin/admin-layout/admin-layout';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet ,SidebarComponent],
+  imports: [RouterOutlet ,AdminLayout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

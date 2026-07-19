@@ -1,0 +1,48 @@
+.admin-footer {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 9px 22px;
+  background: #ffffff;
+  border-top: 1px solid #e4e9f1;
+  color: #68768d;
+}
+
+.footer-brand,
+.footer-version {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+}
+
+.footer-brand mat-icon {
+  width: 19px;
+  height: 19px;
+  color: #405e91;
+  font-size: 19px;
+}
+
+.information-button {
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  color: #405e91;
+}
+
+.information-button mat-icon {
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+}
+
+@media (max-width: 575px) {
+  .admin-footer {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    text-align: center;
+  }
+}

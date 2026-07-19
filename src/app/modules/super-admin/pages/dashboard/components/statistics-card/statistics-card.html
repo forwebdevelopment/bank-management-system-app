@@ -1,0 +1,72 @@
+
+<article
+  class="statistics-card"
+  [ngClass]="themeClass"
+>
+  <div class="statistics-header">
+    <div class="statistics-icon">
+      <mat-icon>{{ statistic.icon }}</mat-icon>
+    </div>
+
+    <div class="statistics-information">
+      <span class="statistics-title">
+        {{ statistic.title }}
+      </span>
+
+      <strong class="statistics-value">
+        {{ statistic.value }}
+      </strong>
+    </div>
+  </div>
+
+  <div class="statistics-growth">
+    <span
+      class="growth-value"
+      [class.negative-growth]="!isPositiveGrowth"
+    >
+      <mat-icon>{{ growthIcon }}</mat-icon>
+
+      {{ statistic.growth | number: '1.1-1' }}%
+    </span>
+
+    <span class="comparison-text">
+      {{ statistic.comparisonText }}
+    </span>
+  </div>
+
+  <div class="statistics-sparkline">
+    <svg
+      viewBox="0 0 180 42"
+      preserveAspectRatio="none"
+      role="img"
+      [attr.aria-label]="statistic.title + ' trend'"
+    >
+      <defs>
+        <linearGradient
+          [attr.id]="'sparkline-gradient-' + statistic.theme"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="1"
+        >
+          <stop
+            offset="0%"
+            stop-color="currentColor"
+            stop-opacity="0.18"
+          ></stop>
+
+          <stop
+            offset="100%"
+            stop-color="currentColor"
+            stop-opacity="0"
+          ></stop>
+        </linearGradient>
+      </defs>
+
+      <polyline
+        class="sparkline-line"
+        [attr.points]="sparklinePoints"
+      ></polyline>
+    </svg>
+  </div>
+</article>
