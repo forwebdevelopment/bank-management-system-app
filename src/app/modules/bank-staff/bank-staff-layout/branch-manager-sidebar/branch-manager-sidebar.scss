@@ -19,17 +19,16 @@
 
 /* Header */
 
-// .sidebar-header {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   min-height: 82px;
-//   padding: 14px 18px;
-//   background: linear-gradient(135deg, #0754b8, #0878dc);
-// }
 .sidebar-header {
-  flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 82px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #0754b8, #0878dc);
+   flex: 0 0 auto;
 }
+
 
 .brand {
   display: flex;
@@ -97,19 +96,16 @@
 
 /* Navigation */
 
-// .sidebar-navigation {
-//   flex: 1;
-//   padding: 12px 10px;
-//   overflow-y: auto;
-//   overflow-x: hidden;
-// }
-
 .sidebar-navigation {
   flex: 1;
-  min-height: 0;
+  padding: 12px 10px;
   overflow-y: auto;
   overflow-x: hidden;
+
+  min-height: 0;
 }
+
+
 .sidebar-navigation::-webkit-scrollbar {
   width: 4px;
 }
