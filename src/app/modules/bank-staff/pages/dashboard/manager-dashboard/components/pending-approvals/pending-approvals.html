@@ -1,0 +1,89 @@
+<article class="approval-card">
+  <div class="card-header">
+    <div>
+      <h3>Pending Approvals</h3>
+      <p>Requests waiting for branch-manager action</p>
+    </div>
+
+    <a
+      routerLink="/branch-manager/approvals"
+      class="view-all-link"
+    >
+      View all
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+  </div>
+
+  <div class="approval-list">
+    <div
+      class="approval-item"
+      *ngFor="let approval of approvals"
+    >
+      <div class="approval-information">
+        <div class="approval-icon">
+          <mat-icon>{{ approval.icon }}</mat-icon>
+        </div>
+
+        <div class="approval-content">
+          <strong>{{ approval.title }}</strong>
+          <span>{{ approval.customerName }}</span>
+        </div>
+      </div>
+
+      <div class="approval-category">
+        <span>{{ approval.category }}</span>
+      </div>
+
+      <div class="approval-date">
+        {{ approval.requestDate | date:'dd MMM yyyy' }}
+      </div>
+
+      <span
+        class="priority-badge"
+        [class.high-priority]="approval.priority === 'High'"
+        [class.medium-priority]="approval.priority === 'Medium'"
+        [class.low-priority]="approval.priority === 'Low'"
+      >
+        {{ approval.priority }}
+      </span>
+
+      <div class="approval-actions">
+        <button
+          type="button"
+          class="action-button approve-button"
+          matTooltip="Approve request"
+          (click)="approveRequest(approval)"
+        >
+          <mat-icon>check</mat-icon>
+        </button>
+
+        <button
+          type="button"
+          class="action-button reject-button"
+          matTooltip="Reject request"
+          (click)="rejectRequest(approval)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <button
+          type="button"
+          class="action-button view-button"
+          matTooltip="View details"
+          (click)="viewDetails(approval)"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="empty-state"
+    *ngIf="approvals.length === 0"
+  >
+    <mat-icon>task_alt</mat-icon>
+    <h4>All requests reviewed</h4>
+    <p>No approvals are currently pending.</p>
+  </div>
+</article>

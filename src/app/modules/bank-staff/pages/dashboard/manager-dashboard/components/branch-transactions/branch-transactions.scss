@@ -1,0 +1,211 @@
+:host {
+  display: block;
+  height: 100%;
+  min-width: 0;
+}
+
+.analytics-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 390px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e4e9f0;
+  border-radius: 13px;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  h3 {
+    margin: 0;
+    color: #17233c;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: #8b96a8;
+    font-size: 9px;
+  }
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  background: #f1f4f8;
+  border-radius: 7px;
+
+  button {
+    padding: 5px 8px;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 8px;
+    cursor: pointer;
+  }
+
+  button.active {
+    color: #ffffff;
+    background: #0866ca;
+    box-shadow: 0 2px 5px rgba(8, 102, 202, 0.2);
+  }
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #657287;
+    font-size: 8px;
+  }
+
+  i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+}
+
+.deposit-legend i {
+  background: #2563eb;
+}
+
+.withdrawal-legend i {
+  background: #16a34a;
+}
+
+.transfer-legend i {
+  background: #f97316;
+}
+
+.chart-layout {
+  display: flex;
+  flex: 1;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.vertical-label {
+  display: flex;
+  align-items: center;
+  color: #8995a8;
+  font-size: 8px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.chart-container {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 230px;
+}
+
+.chart-grid {
+  position: absolute;
+  inset: 0 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    border-top: 1px dashed #e7ebf0;
+  }
+}
+
+.transaction-chart {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 200px;
+
+  polyline {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.deposit-line {
+  stroke: #2563eb;
+}
+
+.withdrawal-line {
+  stroke: #16a34a;
+}
+
+.transfer-line {
+  stroke: #f97316;
+}
+
+.axis-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: #7f8a9c;
+  font-size: 8px;
+}
+
+.transaction-totals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #edf0f4;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 10px;
+  }
+
+  div:first-child {
+    padding-left: 0;
+  }
+
+  div + div {
+    border-left: 1px solid #edf0f4;
+  }
+
+  span {
+    color: #8b96a8;
+    font-size: 8px;
+  }
+
+  strong {
+    color: #243149;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-header {
+    flex-direction: column;
+  }
+
+  .filter-buttons {
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+  }
+}

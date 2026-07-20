@@ -1,0 +1,62 @@
+<article class="report-card">
+  <div class="card-header">
+    <div>
+      <h3>Report Summary</h3>
+      <p>Important branch financial reports</p>
+    </div>
+
+    <a
+      routerLink="/branch-manager/reports"
+      class="view-all-link"
+    >
+      View all
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+  </div>
+
+  <div class="report-grid">
+    <a
+      *ngFor="let report of reports"
+      class="report-item"
+      [routerLink]="report.route"
+    >
+      <div class="report-icon">
+        <mat-icon>{{ report.icon }}</mat-icon>
+      </div>
+
+      <div class="report-content">
+        <span>{{ report.title }}</span>
+
+        <div class="report-value-row">
+          <strong>{{ report.value }}</strong>
+
+          <small
+            [class.positive-change]="report.trend === 'up'"
+            [class.negative-change]="report.trend === 'down'"
+          >
+            <mat-icon>
+              {{ report.trend === 'up' ? 'trending_up' : 'trending_down' }}
+            </mat-icon>
+
+            {{ report.change }}
+          </small>
+        </div>
+      </div>
+
+      <mat-icon class="report-arrow">
+        chevron_right
+      </mat-icon>
+    </a>
+  </div>
+
+  <a
+    routerLink="/branch-manager/reports/custom"
+    class="custom-report-button"
+  >
+    <mat-icon>date_range</mat-icon>
+
+    <span>Generate Custom Report</span>
+
+    <mat-icon>arrow_forward</mat-icon>
+  </a>
+</article>

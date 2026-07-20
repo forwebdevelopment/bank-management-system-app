@@ -1,0 +1,90 @@
+<article class="staff-card">
+  <div class="card-header">
+    <div>
+      <h3>Staff Performance</h3>
+      <p>Top-performing employees of the branch</p>
+    </div>
+
+    <a
+      routerLink="/branch-manager/employees/performance"
+      class="view-all-link"
+    >
+      View all
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+  </div>
+
+  <div class="staff-list">
+    <div
+      class="staff-item"
+      *ngFor="let employee of employees; let index = index"
+    >
+      <div class="employee-rank">
+        {{ index + 1 }}
+      </div>
+
+      <div class="employee-avatar">
+        {{ employee.initials }}
+      </div>
+
+      <div class="employee-information">
+        <div class="employee-name-row">
+          <strong>{{ employee.name }}</strong>
+
+          <span
+            class="performance-status"
+            [class.excellent-status]="employee.status === 'Excellent'"
+            [class.good-status]="employee.status === 'Good'"
+            [class.average-status]="employee.status === 'Average'"
+          >
+            <mat-icon>
+              {{ getPerformanceIcon(employee.status) }}
+            </mat-icon>
+
+            {{ employee.status }}
+          </span>
+        </div>
+
+        <span class="designation">
+          {{ employee.designation }}
+        </span>
+
+        <div class="employee-statistics">
+          <span>
+            <mat-icon>star</mat-icon>
+            {{ employee.rating }}
+          </span>
+
+          <span>
+            <mat-icon>groups</mat-icon>
+            {{ employee.customersHandled }}
+          </span>
+
+          <span>
+            <mat-icon>receipt_long</mat-icon>
+            {{ employee.transactionsCompleted }}
+          </span>
+        </div>
+
+        <div class="performance-progress">
+          <div class="progress-label">
+            <span>Performance</span>
+            <strong>{{ employee.performance }}%</strong>
+          </div>
+
+          <div class="progress-track">
+            <div
+              class="progress-value"
+              [class.high-performance]="employee.performance >= 85"
+              [class.medium-performance]="
+                employee.performance >= 70 &&
+                employee.performance < 85
+              "
+              [style.width.%]="employee.performance"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

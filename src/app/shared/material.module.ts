@@ -16,13 +16,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginator,} from '@angular/material/paginator';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { MatSortModule } from '@angular/material/sort';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
+import { RouterLink , RouterLinkActive  } from '@angular/router';
+
 
 @NgModule({
     imports: [
@@ -45,14 +51,21 @@ import { MatSortModule } from '@angular/material/sort';
         MatInputModule,
         MatPaginatorModule,
         MatSortModule,
+        MatExpansionModule,
+        LayoutModule,
         // other module 
         BaseChartDirective,
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterLink,
+        RouterLinkActive
 
 
     ],
     exports: [
         MatPaginator,
+        MatSidenavModule,
         MatIconModule,
         MatChipsModule,
         MatButtonModule,
@@ -68,10 +81,16 @@ import { MatSortModule } from '@angular/material/sort';
         MatTableModule,
          MatInputModule,
         MatPaginatorModule,
+        MatExpansionModule,
         MatSortModule,
+        LayoutModule,
         //outer module export
         BaseChartDirective,
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterLink,
+        RouterLinkActive
     ]
 })
 

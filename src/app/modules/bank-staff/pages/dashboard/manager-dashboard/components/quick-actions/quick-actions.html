@@ -1,0 +1,51 @@
+<article class="quick-action-card">
+  <div class="card-header">
+    <div>
+      <h3>Quick Actions</h3>
+      <p>Frequently used branch operations</p>
+    </div>
+
+    <mat-icon class="header-icon">
+      bolt
+    </mat-icon>
+  </div>
+
+  <div class="action-grid">
+    <a
+      *ngFor="let action of quickActions"
+      class="action-item"
+      [routerLink]="action.route"
+    >
+      <div
+        class="action-icon"
+        [ngClass]="action.colorClass"
+      >
+        <mat-icon>{{ action.icon }}</mat-icon>
+      </div>
+
+      <div class="action-content">
+        <strong>{{ action.label }}</strong>
+        <span>{{ action.description }}</span>
+      </div>
+
+      <mat-icon class="action-arrow">
+        arrow_forward
+      </mat-icon>
+    </a>
+  </div>
+
+  <div class="quick-help">
+    <div class="help-icon">
+      <mat-icon>support_agent</mat-icon>
+    </div>
+
+    <div>
+      <strong>Need assistance?</strong>
+      <span>Contact the technical support team</span>
+    </div>
+
+    <a routerLink="/branch-manager/help">
+      Help
+    </a>
+  </div>
+</article>

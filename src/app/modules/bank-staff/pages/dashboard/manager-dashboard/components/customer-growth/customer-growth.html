@@ -1,0 +1,119 @@
+<article class="growth-card">
+  <div class="card-header">
+    <div>
+      <h3>Customer Growth</h3>
+      <p>Customer and account growth performance</p>
+    </div>
+
+    <div class="filter-buttons">
+      <button
+        *ngFor="let period of periods"
+        type="button"
+        [class.active]="selectedPeriod === period.value"
+        (click)="selectPeriod(period.value)"
+      >
+        {{ period.label }}
+      </button>
+    </div>
+  </div>
+
+  <div class="chart-legend">
+    <span class="new-customer">
+      <i></i>
+      New Customers
+    </span>
+
+    <span class="active-customer">
+      <i></i>
+      Active Customers
+    </span>
+
+    <span class="closed-account">
+      <i></i>
+      Closed Accounts
+    </span>
+  </div>
+
+  <div class="growth-chart-container">
+    <div class="chart-grid">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <svg
+      class="growth-chart"
+      viewBox="0 0 500 200"
+      preserveAspectRatio="none"
+      role="img"
+      aria-label="Customer growth chart"
+    >
+      <polyline
+        class="new-customer-line"
+        [attr.points]="createPoints(currentData.newCustomers)"
+      ></polyline>
+
+      <polyline
+        class="active-customer-line"
+        [attr.points]="createPoints(currentData.activeCustomers)"
+      ></polyline>
+
+      <polyline
+        class="closed-account-line"
+        [attr.points]="createPoints(currentData.closedAccounts)"
+      ></polyline>
+
+      <circle
+        *ngFor="let point of createPointList(currentData.newCustomers)"
+        class="new-customer-point"
+        [attr.cx]="point.x"
+        [attr.cy]="point.y"
+        r="4"
+      ></circle>
+
+      <circle
+        *ngFor="let point of createPointList(currentData.activeCustomers)"
+        class="active-customer-point"
+        [attr.cx]="point.x"
+        [attr.cy]="point.y"
+        r="4"
+      ></circle>
+
+      <circle
+        *ngFor="let point of createPointList(currentData.closedAccounts)"
+        class="closed-account-point"
+        [attr.cx]="point.x"
+        [attr.cy]="point.y"
+        r="4"
+      ></circle>
+    </svg>
+
+    <div class="axis-labels">
+      <span *ngFor="let label of currentData.labels">
+        {{ label }}
+      </span>
+    </div>
+  </div>
+
+  <div class="growth-summary">
+    <div>
+      <span>New Customers</span>
+      <strong>+1,286</strong>
+      <small>↑ 12.4%</small>
+    </div>
+
+    <div>
+      <span>Active Customers</span>
+      <strong>18,542</strong>
+      <small>↑ 8.2%</small>
+    </div>
+
+    <div>
+      <span>Closed Accounts</span>
+      <strong>128</strong>
+      <small class="negative">↑ 2.1%</small>
+    </div>
+  </div>
+</article>

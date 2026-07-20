@@ -1,0 +1,121 @@
+<aside
+  class="sidebar"
+  [class.sidebar-collapsed]="isCollapsed"
+>
+  <!-- Logo section -->
+  <div class="sidebar-header">
+    <div class="brand">
+      <div class="brand-logo">
+        <mat-icon>account_balance</mat-icon>
+      </div>
+
+      <div class="brand-content" *ngIf="!isCollapsed">
+        <h2>SecureBank</h2>
+        <span>Enterprise Banking</span>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="collapse-button"
+      (click)="toggleSidebar()"
+      [attr.aria-label]="
+        isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'
+      "
+    >
+      <mat-icon>
+        {{ isCollapsed ? 'chevron_right' : 'chevron_left' }}
+      </mat-icon>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-navigation">
+    <ng-container *ngFor="let item of menuItems">
+
+      <!-- Menu without children -->
+      <a
+        *ngIf="!item.children"
+        class="menu-item"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [matTooltip]="isCollapsed ? item.label : ''"
+        matTooltipPosition="right"
+      >
+        <mat-icon>{{ item.icon }}</mat-icon>
+
+        <span *ngIf="!isCollapsed">
+          {{ item.label }}
+        </span>
+      </a>
+
+      <!-- Menu with children -->
+      <div
+        *ngIf="item.children"
+        class="menu-group"
+        [class.menu-open]="item.expanded"
+      >
+        <button
+          type="button"
+          class="menu-item menu-button"
+          (click)="toggleMenu(item)"
+          [matTooltip]="isCollapsed ? item.label : ''"
+          matTooltipPosition="right"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+
+          <span class="menu-label" *ngIf="!isCollapsed">
+            {{ item.label }}
+          </span>
+
+          <mat-icon
+            class="arrow-icon"
+            *ngIf="!isCollapsed"
+          >
+            {{ item.expanded ? 'expand_less' : 'expand_more' }}
+          </mat-icon>
+        </button>
+
+        <!-- Submenu -->
+        <div
+          class="submenu"
+          *ngIf="item.expanded && !isCollapsed"
+        >
+          <a
+            *ngFor="let child of item.children"
+            class="submenu-item"
+            [routerLink]="child.route"
+            routerLinkActive="active-submenu"
+          >
+            {{ child.label }}
+          </a>
+        </div>
+      </div>
+
+    </ng-container>
+  </nav>
+
+  <!-- Bottom menu -->
+  <div class="sidebar-footer">
+    <a
+      class="bottom-menu-item"
+      routerLink="/branch-manager/help"
+      [matTooltip]="isCollapsed ? 'Help' : ''"
+      matTooltipPosition="right"
+    >
+      <mat-icon>help_outline</mat-icon>
+      <span *ngIf="!isCollapsed">Help</span>
+    </a>
+
+    <button
+      type="button"
+      class="bottom-menu-item logout-button"
+      [matTooltip]="isCollapsed ? 'Logout' : ''"
+      matTooltipPosition="right"
+    >
+      <mat-icon>logout</mat-icon>
+      <span *ngIf="!isCollapsed">Logout</span>
+    </button>
+  </div>
+</aside>

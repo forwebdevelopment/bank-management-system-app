@@ -1,0 +1,74 @@
+<article class="notification-card">
+  <div class="card-header">
+    <div>
+      <div class="title-row">
+        <h3>Notifications</h3>
+
+        <span
+          class="notification-count"
+          *ngIf="unreadCount > 0"
+        >
+          {{ unreadCount }}
+        </span>
+      </div>
+
+      <p>Recent branch alerts and activities</p>
+    </div>
+
+    <button
+      type="button"
+      class="mark-read-button"
+      (click)="markAllAsRead()"
+      [disabled]="unreadCount === 0"
+    >
+      Mark all read
+    </button>
+  </div>
+
+  <div class="notification-list">
+    <a
+      *ngFor="let notification of notifications"
+      class="notification-item"
+      [class.unread-notification]="!notification.isRead"
+      [routerLink]="notification.route || null"
+      (click)="markAsRead(notification)"
+    >
+      <div
+        class="notification-icon"
+        [class.transaction-icon]="notification.type === 'transaction'"
+        [class.approval-icon]="notification.type === 'approval'"
+        [class.customer-icon]="notification.type === 'customer'"
+        [class.system-icon]="notification.type === 'system'"
+        [class.warning-icon]="notification.type === 'warning'"
+      >
+        <mat-icon>{{ notification.icon }}</mat-icon>
+      </div>
+
+      <div class="notification-content">
+        <div class="notification-title-row">
+          <strong>{{ notification.title }}</strong>
+
+          <span
+            class="unread-dot"
+            *ngIf="!notification.isRead"
+          ></span>
+        </div>
+
+        <p>{{ notification.description }}</p>
+
+        <small>
+          <mat-icon>schedule</mat-icon>
+          {{ notification.time }}
+        </small>
+      </div>
+    </a>
+  </div>
+
+  <a
+    routerLink="/branch-manager/notifications"
+    class="view-notifications-link"
+  >
+    View all notifications
+    <mat-icon>arrow_forward</mat-icon>
+  </a>
+</article>

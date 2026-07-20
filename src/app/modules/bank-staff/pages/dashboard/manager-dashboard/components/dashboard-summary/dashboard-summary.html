@@ -1,0 +1,102 @@
+<section class="dashboard-summary">
+  <div class="section-heading">
+    <div>
+      <h2>Branch Overview</h2>
+      <p>Real-time summary of today’s branch operations</p>
+    </div>
+
+    <span class="last-updated">
+      <mat-icon>schedule</mat-icon>
+      Updated just now
+    </span>
+  </div>
+
+  <div class="metric-grid">
+    <a
+      *ngFor="let metric of metrics"
+      class="metric-card"
+      [class.success-card]="metric.status === 'success'"
+      [class.warning-card]="metric.status === 'warning'"
+      [class.danger-card]="metric.status === 'danger'"
+      [class.info-card]="metric.status === 'info'"
+      [routerLink]="metric.route"
+    >
+      <div class="card-header">
+        <div class="metric-icon">
+          <mat-icon>{{ metric.icon }}</mat-icon>
+        </div>
+
+        <button
+          type="button"
+          class="card-menu-button"
+          mat-icon-button
+          matTooltip="View details"
+          (click)="$event.preventDefault(); $event.stopPropagation()"
+        >
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+      </div>
+
+      <div class="metric-content">
+        <span class="metric-title">
+          {{ metric.title }}
+        </span>
+
+        <div class="value-row">
+          <strong>{{ metric.value }}</strong>
+
+          <span
+            class="status-badge"
+            [class.success-status]="metric.status === 'success'"
+            [class.warning-status]="metric.status === 'warning'"
+            [class.danger-status]="metric.status === 'danger'"
+            [class.info-status]="metric.status === 'info'"
+          >
+            <mat-icon *ngIf="metric.status === 'success'">
+              trending_up
+            </mat-icon>
+
+            <mat-icon *ngIf="metric.status === 'warning'">
+              schedule
+            </mat-icon>
+
+            <mat-icon *ngIf="metric.status === 'danger'">
+              priority_high
+            </mat-icon>
+
+            <mat-icon *ngIf="metric.status === 'info'">
+              verified
+            </mat-icon>
+
+            {{ metric.changeText }}
+          </span>
+        </div>
+
+        <p>{{ metric.description }}</p>
+      </div>
+
+      <div class="metric-footer">
+        <svg
+          class="mini-chart"
+          viewBox="0 0 120 38"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <polyline
+            [attr.points]="createPolyline(metric.chartPoints)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></polyline>
+        </svg>
+
+        <div class="view-details">
+          <span>View details</span>
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

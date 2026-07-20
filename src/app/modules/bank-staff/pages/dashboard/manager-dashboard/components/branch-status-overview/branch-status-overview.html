@@ -1,0 +1,232 @@
+<section class="status-overview">
+  <div class="status-grid">
+    <!-- Today Business Target -->
+    <article class="overview-card target-card">
+      <div class="card-title-row">
+        <div>
+          <span class="card-label">Daily Progress</span>
+          <h3>Today’s Business Target</h3>
+        </div>
+
+        <div class="title-icon blue-icon">
+          <mat-icon>track_changes</mat-icon>
+        </div>
+      </div>
+
+      <div class="target-value-row">
+        <div>
+          <span>Achieved</span>
+          <strong>₹{{ businessTarget.achieved }} Cr</strong>
+        </div>
+
+        <span class="target-status">
+          <mat-icon>trending_up</mat-icon>
+          {{ businessTarget.status }}
+        </span>
+      </div>
+
+      <div
+        class="progress-information"
+        aria-label="Business target progress"
+      >
+        <div class="progress-labels">
+          <span>₹0</span>
+          <strong>{{ businessTarget.percentage }}%</strong>
+          <span>₹{{ businessTarget.target }} Cr</span>
+        </div>
+
+        <div class="progress-track">
+          <div
+            class="progress-value"
+            [style.width.%]="businessTarget.percentage"
+          ></div>
+        </div>
+      </div>
+
+      <div class="target-footer">
+        <div>
+          <span>Daily Target</span>
+          <strong>₹{{ businessTarget.target }} Cr</strong>
+        </div>
+
+        <div>
+          <span>Remaining</span>
+          <strong>₹{{ businessTarget.remaining }} Cr</strong>
+        </div>
+      </div>
+    </article>
+
+    <!-- Cash Position -->
+    <article class="overview-card cash-card">
+      <div class="card-title-row">
+        <div>
+          <span class="card-label">Available Balance</span>
+          <h3>Cash Position</h3>
+        </div>
+
+        <div class="title-icon green-icon">
+          <mat-icon>payments</mat-icon>
+        </div>
+      </div>
+
+      <div class="cash-total">
+        <div>
+          <span>Total Cash in Hand</span>
+          <strong>{{ cashPosition.totalCash }}</strong>
+        </div>
+
+        <span class="healthy-status">
+          <span class="status-dot"></span>
+          Healthy
+        </span>
+      </div>
+
+      <div class="cash-breakdown">
+        <div
+          class="cash-item"
+          *ngFor="let item of cashItems"
+        >
+          <div class="cash-item-icon">
+            <mat-icon>{{ item.icon }}</mat-icon>
+          </div>
+
+          <div>
+            <span>{{ item.label }}</span>
+            <strong>{{ item.amount }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="updated-time">
+        <mat-icon>update</mat-icon>
+        Updated {{ cashPosition.lastUpdated }}
+      </div>
+    </article>
+
+    <!-- Pending Tasks -->
+    <article class="overview-card pending-card">
+      <div class="card-title-row">
+        <div>
+          <span class="card-label">Action Required</span>
+          <h3>Pending Tasks</h3>
+        </div>
+
+        <div class="pending-total">
+          {{ pendingTasks.length ? 23 : 0 }}
+        </div>
+      </div>
+
+      <div class="task-list">
+        <a
+          *ngFor="let task of pendingTasks"
+          class="task-item"
+          [routerLink]="task.route"
+        >
+          <div
+            class="task-icon"
+            [class.high-icon]="task.priority === 'high'"
+            [class.medium-icon]="task.priority === 'medium'"
+            [class.low-icon]="task.priority === 'low'"
+          >
+            <mat-icon>{{ task.icon }}</mat-icon>
+          </div>
+
+          <span class="task-title">
+            {{ task.title }}
+          </span>
+
+          <span
+            class="task-count"
+            [class.high-count]="task.priority === 'high'"
+          >
+            {{ task.count }}
+          </span>
+
+          <mat-icon class="task-arrow">
+            chevron_right
+          </mat-icon>
+        </a>
+      </div>
+
+      <a
+        class="view-all-link"
+        routerLink="/branch-manager/approvals"
+      >
+        View all pending tasks
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
+    </article>
+
+    <!-- Branch Performance -->
+    <article class="overview-card performance-card">
+      <div class="card-title-row">
+        <div>
+          <span class="card-label">Monthly Score</span>
+          <h3>Branch Performance</h3>
+        </div>
+
+        <span class="rank-badge">
+          Rank #{{ branchPerformance.rank }}
+        </span>
+      </div>
+
+      <div class="performance-content">
+        <div class="score-circle">
+          <svg viewBox="0 0 120 120">
+            <circle
+              class="score-background"
+              cx="60"
+              cy="60"
+              r="49"
+            ></circle>
+
+            <circle
+              class="score-progress"
+              cx="60"
+              cy="60"
+              r="49"
+              pathLength="100"
+              [attr.stroke-dasharray]="
+                branchPerformance.score + ' ' +
+                (100 - branchPerformance.score)
+              "
+            ></circle>
+          </svg>
+
+          <div class="score-value">
+            <strong>{{ branchPerformance.score }}%</strong>
+            <span>{{ branchPerformance.status }}</span>
+          </div>
+        </div>
+
+        <div class="performance-factors">
+          <div
+            class="performance-factor"
+            *ngFor="let factor of performanceFactors"
+          >
+            <div class="factor-label">
+              <span>{{ factor.label }}</span>
+              <strong>{{ factor.percentage }}%</strong>
+            </div>
+
+            <div class="factor-track">
+              <div
+                class="factor-value"
+                [style.width.%]="factor.percentage"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="performance-footer">
+        <mat-icon>emoji_events</mat-icon>
+
+        <span>
+          Ranked {{ branchPerformance.rank }} out of
+          {{ branchPerformance.totalBranches }} branches
+        </span>
+      </div>
+    </article>
+  </div>
+</section>

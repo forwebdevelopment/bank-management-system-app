@@ -1,0 +1,69 @@
+<article class="loan-card">
+  <div class="card-header">
+    <div>
+      <h3>Loan Overview</h3>
+      <p>Distribution of active branch loans</p>
+    </div>
+
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="View loan details"
+      routerLink="/branch-manager/loans"
+    >
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+  </div>
+
+  <div class="loan-content">
+    <div class="donut-wrapper">
+      <div class="donut-chart"></div>
+
+      <div class="donut-center">
+        <span>Total Loans</span>
+        <strong>{{ totalLoans | number }}</strong>
+      </div>
+    </div>
+
+    <div class="loan-list">
+      <div
+        *ngFor="let loan of loanCategories"
+        class="loan-item"
+      >
+        <div class="loan-name">
+          <span
+            class="loan-color"
+            [ngClass]="loan.className"
+          ></span>
+
+          <span>{{ loan.name }}</span>
+        </div>
+
+        <div class="loan-value">
+          <strong>{{ loan.percentage }}%</strong>
+          <span>({{ loan.count }})</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loan-footer">
+    <div>
+      <span>Approved This Month</span>
+      <strong>184</strong>
+    </div>
+
+    <div>
+      <span>Pending Approval</span>
+      <strong class="pending-value">32</strong>
+    </div>
+  </div>
+
+  <a
+    routerLink="/branch-manager/loans"
+    class="view-loans-link"
+  >
+    View all loans
+    <mat-icon>arrow_forward</mat-icon>
+  </a>
+</article>

@@ -1,0 +1,106 @@
+<article class="table-card">
+  <div class="card-header">
+    <div>
+      <h3>Recent Transactions</h3>
+      <p>Latest branch transaction activity</p>
+    </div>
+
+    <a
+      routerLink="/branch-manager/transactions"
+      class="view-all-link"
+    >
+      View all
+      <mat-icon>arrow_forward</mat-icon>
+    </a>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Transaction</th>
+          <th>Customer</th>
+          <th>Account</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Date & Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>
+            <span class="transaction-id">
+              {{ transaction.transactionId }}
+            </span>
+          </td>
+
+          <td>
+            <div class="customer-cell">
+              <span class="customer-avatar">
+                {{ transaction.customerName.charAt(0) }}
+              </span>
+
+              <span>{{ transaction.customerName }}</span>
+            </div>
+          </td>
+
+          <td>
+            <span class="account-number">
+              {{ maskAccountNumber(transaction.accountNumber) }}
+            </span>
+          </td>
+
+          <td>
+            <div
+              class="transaction-type"
+              [class.deposit-type]="transaction.type === 'Deposit'"
+              [class.withdrawal-type]="transaction.type === 'Withdrawal'"
+              [class.transfer-type]="transaction.type === 'Fund Transfer'"
+            >
+              <mat-icon>
+                {{ getTransactionIcon(transaction.type) }}
+              </mat-icon>
+
+              <span>{{ transaction.type }}</span>
+            </div>
+          </td>
+
+          <td>
+            <strong class="amount">
+              {{ transaction.amount | currency:'INR':'symbol':'1.0-0' }}
+            </strong>
+          </td>
+
+          <td>
+            <div class="date-cell">
+              <span>{{ transaction.dateTime | date:'dd MMM yyyy' }}</span>
+              <small>{{ transaction.dateTime | date:'hh:mm a' }}</small>
+            </div>
+          </td>
+
+          <td>
+            <span
+              class="status-badge"
+              [class.success-status]="transaction.status === 'Success'"
+              [class.pending-status]="transaction.status === 'Pending'"
+              [class.failed-status]="transaction.status === 'Failed'"
+            >
+              {{ transaction.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="empty-state"
+    *ngIf="transactions.length === 0"
+  >
+    <mat-icon>receipt_long</mat-icon>
+    <h4>No recent transactions</h4>
+    <p>New transactions will appear here.</p>
+  </div>
+</article>

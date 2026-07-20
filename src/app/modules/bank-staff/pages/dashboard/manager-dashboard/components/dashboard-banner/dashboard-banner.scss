@@ -1,0 +1,400 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.dashboard-banner {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      120deg,
+      #064cb3 0%,
+      #0869d2 50%,
+      #0a7bdd 100%
+    );
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(7, 88, 189, 0.22);
+}
+
+/* Background decorative circles */
+
+.background-circle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle-one {
+  top: -90px;
+  right: 280px;
+  width: 220px;
+  height: 220px;
+}
+
+.circle-two {
+  right: -70px;
+  bottom: -110px;
+  width: 270px;
+  height: 270px;
+}
+
+.circle-three {
+  top: 40px;
+  left: 48%;
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Main content */
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.7fr);
+  align-items: center;
+  gap: 30px;
+  min-height: 250px;
+  padding: 30px 36px;
+}
+
+/* Left information */
+
+.banner-information {
+  color: #ffffff;
+
+  h1 {
+    margin: 12px 0 9px;
+    font-size: clamp(25px, 2.3vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  > p {
+    max-width: 720px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 13px;
+    line-height: 22px;
+  }
+}
+
+.banner-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  // backdrop-filter: blur(8px);
+
+  mat-icon {
+    width: 17px;
+    height: 17px;
+    font-size: 17px;
+  }
+
+  span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+}
+
+/* Branch details */
+
+.branch-information {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.information-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  > mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 7px;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9px;
+    font-size: 19px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  span {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 9px;
+  }
+
+  strong {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+  }
+}
+
+.information-divider {
+  width: 1px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Right visual section */
+
+.banner-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+}
+
+.refresh-button {
+  position: absolute;
+  top: -7px;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 7px 12px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  // backdrop-filter: blur(7px);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+
+  mat-icon {
+    width: 17px;
+    height: 17px;
+    font-size: 17px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+  }
+}
+
+.bank-illustration {
+  position: relative;
+  width: 310px;
+  height: 195px;
+}
+
+.illustration-glow {
+  position: absolute;
+  top: 25px;
+  left: 55px;
+  width: 190px;
+  height: 145px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.bank-building {
+  position: absolute;
+  top: 45px;
+  left: 78px;
+  z-index: 2;
+  width: 155px;
+  height: 120px;
+  color: #0b67c5;
+}
+
+.bank-roof {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 155px;
+  height: 43px;
+  background: #ffffff;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+
+  mat-icon {
+    position: absolute;
+    top: 18px;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+  }
+}
+
+.bank-columns {
+  display: flex;
+  justify-content: space-around;
+  height: 68px;
+  padding: 7px 15px 0;
+  background: rgba(255, 255, 255, 0.95);
+
+  span {
+    width: 16px;
+    height: 58px;
+    background: linear-gradient(to right, #ddebfb, #ffffff, #ddebfb);
+    border-radius: 2px;
+  }
+}
+
+.bank-base {
+  width: 175px;
+  height: 11px;
+  margin-left: -10px;
+  background: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0 5px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Floating information cards */
+
+.floating-card {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 105px;
+  padding: 8px 10px;
+  color: #17233c;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 9px;
+  box-shadow: 0 9px 20px rgba(2, 38, 84, 0.22);
+
+  mat-icon {
+    width: 26px;
+    height: 26px;
+    padding: 5px;
+    color: #0868cf;
+    background: #e9f3ff;
+    border-radius: 7px;
+    font-size: 16px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+    color: #718096;
+    font-size: 8px;
+  }
+
+  strong {
+    margin-top: 1px;
+    color: #17233c;
+    font-size: 11px;
+  }
+}
+
+.card-customer {
+  top: 35px;
+  left: 0;
+}
+
+.card-growth {
+  top: 82px;
+  right: 0;
+}
+
+.card-security {
+  right: 28px;
+  bottom: 0;
+}
+
+/* Responsive design */
+
+@media (max-width: 1100px) {
+  .banner-content {
+    grid-template-columns: 1fr 300px;
+    padding: 28px;
+  }
+
+  .branch-information {
+    gap: 13px;
+  }
+
+  .information-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 850px) {
+  .banner-content {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+
+  .banner-visual {
+    display: none;
+  }
+
+  .banner-information > p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-banner {
+    border-radius: 12px;
+  }
+
+  .banner-content {
+    min-height: auto;
+    padding: 22px 18px;
+  }
+
+  .banner-information {
+    h1 {
+      margin-top: 10px;
+      font-size: 24px;
+    }
+
+    > p {
+      font-size: 12px;
+      line-height: 19px;
+    }
+  }
+
+  .branch-information {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 20px;
+  }
+
+  .information-item {
+    width: 100%;
+  }
+}

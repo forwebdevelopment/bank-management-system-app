@@ -12,7 +12,7 @@ import { BranchPerformance } from '../components/branch-performance/branch-perfo
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatModule ,StatisticsCard,QuickActions,BranchPerformance,SystemHealth , DepositWithdrawalChart,AccountDistribution ,RecentActivities],
+  imports: [MatModule ,StatisticsCard,QuickActions,BranchPerformance , DepositWithdrawalChart,AccountDistribution ,RecentActivities],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

@@ -1,0 +1,116 @@
+<section class="dashboard-banner">
+  <!-- Decorative background shapes -->
+  <div class="background-circle circle-one"></div>
+  <div class="background-circle circle-two"></div>
+  <div class="background-circle circle-three"></div>
+
+  <div class="banner-content">
+    <!-- Left content -->
+    <div class="banner-information">
+      <div class="banner-label">
+        <mat-icon>account_balance</mat-icon>
+        <span>Branch Management</span>
+      </div>
+
+      <h1>Branch Manager Dashboard</h1>
+
+      <p>
+        Monitor branch operations, customer activities, transactions,
+        loan approvals and daily banking performance from one centralized
+        dashboard.
+      </p>
+
+      <div class="branch-information">
+        <div class="information-item">
+          <mat-icon>location_on</mat-icon>
+
+          <div>
+            <span>Branch</span>
+            <strong>{{ branchName }}</strong>
+          </div>
+        </div>
+
+        <div class="information-divider"></div>
+
+        <div class="information-item">
+          <mat-icon>badge</mat-icon>
+
+          <div>
+            <span>Branch Code</span>
+            <strong>{{ branchCode }}</strong>
+          </div>
+        </div>
+
+        <div class="information-divider"></div>
+
+        <div class="information-item">
+          <mat-icon>calendar_today</mat-icon>
+
+          <div>
+            <span>Date</span>
+            <strong>{{ currentDate | date: 'dd MMM yyyy' }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right section -->
+    <div class="banner-visual">
+      <button
+        type="button"
+        class="refresh-button"
+        matTooltip="Refresh dashboard"
+        (click)="refreshDashboard()"
+      >
+        <mat-icon>refresh</mat-icon>
+        <span>Refresh</span>
+      </button>
+
+      <div class="bank-illustration">
+        <div class="illustration-glow"></div>
+
+        <div class="bank-building">
+          <div class="bank-roof">
+            <mat-icon>account_balance</mat-icon>
+          </div>
+
+          <div class="bank-columns">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="bank-base"></div>
+        </div>
+
+        <div class="floating-card card-customer">
+          <mat-icon>groups</mat-icon>
+
+          <div>
+            <span>Customers</span>
+            <strong>18.5K+</strong>
+          </div>
+        </div>
+
+        <div class="floating-card card-growth">
+          <mat-icon>trending_up</mat-icon>
+
+          <div>
+            <span>Growth</span>
+            <strong>+11%</strong>
+          </div>
+        </div>
+
+        <div class="floating-card card-security">
+          <mat-icon>verified_user</mat-icon>
+
+          <div>
+            <span>Secure</span>
+            <strong>100%</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

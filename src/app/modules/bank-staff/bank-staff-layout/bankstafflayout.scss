@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.branch-manager-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #f5f7fb;
+}
+
+app-branch-manager-sidebar {
+  flex: 0 0 auto;
+  height: 100vh;
+}
+
+.layout-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+app-branch-manager-topbar {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 100;
+}
+
+.page-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 14px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f5f7fb;
+}
+
+app-branch-manager-footer {
+  flex: 0 0 auto;
+}
+
+.branch-manager-layout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout-content {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}

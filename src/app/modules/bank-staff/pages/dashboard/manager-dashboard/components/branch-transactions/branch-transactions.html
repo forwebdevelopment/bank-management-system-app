@@ -1,0 +1,173 @@
+<article class="analytics-card">
+  <div class="card-header">
+    <div>
+      <h3>Branch Transactions</h3>
+      <p>Deposit, withdrawal and fund-transfer activity</p>
+    </div>
+
+    <div class="filter-buttons">
+      <button
+        *ngFor="let period of periods"
+        type="button"
+        [class.active]="selectedPeriod === period.value"
+        (click)="selectPeriod(period.value)"
+      >
+        {{ period.label }}
+      </button>
+    </div>
+  </div>
+
+  <div class="chart-legend">
+    <span class="deposit-legend">
+      <i></i>
+      Deposits
+    </span>
+
+    <span class="withdrawal-legend">
+      <i></i>
+      Withdrawals
+    </span>
+
+    <span class="transfer-legend">
+      <i></i>
+      Fund Transfers
+    </span>
+  </div>
+
+  <div class="chart-layout">
+    <div class="vertical-label">Amount (₹ Cr)</div>
+
+    <div class="chart-container">
+      <div class="chart-grid">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <svg
+        class="transaction-chart"
+        viewBox="0 0 600 200"
+        preserveAspectRatio="none"
+        role="img"
+        aria-label="Branch transaction performance chart"
+      >
+        <defs>
+          <linearGradient
+            id="depositArea"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+          >
+            <stop
+              offset="0%"
+              stop-color="#2563eb"
+              stop-opacity="0.22"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#2563eb"
+              stop-opacity="0.02"
+            />
+          </linearGradient>
+
+          <linearGradient
+            id="withdrawalArea"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+          >
+            <stop
+              offset="0%"
+              stop-color="#16a34a"
+              stop-opacity="0.17"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#16a34a"
+              stop-opacity="0.01"
+            />
+          </linearGradient>
+
+          <linearGradient
+            id="transferArea"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="1"
+          >
+            <stop
+              offset="0%"
+              stop-color="#f97316"
+              stop-opacity="0.15"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#f97316"
+              stop-opacity="0.01"
+            />
+          </linearGradient>
+        </defs>
+
+        <path
+          [attr.d]="createAreaPath(currentData.deposits)"
+          fill="url(#depositArea)"
+        ></path>
+
+        <path
+          [attr.d]="createAreaPath(currentData.withdrawals)"
+          fill="url(#withdrawalArea)"
+        ></path>
+
+        <path
+          [attr.d]="createAreaPath(currentData.fundTransfers)"
+          fill="url(#transferArea)"
+        ></path>
+
+        <polyline
+          class="deposit-line"
+          [attr.points]="createPoints(currentData.deposits)"
+        ></polyline>
+
+        <polyline
+          class="withdrawal-line"
+          [attr.points]="createPoints(currentData.withdrawals)"
+        ></polyline>
+
+        <polyline
+          class="transfer-line"
+          [attr.points]="createPoints(currentData.fundTransfers)"
+        ></polyline>
+      </svg>
+
+      <div class="axis-labels">
+        <span *ngFor="let label of currentData.labels">
+          {{ label }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transaction-totals">
+    <div>
+      <span>Deposits</span>
+      <strong>₹6.25 Cr</strong>
+    </div>
+
+    <div>
+      <span>Withdrawals</span>
+      <strong>₹3.85 Cr</strong>
+    </div>
+
+    <div>
+      <span>Fund Transfers</span>
+      <strong>₹2.74 Cr</strong>
+    </div>
+  </div>
+</article>

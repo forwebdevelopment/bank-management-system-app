@@ -1,0 +1,128 @@
+<article class="atm-card">
+  <div class="card-header">
+    <div>
+      <h3>ATM Status</h3>
+      <p>Branch ATM network overview</p>
+    </div>
+
+    <a
+      routerLink="/branch-manager/atm"
+      class="view-all-button"
+      matTooltip="View all ATMs"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </a>
+  </div>
+
+  <div class="atm-summary">
+    <div class="summary-circle">
+      <svg viewBox="0 0 110 110">
+        <circle
+          class="circle-background"
+          cx="55"
+          cy="55"
+          r="44"
+        ></circle>
+
+        <circle
+          class="circle-progress"
+          cx="55"
+          cy="55"
+          r="44"
+          pathLength="100"
+          [attr.stroke-dasharray]="
+            operationalPercentage + ' ' +
+            (100 - operationalPercentage)
+          "
+        ></circle>
+      </svg>
+
+      <div class="circle-value">
+        <strong>{{ atmSummary.operational }}</strong>
+        <span>of {{ atmSummary.total }}</span>
+      </div>
+    </div>
+
+    <div class="summary-details">
+      <div>
+        <span class="summary-dot operational-dot"></span>
+        <span>Operational</span>
+        <strong>{{ atmSummary.operational }}</strong>
+      </div>
+
+      <div>
+        <span class="summary-dot low-cash-dot"></span>
+        <span>Low Cash</span>
+        <strong>{{ atmSummary.lowCash }}</strong>
+      </div>
+
+      <div>
+        <span class="summary-dot offline-dot"></span>
+        <span>Offline</span>
+        <strong>{{ atmSummary.offline }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="availability">
+    <div class="availability-label">
+      <span>Network Availability</span>
+      <strong>{{ operationalPercentage }}%</strong>
+    </div>
+
+    <div class="availability-track">
+      <div
+        class="availability-value"
+        [style.width.%]="operationalPercentage"
+      ></div>
+    </div>
+  </div>
+
+  <div class="atm-list">
+    <div
+      class="atm-item"
+      *ngFor="let atm of atms"
+    >
+      <div
+        class="atm-icon"
+        [class.operational-icon]="atm.status === 'Operational'"
+        [class.low-cash-icon]="atm.status === 'Low Cash'"
+        [class.offline-icon]="atm.status === 'Offline'"
+      >
+        <mat-icon>local_atm</mat-icon>
+      </div>
+
+      <div class="atm-information">
+        <div class="atm-name-row">
+          <strong>{{ atm.atmId }}</strong>
+
+          <span
+            class="atm-status"
+            [class.operational-status]="atm.status === 'Operational'"
+            [class.low-cash-status]="atm.status === 'Low Cash'"
+            [class.offline-status]="atm.status === 'Offline'"
+          >
+            {{ atm.status }}
+          </span>
+        </div>
+
+        <span class="atm-location">
+          {{ atm.location }}
+        </span>
+
+        <div class="atm-meta">
+          <span>{{ atm.cashAvailable }}</span>
+          <span>{{ atm.lastTransaction }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a
+    routerLink="/branch-manager/atm"
+    class="manage-atm-link"
+  >
+    Manage ATM network
+    <mat-icon>arrow_forward</mat-icon>
+  </a>
+</article>

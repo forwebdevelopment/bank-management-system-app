@@ -1,0 +1,299 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.dashboard-summary {
+  width: 100%;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+
+  h2 {
+    margin: 0;
+    color: #17233c;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: #7b8799;
+    font-size: 11px;
+  }
+}
+
+.last-updated {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #78859a;
+  font-size: 10px;
+
+  mat-icon {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+  }
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.metric-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 190px;
+  padding: 15px;
+  overflow: hidden;
+  color: inherit;
+  background: #ffffff;
+  border: 1px solid #e5eaf1;
+  border-radius: 12px;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: #0868cf;
+    content: '';
+  }
+
+  &:hover {
+    border-color: #c9d9ec;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.09);
+    transform: translateY(-3px);
+  }
+}
+
+.success-card::before {
+  background: #16a34a;
+}
+
+.warning-card::before {
+  background: #f59e0b;
+}
+
+.danger-card::before {
+  background: #ef4444;
+}
+
+.info-card::before {
+  background: #0868cf;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  color: #0868cf;
+  background: #eaf4ff;
+  border-radius: 10px;
+
+  mat-icon {
+    width: 21px;
+    height: 21px;
+    font-size: 21px;
+  }
+}
+
+.success-card .metric-icon {
+  color: #15803d;
+  background: #ecfdf3;
+}
+
+.warning-card .metric-icon {
+  color: #b45309;
+  background: #fff7e6;
+}
+
+.danger-card .metric-icon {
+  color: #dc2626;
+  background: #fff1f2;
+}
+
+.card-menu-button {
+  width: 30px;
+  height: 30px;
+  color: #94a0b2;
+
+  mat-icon {
+    font-size: 19px;
+  }
+}
+
+.metric-content {
+  margin-top: 14px;
+}
+
+.metric-title {
+  display: block;
+  overflow: hidden;
+  color: #68758a;
+  font-size: 10px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  margin-top: 6px;
+
+  strong {
+    color: #16223a;
+    font-size: clamp(19px, 1.4vw, 25px);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  border-radius: 12px;
+  font-size: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  mat-icon {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+  }
+}
+
+.success-status {
+  color: #15803d;
+  background: #ecfdf3;
+}
+
+.warning-status {
+  color: #b45309;
+  background: #fff7e6;
+}
+
+.danger-status {
+  color: #dc2626;
+  background: #fff1f2;
+}
+
+.info-status {
+  color: #075fc4;
+  background: #eaf4ff;
+}
+
+.metric-content p {
+  margin: 7px 0 0;
+  overflow: hidden;
+  color: #919bad;
+  font-size: 9px;
+  line-height: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metric-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 13px;
+}
+
+.mini-chart {
+  width: 75px;
+  height: 28px;
+  color: #0868cf;
+  opacity: 0.75;
+}
+
+.success-card .mini-chart {
+  color: #16a34a;
+}
+
+.warning-card .mini-chart {
+  color: #f59e0b;
+}
+
+.danger-card .mini-chart {
+  color: #ef4444;
+}
+
+.view-details {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #7b8799;
+  font-size: 8px;
+  white-space: nowrap;
+
+  mat-icon {
+    width: 13px;
+    height: 13px;
+    font-size: 13px;
+  }
+}
+
+.metric-card:hover .view-details {
+  color: #0868cf;
+}
+
+@media (max-width: 1450px) {
+  .metric-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-card {
+    min-height: 175px;
+  }
+}
