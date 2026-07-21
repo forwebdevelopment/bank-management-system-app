@@ -4,10 +4,11 @@ import { SidebarComponent } from './sidebar/sidebar/sidebar';
 import { Topbar } from './topbar/topbar';
 import { Footer } from './footer/footer';
 import { Dashboard } from '../pages/dashboard/dashboard/dashboard';
+import { Branchmanagement } from '../pages/branch_managerment/branchmanagement/branchmanagement';
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [RouterOutlet , SidebarComponent ,Topbar , Footer ,Dashboard],
+  imports: [RouterOutlet , SidebarComponent ,Topbar , Footer ,Dashboard , Branchmanagement],
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })

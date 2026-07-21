@@ -1,0 +1,106 @@
+<div class="branch-detail-panel-canvas">
+
+  <!-- OVERVIEW HERO SEGMENT HERO HEADER -->
+  <div class="drawer-hero-profile-block">
+    <div class="avatar-building-badge">
+      <mat-icon>account_balance</mat-icon>
+    </div>
+    <div class="hero-text-lines">
+      <h2 class="profile-branch-title">{{ activeBranch?.branchName || 'Main Branch' }}</h2>
+      <span class="profile-branch-code">{{ activeBranch?.branchCode || 'BR001' }}</span>
+    </div>
+    <div class="profile-status-pill-badge" [ngClass]="(activeBranch?.status || 'Active').toLowerCase() === 'active' ? 'state-active' : 'state-inactive'">
+      {{ activeBranch?.status || 'Active' }}
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- INFO SECTION LIST SCROLLER FRAME -->
+  <div class="drawer-scrollable-body-viewport">
+
+    <!-- BLOCK: MANAGERS METADATA CARDS -->
+    <div class="meta-information-card-group">
+      <h4 class="group-segment-label">Branch Manager</h4>
+      <div class="meta-profile-row-item">
+        <div class="meta-icon-wrapper-circle">
+          <mat-icon>person</mat-icon>
+        </div>
+        <div class="meta-readout-labels">
+          <span class="value-title-text">{{ activeBranch?.branchManager || 'Rajesh Kumar' }}</span>
+          <span class="sub-value-descriptor-text">+91 98765 43210</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK: CORE METRIC INFORMATION COUNTERS GRAPH LABELS -->
+    <div class="meta-information-card-group">
+      <h4 class="group-segment-label">Branch Performance Metrics</h4>
+      <div class="performance-metrics-grid-layout">
+        <div class="metric-mini-pill-box">
+          <span class="mini-label">Total Customers</span>
+          <strong class="mini-counter-value">12,584</strong>
+        </div>
+        <div class="metric-mini-pill-box">
+          <span class="mini-label">Total Accounts</span>
+          <strong class="mini-counter-value">18,753</strong>
+        </div>
+        <div class="metric-mini-pill-box">
+          <span class="mini-label">Monthly Transactions</span>
+          <strong class="mini-counter-value">45,632</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK: LOCATION AND PHYSICAL PARAMETERS -->
+    <div class="meta-information-card-group">
+      <h4 class="group-segment-label">Contact & Location Info</h4>
+      
+      <div class="meta-profile-row-item layout-align-start">
+        <div class="meta-icon-wrapper-circle">
+          <mat-icon>location_on</mat-icon>
+        </div>
+        <div class="meta-readout-labels">
+          <span class="sub-value-descriptor-text label-upper">Address</span>
+          <span class="value-title-text line-wrap-normal">123 MG Road, Fort, Mumbai - 400001, {{ activeBranch?.state || 'Maharashtra' }}, India</span>
+        </div>
+      </div>
+
+      <div class="meta-profile-row-item margin-t-16">
+        <div class="meta-icon-wrapper-circle">
+          <mat-icon>email</mat-icon>
+        </div>
+        <div class="meta-readout-labels">
+          <span class="sub-value-descriptor-text label-upper">Email Address</span>
+          <span class="value-title-text">mainbranch&#64;bank.com</span>
+        </div>
+      </div>
+
+      <div class="meta-profile-row-item margin-t-16">
+        <div class="meta-icon-wrapper-circle">
+          <mat-icon>phone</mat-icon>
+        </div>
+        <div class="meta-readout-labels">
+          <span class="sub-value-descriptor-text label-upper">Landline Number</span>
+          <span class="value-title-text">+91 22 1234 5678</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK: OPERATIONAL TIMINGS SCHEDULER DATA -->
+    <div class="meta-information-card-group">
+      <h4 class="group-segment-label">Working Hours</h4>
+      <div class="meta-profile-row-item">
+        <div class="meta-icon-wrapper-circle">
+          <mat-icon>schedule</mat-icon>
+        </div>
+        <div class="meta-readout-labels">
+          <span class="value-title-text">Mon – Sat: 9:30 AM – 5:30 PM</span>
+          <span class="sub-value-descriptor-text text-red-alert">Sunday: Closed</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

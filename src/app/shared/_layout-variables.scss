@@ -1,0 +1,11 @@
+// _layout-variables.scss
+$viewport-mobile: 640px;
+$viewport-tablet: 1024px;
+
+@mixin responsive-to-tablet {
+  @media (max-width: #{$viewport-tablet - 1px}) { @content; }
+}
+
+@mixin responsive-to-mobile {
+  @media (max-width: #{$viewport-mobile - 1px}) { @content; }
+}

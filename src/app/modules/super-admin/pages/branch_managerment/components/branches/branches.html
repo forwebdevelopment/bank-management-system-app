@@ -1,0 +1,188 @@
+<div class="search-filter-section-wrapper">
+  
+  <!-- 5-COLUMN CONTROLS INPUT GRID -->
+  <div class="filter-fields-row-grid">
+    
+    <!-- 1. Branch Name Input (With Search Icon) -->
+    <div class="filter-field-column">
+      <label class="field-custom-label">Branch Name</label>
+      <mat-form-field appearance="outline" class="custom-mat-input-override">
+        <input matInput placeholder="Search by branch name">
+        <mat-icon matSuffix class="search-icon-color">search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <!-- 2. City Dropdown -->
+    <div class="filter-field-column">
+      <label class="field-custom-label">City</label>
+      <mat-form-field appearance="outline" class="custom-mat-input-override">
+        <mat-select placeholder="All Cities">
+          <mat-option value="all">All Cities</mat-option>
+          <mat-option value="mumbai">Mumbai</mat-option>
+          <mat-option value="pune">Pune</mat-option>
+          <mat-option value="bangalore">Bangalore</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- 3. State Dropdown -->
+    <div class="filter-field-column">
+      <label class="field-custom-label">State</label>
+      <mat-form-field appearance="outline" class="custom-mat-input-override">
+        <mat-select placeholder="All States">
+          <mat-option value="all">All States</mat-option>
+          <mat-option value="maharashtra">Maharashtra</mat-option>
+          <mat-option value="karnataka">Karnataka</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- 4. Branch Status Dropdown -->
+    <div class="filter-field-column">
+      <label class="field-custom-label">Branch Status</label>
+      <mat-form-field appearance="outline" class="custom-mat-input-override">
+        <mat-select placeholder="All Status">
+          <mat-option value="all">All Status</mat-option>
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- 5. Branch Manager Dropdown -->
+    <div class="filter-field-column">
+      <label class="field-custom-label">Branch Manager</label>
+      <mat-form-field appearance="outline" class="custom-mat-input-override">
+        <mat-select placeholder="All Managers">
+          <mat-option value="all">All Managers</mat-option>
+          <mat-option value="rajesh">Rajesh Kumar</mat-option>
+          <mat-option value="priya">Priya Sharma</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <!-- ACTION BUTTONS ROW (Left-aligned underneath the inputs) -->
+  <div class="filter-action-buttons-row">
+    
+    <button mat-stroked-button class="btn-reset-filters">
+      <mat-icon class="mat-icon-sharp">rotate_left</mat-icon>
+      Reset Filters
+    </button>
+    
+    <button mat-flat-button color="primary" class="btn-execute-search">
+      <mat-icon class="mat-icon-sharp">search</mat-icon>
+      Search
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="branch-table-component-container">
+
+  <!-- SCROLLABLE TABLE WINDOW PLATFORM LAYER -->
+  <div class="table-scroll-viewport-wrapper">
+    <table mat-table [dataSource]="dataSource" class="custom-mockup-data-grid mat-elevation-z0">
+
+      <!-- 1. Column: Branch Code -->
+      <ng-container matColumnDef="branchCode">
+        <th mat-header-cell *matHeaderCellDef> Branch Code </th>
+        <td mat-cell *matCellDef="let element" class="font-blue font-medium"> {{element.branchCode}} </td>
+      </ng-container>
+
+      <!-- 2. Column: Branch Name -->
+      <ng-container matColumnDef="branchName">
+        <th mat-header-cell *matHeaderCellDef> Branch Name </th>
+        <td mat-cell *matCellDef="let element" class="font-semibold text-dark"> {{element.branchName}} </td>
+      </ng-container>
+
+      <!-- 3. Column: Branch Manager (With Photo/Avatar Shape Badge) -->
+      <ng-container matColumnDef="branchManager">
+        <th mat-header-cell *matHeaderCellDef> Branch Manager </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="manager-profile-badge-layout">
+            <div class="profile-avatar-circle">
+              <!-- Using initial or profile icon placeholder to match the reference look -->
+              <mat-icon>person</mat-icon>
+            </div>
+            <span class="profile-name-text">{{element.branchManager}}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- 4. Column: City -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <!-- 5. Column: State -->
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <!-- 6. Column: Phone Number -->
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+      </ng-container>
+
+      <!-- 7. Column: Total Customers (Right Aligned) -->
+      <ng-container matColumnDef="totalCustomers">
+        <th mat-header-cell *matHeaderCellDef class="numeric-alignment-col"> Total Customers </th>
+        <td mat-cell *matCellDef="let element" class="numeric-alignment-col text-slate"> {{element.totalCustomers | number}} </td>
+      </ng-container>
+
+      <!-- 8. Column: Total Accounts (Right Aligned) -->
+      <ng-container matColumnDef="totalAccounts">
+        <th mat-header-cell *matHeaderCellDef class="numeric-alignment-col"> Total Accounts </th>
+        <td mat-cell *matCellDef="let element" class="numeric-alignment-col text-slate"> {{element.totalAccounts | number}} </td>
+      </ng-container>
+
+      <!-- 9. Column: Status Capsule Badging -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="mockup-status-capsule" [ngClass]="element.status.toLowerCase() === 'active' ? 'state-active' : 'state-inactive'">
+            {{element.status}}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- 10. Column: Created Date -->
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef> Created Date </th>
+        <td mat-cell *matCellDef="let element" class="text-slate"> {{element.createdDate}} </td>
+      </ng-container>
+
+      <!-- 11. Column: Actions Context Dot Triggers -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="actions-alignment-col"> Actions </th>
+        <td mat-cell *matCellDef="let element" class="actions-alignment-col" (click)="$event.stopPropagation()">
+          <button mat-icon-button class="actions-trigger-btn">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Header & Data Row Bindings -->
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="table-interactive-row" (click)="onBranchRowSelected(row)"></tr>
+    </table>
+  </div>
+
+  <!-- PAGINATION SUB-FOOTER CONSOLE MODULE -->
+  <div class="table-pagination-footer-panel">
+    <div class="records-counter-readout">
+      Showing 1 to 8 of 152 entries
+    </div>
+    <div class="paginator-controls-wrapper">
+      <mat-paginator [pageSize]="10" class="clean-paginator-override"></mat-paginator>
+    </div>
+  </div>
+
+</div>

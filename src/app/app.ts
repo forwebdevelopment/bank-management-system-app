@@ -5,7 +5,7 @@ import { BankStaffLayout } from './modules/bank-staff/bank-staff-layout/bankstaf
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet ,BankStaffLayout],
+  imports: [RouterOutlet ,BankStaffLayout ,AdminLayout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

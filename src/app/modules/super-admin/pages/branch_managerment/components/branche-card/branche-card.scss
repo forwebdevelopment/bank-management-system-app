@@ -1,0 +1,150 @@
+@import '../../../../../../shared/layout-variables';
+:host {
+  display: block;
+  width: 100%;
+}
+
+.metrics-grid-container {
+  display: grid;
+  // Dynamic columns: will shrink/grow and drop down rows automatically based on screen space width
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include responsive-to-tablet {
+    grid-template-columns: repeat(2, 1fr); // Locks into a precise 2x2 presentation grid framework on tablets
+  }
+
+  @include responsive-to-mobile {
+    grid-template-columns: 1fr; // Drops down into an optimized clean vertical listing stack pattern on small phones
+    gap: 12px;
+  }
+
+  .kpi-card-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #f1f5f9; // Slate-100 micro line borders matching dashboard mockup
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+  
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+   max-width: none !important; 
+    .card-body-layout {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      gap: 16px;
+
+      @include responsive-to-mobile {
+        padding: 16px;
+      }
+    }
+
+    // Circular Icon Badging Layout Settings
+    .icon-avatar-shape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+
+      // Color scheme adjustments directly reflecting module variations
+      &.indicator-blue {
+        background-color: #eff6ff; // Blue-50
+        color: #2563eb; // Blue-600
+      }
+
+      &.indicator-green {
+        background-color: #f0fdf4; // Green-50
+        color: #16a34a; // Green-600
+      }
+
+      &.indicator-red {
+        background-color: #fef2f2; // Red-50
+        color: #dc2626; // Red-600
+      }
+
+      &.indicator-orange {
+        background-color: #fff7ed; // Orange-50
+        color: #ea580c; // Orange-600
+      }
+    }
+
+    // Interior value content block typographical scaling controls
+    .metric-data-block {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      .metric-label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #64748b; // Neutral subtle metadata typography color profiling
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .metric-value {
+        font-size: 26px;
+        font-weight: 700;
+        color: #0f172a; // Deep contrast typography slate
+        margin: 4px 0;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+
+        @include responsive-to-mobile {
+          font-size: 22px;
+        }
+      }
+
+      // Dynamic Trend Analysis Row elements styles
+      .trend-indicator {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        flex-wrap: wrap;
+
+        mat-icon {
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+        }
+
+        .trend-percentage {
+          vertical-align: middle;
+        }
+
+        .trend-duration {
+          color: #94a3b8; // Slate-400 sub text scale
+          font-weight: 400;
+          font-size: 11px;
+          margin-left: 2px;
+        }
+
+        &.status-up {
+          color: #16a34a; // Emerald active upward metrics highlight tracking
+        }
+
+        &.status-down {
+          color: #dc2626; // Red drop evaluation tracking highlight metrics
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+@import '../../../../../../shared/layout-variables';
+
+.header-component-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+  gap: 16px;
+  width: 100%;
+
+  // Transforms the horizontal bar into a stacked view on tablets and smaller screens
+  @include responsive-to-tablet {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 20px;
+  }
+
+  // Title section layout styling
+  .title-meta-group {
+    display: flex;
+    flex-direction: column;
+
+    .main-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #0f172a; // Slate-900 typography depth color metric profile
+      margin: 0 0 4px 0;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+
+      @include responsive-to-mobile {
+        font-size: 18px;
+      }
+    }
+
+    .subtitle-text {
+      font-size: 13px;
+      color: #64748b; // Slate-500 neutral subtext scale profile
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  // Button interaction control block panel row mechanics mapping layout rules
+  .action-control-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include responsive-to-tablet {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    // On mobile devices, expand primary buttons to take up maximum usable room grid spacing lines
+    @include responsive-to-mobile {
+      flex-wrap: wrap;
+      width: 100%;
+      
+      .action-btn {
+        flex: 1 1 calc(50% - 6px); // Expands primary operational options side-by-side on mobile
+        min-width: 120px;
+      }
+
+      .btn-refresh {
+        flex: 0 0 auto; // Keeps refresh button isolated as a compact square action module block
+      }
+    }
+
+    // Shared style definitions for Material buttons layout mapping parameters
+    .action-btn {
+      font-size: 13px;
+      font-weight: 500;
+      height: 40px;
+      border-radius: 6px;
+      padding: 0 16px;
+      white-space: nowrap;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+        vertical-align: middle;
+      }
+
+      .btn-label {
+        vertical-align: middle;
+      }
+    }
+
+    // Material Stroke configuration adjustments override mappings
+    .btn-export {
+      color: #334155;
+      border-color: #cbd5e1;
+      background-color: #ffffff;
+
+      &:hover {
+        background-color: #f8fafc;
+        border-color: #94a3b8;
+      }
+    }
+
+    // Custom layout properties adjustments applied directly over the pure icon action module button variant row
+    .btn-refresh {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      color: #64748b;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        background-color: #f8fafc;
+        color: #0f172a;
+        border-color: #94a3b8;
+      }
+    }
+  }
+}
