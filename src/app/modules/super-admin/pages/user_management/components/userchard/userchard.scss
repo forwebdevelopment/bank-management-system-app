@@ -1,0 +1,157 @@
+// Main Parent Flex-Grid Container
+.metrics-grid {
+  display: grid;
+  // Automatically calculates column counts dynamically based on container widths
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Single Card Core Box Styling
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #f0f1f3;
+  border-radius: 12px !important; // Match mock image subtle rounding curves
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; // Lets the card fill height if row gets stretched
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    position: relative;
+  }
+}
+
+// Upper Segment (Icons & Metric Numbers Group)
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    mat-icon {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+    }
+
+    // Individual Metric Theme Palettes
+    &.blue-theme {
+      background-color: #eff6ff;
+      color: #2563eb;
+    }
+    &.green-theme {
+      background-color: #f0fdf4;
+      color: #16a34a;
+    }
+    &.red-theme {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+    &.purple-theme {
+      background-color: #f5f3ff;
+      color: #7c3aed;
+    }
+  }
+
+  .text-info {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      font-size: 0.813rem; // 13px
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .value {
+      font-size: 1.5rem; // 24px clean numbers
+      font-weight: 700;
+      color: #111827;
+      margin: 2px 0 0 0;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+  }
+}
+
+// Middle Segment (Trends text)
+.card-trend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem; // 12px compact fonts
+
+  .trend-indicator {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+
+    mat-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+      margin-right: 1px;
+    }
+
+    &.positive {
+      color: #16a34a; // Green upward
+    }
+    &.negative {
+      color: #dc2626; // Red downward
+    }
+  }
+
+  .trend-period {
+    color: #9ca3af; // Muted secondary gray text
+  }
+}
+
+// Lower Segment (Fluid Vector Sparklines)
+.sparkline-wrapper {
+  width: 100%;
+  height: 28px;
+  margin-top: 4px;
+
+  .sparkline {
+    width: 100%;
+    height: 100%;
+    
+    &.blue-line path { stroke: #3b82f6; }
+    &.green-line path { stroke: #10b981; }
+    &.red-line path { stroke: #ef4444; }
+    &.purple-line path { stroke: #8b5cf6; }
+  }
+}
+
+/* ==========================================================================
+   VIEWPORT BREAKPOINTS: Small Mobile Screens (480px and below)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr; // Enforce single grid columns
+    gap: 12px;
+  }
+
+  .stat-card .card-body {
+    padding: 12px; // Tighter padding to maximize device screen canvas
+  }
+}

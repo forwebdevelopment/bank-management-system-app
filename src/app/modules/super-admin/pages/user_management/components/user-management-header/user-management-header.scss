@@ -1,0 +1,156 @@
+// Base Container Styles (Default: Mid-to-Large Desktops & Notebooks)
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 4px 0 12px 0;
+  box-sizing: border-box;
+  gap: 24px;
+
+  .title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+
+    .main-title {
+      font-size: 1.5rem; // 24px baseline
+      font-weight: 700;
+      color: #111827;
+      margin: 0;
+      line-height: 1.2;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    .sub-title {
+      font-size: 0.875rem; // 14px baseline
+      color: #6b7280;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  .action-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+
+    .btn-action {
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.1px;
+      height: 40px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      
+      mat-icon {
+        font-size: 1.125rem; // 18px
+        height: 18px;
+        width: 18px;
+        margin-right: 6px;
+        display: inline-block;
+      }
+    }
+
+    .btn-add {
+      background-color: #0f52ba;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+
+      &:hover {
+        background-color: #f9fafb;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Medium Displays (Tablets: 768px - 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .header-container {
+    .title-group .main-title {
+      font-size: 1.35rem; // Slightly scale down text size
+    }
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Small Displays & Mobile UI (767px and below)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .header-container {
+    flex-direction: column; // Stack text content on top of buttons
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 8px;
+
+    .title-group {
+      width: 100%;
+      
+      .main-title {
+        font-size: 1.25rem; // 20px clean look
+      }
+      .sub-title {
+        font-size: 0.813rem; // 13px tighter spacing
+      }
+    }
+
+    .action-group {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto; // Gives priority to Add/Export fields
+      gap: 8px;
+
+      .btn-action {
+        width: 100%; // Buttons scale to fill grid slots equally
+        padding: 0 8px;
+      }
+
+      // Converts the Refresh button into a space-saving square icon box on mobile
+      .btn-refresh {
+        min-width: 40px;
+        width: 40px;
+        padding: 0;
+
+        mat-icon {
+          margin-right: 0;
+        }
+        .btn-text {
+          display: none; // Hides the "Refresh" word text node to clear clutter
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Ultra-Small Screen Sizes (Compact Mobile: Under 400px)
+   ========================================================================== */
+@media (max-width: 400px) {
+  .header-container .action-group {
+    grid-template-columns: 1fr; // Stack all 3 buttons vertically for finger-tap ease
+    
+    .btn-refresh {
+      width: 100%;
+      
+      mat-icon {
+        margin-right: 6px;
+      }
+      .btn-text {
+        display: inline; // Restores the word "Refresh" since it has its own line
+      }
+    }
+  }
+}

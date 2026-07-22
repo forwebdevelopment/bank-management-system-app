@@ -1,0 +1,396 @@
+// Main white box card container that matches the metric blocks width natively
+.filters-container-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px 12px 0 0; // Curve top corners only to merge seamlessly into the data table beneath it
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+// Inline Form Architecture Layout
+.filters-inline-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; // Perfectly aligns inputs bottom-edges with action buttons
+  width: 100%;
+  gap: 16px;
+  box-sizing: border-box;
+
+  // Individual Form Control Block Grouping
+  .filter-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1; // All standard dropdown blocks expand proportionally and evenly
+    min-width: 120px;
+
+    // Direct proportional boost for the search bar width matching your layout image
+    &.field-search {
+      flex: 1.5;
+      min-width: 180px;
+    }
+
+    &.field-date {
+      flex: 1.2;
+      min-width: 160px;
+    }
+
+    .field-label {
+      font-size: 0.813rem; // 13px clean font
+      font-weight: 600;
+      color: #374151; // Slate charcoal text color
+      white-space: nowrap;
+    }
+
+    // Material Form Styling Custom Overrides
+    ::ng-deep .custom-input {
+      width: 100%;
+      
+      .mat-mdc-form-field-wrapper {
+        padding-bottom: 0 !important; // Wipe bottom spacing tracking padding
+      }
+      
+      // .mat-mdc-text-field-wrapper {
+      //   background-color: #ffffff !important;
+      //   height: 40px !important;
+      //   padding: 0 12px !important;
+      //   display: flex;
+      //   align-items: center;
+      //   border-radius: 6px !important;
+      // }
+
+      .mat-mdc-text-field-wrapper {
+        background-color: #ffffff !important;
+        height: 40px !important; 
+        padding: 0 12px !important;
+        display: flex;
+        align-items: center;
+        border: 1px solid #d1d5db !important; /* Added explicit border to lock layout frame */
+        border-radius: 6px !important;
+        box-shadow: none !important;
+      }
+
+      .mdc-notched-outline {
+        display: none !important;
+      }
+      .mat-mdc-form-field-infix {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        min-height: 40px !important;
+      }
+    }
+
+    .search-icon {
+      color: #9ca3af;
+    }
+  }
+
+  .actions-spacer-wrapper {
+    flex: unset;
+    min-width: auto;
+    justify-content: flex-end;
+  }
+
+  // Action Button Cluster Layout Block
+  .filter-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+   // margin-bottom: 2px; // Minor offset adjustment to level out line layout balance
+     height: 40px; /* Matches the exact field height */
+   // flex-shrink: 0;
+box-sizing: border-box;
+    button {
+      height: 40px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+      }
+    }
+
+    .btn-reset {
+      color: #374151;
+      background: transparent;
+      white-space: nowrap;
+        padding: 0 8px;
+
+      &:hover {
+        background-color: #f3f4f6;
+      }
+    }
+
+    .btn-search {
+      background-color: #0f52ba; // High-contrast clean royal blue
+      color: #ffffff;
+      padding: 0 20px;
+    }
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Medium Displays (Tablets & Low-Res Notebooks)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .filters-inline-form {
+    flex-wrap: wrap; // Gracefully flow elements to avoid cramping fields inline
+    
+    .filter-field-group {
+      flex: 1 1 calc(33.33% - 16px); // Wrap form fields into comfortable 3-column slots
+    }
+    .actions-spacer-wrapper {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
+    .filter-actions-group {
+      width: 100%;
+      justify-content: flex-end; // Force actions block to bottom right slot row
+     // margin-top: 8px;
+    }
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Small Mobile Screens (Phones)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .filters-container-card {
+    padding: 16px;
+  }
+
+  .filters-inline-form {
+    .filter-field-group {
+      flex: 1 1 100%; // Stack inputs individually vertically for clear viewing access
+    }
+
+    .filter-actions-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr; // Split buttons evenly into twin slots 
+      width: 100%;
+
+      .btn-reset, .btn-search {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.table-section-container {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 0 0 12px 12px; // Merges top filters smoothly
+  border: 1px solid #f0f1f3;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+// 1. The Key Responsive Container Block
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto; // Enables clean horizontal scrolling on tablets and phones
+  -webkit-overflow-scrolling: touch;
+  
+  // Custom scrollbar layout styling
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+  }
+}
+
+// 2. Core Angular Material Table Formatting
+.custom-mat-table {
+  width: 100%;
+  min-width: 1100px; // Guarantees columns won't crush below readable widths
+  background-color: #ffffff;
+  border-collapse: collapse;
+
+  th.mat-mdc-header-cell {
+    color: #4b5563;
+    font-size: 0.813rem;
+    font-weight: 600;
+    padding: 14px 16px;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+  }
+
+  td.mat-mdc-cell {
+    font-size: 0.875rem;
+    color: #1f2937;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  // Selected row state matching Priya Sharma's dashboard highlighted row
+  tr.selected-row {
+    background-color: #f0f7ff !important;
+    
+    .emp-id-cell {
+      color: #0f52ba;
+      font-weight: 600;
+    }
+  }
+
+  .emp-id-cell {
+    color: #2563eb;
+    font-weight: 500;
+  }
+
+  .text-bold { font-weight: 500; color: #111827; }
+  .text-muted { color: #6b7280; }
+
+  // Circular Profile Images Layout Box
+  .avatar-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background-color: #e5e7eb;
+  }
+
+  // User State Color-Coded Pills Matching Mockup Colors
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-transform: capitalize;
+
+    &.active {
+      background-color: #e6f7ed;
+      color: #16a34a;
+    }
+    &.inactive {
+      background-color: #fee2e2;
+      color: #dc2626;
+    }
+    &.locked {
+      background-color: #fef3c7;
+      color: #d97706;
+    }
+  }
+}
+
+// 3. Fluid Layout Dashboard Footer Pagination Panel
+.table-pagination-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-sizing: border-box;
+
+  .footer-entries-info {
+    font-size: 0.813rem;
+    color: #4b5563;
+    span { font-weight: 600; color: #111827; }
+  }
+
+  .pagination-controls-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .rows-per-page-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.813rem;
+    color: #4b5563;
+
+    ::ng-deep .dense-page-select {
+      width: 70px;
+      .mat-mdc-text-field-wrapper {
+        height: 32px !important;
+        padding: 0 8px !important;
+        background-color: #ffffff;
+        border: 1px solid #d1d5db !important;
+        border-radius: 6px !important;
+      }
+      .mdc-notched-outline { display: none !important; }
+      .mat-mdc-form-field-infix { padding: 4px 0 !important; min-height: 32px !important; }
+      .mat-mdc-select-value { font-size: 0.813rem; font-weight: 500; }
+    }
+  }
+
+  .page-navigation-cluster {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .nav-btn {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      mat-icon { font-size: 18px; width: 18px; height: 18px; }
+    }
+
+    .page-num-btn {
+      min-width: 32px;
+      height: 32px;
+      padding: 0 6px;
+      font-size: 0.813rem;
+      border-radius: 6px;
+      color: #4b5563;
+
+      &.active-page {
+        background-color: #2563eb !important;
+        color: #ffffff !important;
+        font-weight: 600;
+      }
+    }
+    
+    .page-ellipsis {
+      padding: 0 4px;
+      color: #9ca3af;
+      font-size: 0.813rem;
+    }
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Medium/Small Screens Layout Collapse Handling (768px and below)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .table-pagination-footer {
+    flex-direction: column; // Stack elements cleanly vertically
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+
+    .pagination-controls-group {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}
+

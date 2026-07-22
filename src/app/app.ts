@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AdminLayout } from './modules/super-admin/admin-layout/admin-layout';
-import { BankStaffLayout } from './modules/bank-staff/bank-staff-layout/bankstafflayout';
+import { BankStaffLayout } from './modules/branch-manager/branch-manager-layout/bankstafflayout';
 
 @Component({
   selector: 'app-root',

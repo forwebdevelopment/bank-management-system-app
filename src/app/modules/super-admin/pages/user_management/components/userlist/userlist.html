@@ -1,0 +1,213 @@
+<div class="filters-container-card">
+  <form class="filters-inline-form">
+    
+    <!-- 1. Search Box Component -->
+    <div class="filter-field-group field-search">
+      <label class="field-label">Search by Name or Employee ID</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <input matInput placeholder="Search name or Employee ID...">
+        <mat-icon matSuffix class="search-icon">search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <!-- 2. Branch Dropdown Selector -->
+    <div class="filter-field-group">
+      <label class="field-label">Branch</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-select value="all">
+          <mat-option value="all">All Branches</mat-option>
+          <mat-option value="mumbai">Main Branch, Mumbai</mat-option>
+          <mat-option value="andheri">Andheri Branch, Mumbai</mat-option>
+          <mat-option value="pune">Pune Branch</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- 3. Role Dropdown Selector -->
+    <div class="filter-field-group">
+      <label class="field-label">Role</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-select value="all">
+          <mat-option value="all">All Roles</mat-option>
+          <mat-option value="manager">Branch Manager</mat-option>
+          <mat-option value="assistant">Assistant Manager</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- 4. User Status Dropdown Selector -->
+    <div class="filter-field-group">
+      <label class="field-label">User Status</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-select value="all">
+          <mat-option value="all">All Status</mat-option>
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="inactive">Inactive</mat-option>
+          <mat-option value="locked">Locked</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- 5. Date Joined Picker Range -->
+    <div class="filter-field-group field-date">
+      <label class="field-label">Date Joined</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+
+    <!-- 6. Interactive Filter Action Group -->
+    <div class="filter-field-group actions-spacer-wrapper">
+      <div class="filter-actions-group">
+        <button mat-button type="button" class="btn-reset">
+          <mat-icon>refresh</mat-icon>
+          Reset Filters
+        </button>
+
+        <button mat-flat-button color="primary" type="submit" class="btn-search">
+          <mat-icon>search</mat-icon>
+          Search
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="table-section-container">
+  
+  <!-- Responsive Table Horizontal Scroll Scoped Box -->
+  <div class="table-responsive-wrapper">
+    <table mat-table [dataSource]="dataSource" class="custom-mat-table">
+
+      <!-- 1. Employee ID Column -->
+      <ng-container matColumnDef="employeeId">
+        <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+        <td mat-cell *matCellDef="let user" class="emp-id-cell"> {{user.employeeId}} </td>
+      </ng-container>
+
+      <!-- 2. Profile Avatar Column -->
+      <ng-container matColumnDef="profile">
+        <th mat-header-cell *matHeaderCellDef> Profile </th>
+        <td mat-cell *matCellDef="let user">
+          <img [src]="user.profileUrl" [alt]="user.fullName" class="avatar-image" />
+        </td>
+      </ng-container>
+
+      <!-- 3. Full Name Column -->
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef> Full Name </th>
+        <td mat-cell *matCellDef="let user" class="text-bold"> {{user.fullName}} </td>
+      </ng-container>
+
+      <!-- 4. Email Address Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email Address </th>
+        <td mat-cell *matCellDef="let user" class="text-muted"> {{user.email}} </td>
+      </ng-container>
+
+      <!-- 5. Mobile Number Column -->
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+        <td mat-cell *matCellDef="let user" class="text-muted"> {{user.mobile}} </td>
+      </ng-container>
+
+      <!-- 6. Role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+      </ng-container>
+
+      <!-- 7. Assigned Branch Column -->
+      <ng-container matColumnDef="branch">
+        <th mat-header-cell *matHeaderCellDef> Assigned Branch </th>
+        <td mat-cell *matCellDef="let user"> {{user.branch}} </td>
+      </ng-container>
+
+      <!-- 8. Status Badge Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let user">
+          <span class="status-pill" [ngClass]="user.status.toLowerCase()">
+            {{user.status}}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- 9. Last Login Column -->
+      <ng-container matColumnDef="lastLogin">
+        <th mat-header-cell *matHeaderCellDef> Last Login </th>
+        <td mat-cell *matCellDef="let user"> {{user.lastLogin}} </td>
+      </ng-container>
+
+      <!-- 10. Created Date Column -->
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef> Created Date </th>
+        <td mat-cell *matCellDef="let user" class="text-muted"> {{user.createdDate}} </td>
+      </ng-container>
+
+      <!-- 11. Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User actions">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>View Details</button>
+            <button mat-menu-item>Edit User</button>
+            <button mat-menu-item class="text-danger">Deactivate</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <!-- Structural Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+          [class.selected-row]="row.employeeId === 'EMP1002'"></tr>
+    </table>
+  </div>
+
+  <!-- Custom Contextual Pagination Layout Footer Panel -->
+  <footer class="table-pagination-footer">
+    <div class="footer-entries-info">
+      Showing <span>1</span> to <span>10</span> of <span>1,248</span> entries
+    </div>
+
+    <div class="pagination-controls-group">
+      <div class="rows-per-page-selector">
+        <label>Rows per page:</label>
+        <mat-form-field appearance="outline" class="dense-page-select">
+          <mat-select value="10">
+            <mat-option value="10">10</mat-option>
+            <mat-option value="25">25</mat-option>
+            <mat-option value="50">50</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Native Dashboard Styled Pagination Block -->
+      <div class="page-navigation-cluster">
+        <button mat-icon-button class="nav-btn" disabled><mat-icon>first_page</mat-icon></button>
+        <button mat-icon-button class="nav-btn" disabled><mat-icon>chevron_left</mat-icon></button>
+        
+        <button mat-flat-button class="page-num-btn active-page">1</button>
+        <button mat-button class="page-num-btn">2</button>
+        <button mat-button class="page-num-btn">3</button>
+        <button mat-button class="page-num-btn">4</button>
+        <button mat-button class="page-num-btn">5</button>
+        <span class="page-ellipsis">...</span>
+        <button mat-button class="page-num-btn">125</button>
+
+        <button mat-icon-button class="nav-btn"><mat-icon>chevron_right</mat-icon></button>
+        <button mat-icon-button class="nav-btn"><mat-icon>last_page</mat-icon></button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
