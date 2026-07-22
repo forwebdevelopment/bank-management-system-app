@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 import { MatModule } from '../../../../../../shared/material.module';
 import { UserDirectoryEntryModel } from '../../../../models/user-directory-entry.model';
 
@@ -10,6 +10,7 @@ import { UserDirectoryEntryModel } from '../../../../models/user-directory-entry
 })
 export class Userlist {
 
+  @Output() viewDetials = new EventEmitter()
 
   displayedColumns: string[] = [
     'employeeId', 'profile', 'fullName', 'email', 
@@ -32,4 +33,8 @@ export class Userlist {
   constructor() {}
 
   ngOnInit(): void {}
+
+  ViewUserDetials(obje:any){
+    this.viewDetials.emit(obje)
+  }
 }

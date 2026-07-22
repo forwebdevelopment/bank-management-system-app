@@ -31,12 +31,22 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+    height: 100vh;      /* Force wrapper to lock strictly to viewport height */
+  overflow: hidden;   /* Prevent the outer window frame from scrolling */
+
+  
+
 }
 
 .layout-content {
   flex: 1;
   padding: 16px 18px;
-  overflow-x: hidden;
+ overflow-y: auto !important;  /* Forces vertical scroll bar only when content overflows */
+  overflow-x: hidden;           /* Disables unneeded horizontal shifting layout bugs */
+  
+  height: calc(100vh - 64px);   /* Dynamically offsets the top navigation bar height */
+  box-sizing: border-box;
+
 }
 
 @media (max-width: 991px) {

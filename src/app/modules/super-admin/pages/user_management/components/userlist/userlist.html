@@ -158,7 +158,7 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>View Details</button>
+            <button mat-menu-item   (click)="ViewUserDetials(user)">View Details</button>
             <button mat-menu-item>Edit User</button>
             <button mat-menu-item class="text-danger">Deactivate</button>
           </mat-menu>

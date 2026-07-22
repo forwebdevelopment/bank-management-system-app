@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { MatModule } from '../../../../../../shared/material.module';
 
 @Component({
   selector: 'app-action',
-  imports: [],
+  imports: [MatModule],
   templateUrl: './action.html',
-  styleUrl: './action.css',
+  styleUrl: './action.scss',
 })
-export class Action {}
+export class Actions {
+   
+}

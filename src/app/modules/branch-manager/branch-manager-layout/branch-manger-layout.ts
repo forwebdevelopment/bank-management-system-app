@@ -10,9 +10,9 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-stafflayout',
   standalone: true,
   imports: [MatModule, RouterOutlet , BranchManagerSidebar,Topbar, Footer , ManagerDashboard],
-  templateUrl: './bankstafflayout.html',
-  styleUrl: './bankstafflayout.scss',
+  templateUrl: './branch-manger-layout.html',
+  styleUrl: './branch-manger-layout.scss',
 })
-export class BankStaffLayout {
+export class BranchMangerLayout {
  
 }

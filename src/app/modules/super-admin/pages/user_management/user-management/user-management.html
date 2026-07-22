@@ -14,22 +14,22 @@
 
     <!-- Section 3: Filters and Directory Table Component Tag -->
     <section class="layout-directory mat-elevation-z1">
-     <app-userlist></app-userlist>
+     <app-userlist (viewDetials)="opendetials($event)"></app-userlist>
     </section>
 
     <!-- Section 4: Quick Actions Bar Component Tag -->
     <footer class="layout-quick-actions">
-      <!-- <app-quick-actions-bar></app-quick-actions-bar> -->
-       acction
+
+       <app-action></app-action>
     </footer>
 
   </main>
 
 
   <!-- Right Side: Section 5 Detail Panel Component Tag -->
+   @if (isSeeUserDetials) {
   <aside class="details-panel mat-elevation-z1">
-
-    details
-    <!-- <app-user-profile-details></app-user-profile-details> -->
+     <app-user-details (closeDetails)="closeDetails()"></app-user-details>
   </aside>
+}
 </div>

@@ -1,1 +1,111 @@
-<p>user-details works!</p>
+
+<div class="user-details-panel"  >
+  
+  <!-- Header Title and Dismiss Button -->
+  <header class="panel-header">
+    <h3 class="panel-title">User Details</h3>
+    <button mat-icon-button class="btn-close" aria-label="Close panel" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  
+  <section class="user-hero-card">
+    <img src="assets/priya_sharma.jpg" alt="Priya Sharma" class="hero-avatar" />
+    <div class="hero-meta">
+      <div class="name-badge-row">
+        <h2 class="user-name">Priya Sharma</h2>
+        <span class="status-badge active">Active</span>
+      </div>
+      <p class="user-role">Assistant Manager</p>
+    </div>
+  </section>
+
+  <!-- Material Navigation Sub-Tabs Bar -->
+  <nav class="details-tab-nav">
+    <button class="tab-link active">Overview</button>
+    <button class="tab-link">Permissions</button>
+    <button class="tab-link">Activity</button>
+  </nav>
+
+  <!-- Scrollable Information Content Body Wrapper -->
+  <div class="scrollable-info-body">
+
+    <!-- 1. Employee Information Block -->
+    <div class="info-data-section">
+      <h4 class="section-heading">Employee Information</h4>
+      <div class="data-grid-row"><span class="data-label">Employee ID</span><span class="data-value font-highlight">EMP1002</span></div>
+      <div class="data-grid-row"><span class="data-label">Full Name</span><span class="data-value">Priya Sharma</span></div>
+      <div class="data-grid-row"><span class="data-label">Designation</span><span class="data-value">Assistant Manager</span></div>
+      <div class="data-grid-row"><span class="data-label">Role</span><span class="data-value">Assistant Manager</span></div>
+      <div class="data-grid-row"><span class="data-label">Assigned Branch</span><span class="data-value">Andheri Branch, Mumbai</span></div>
+      <div class="data-grid-row"><span class="data-label">Department</span><span class="data-value">Retail Banking</span></div>
+    </div>
+
+    <!-- 2. Contact Information Block -->
+    <div class="info-data-section">
+      <h4 class="section-heading">Contact Information</h4>
+      <div class="data-grid-row"><span class="data-label">Email Address</span><span class="data-value lowercase">priya.sharma@bank.com</span></div>
+      <div class="data-grid-row"><span class="data-label">Mobile Number</span><span class="data-value">+91 87654 32109</span></div>
+    </div>
+
+    <!-- 3. Security Information Block -->
+    <div class="info-data-section">
+      <h4 class="section-heading">Security Information</h4>
+      <div class="data-grid-row">
+        <span class="data-label">Account Status</span>
+        <span class="data-value"><span class="status-badge active">Active</span></span>
+      </div>
+      <div class="data-grid-row"><span class="data-label">Last Login</span><span class="data-value">Today, 08:42 AM</span></div>
+      <div class="data-grid-row"><span class="data-label">Failed Login Attempts</span><span class="data-value">0</span></div>
+      <div class="data-grid-row">
+        <span class="data-label">Two-Factor Authentication</span>
+        <span class="data-value"><span class="status-badge active">Enabled</span></span>
+      </div>
+    </div>
+
+    <!-- 4. Permissions Summary Block -->
+    <div class="info-data-section">
+      <h4 class="section-heading">Permissions Summary</h4>
+      <div class="data-grid-row"><span class="data-label">Roles Assigned</span><span class="data-value font-semibold">2</span></div>
+      <div class="data-grid-row"><span class="data-label">Total Permissions</span><span class="data-value font-semibold">24</span></div>
+      <div class="data-grid-row"><span class="data-label">Last Updated</span><span class="data-value">20 May 2026</span></div>
+    </div>
+
+    <!-- 5. Recent Activities List Block -->
+    <div class="info-data-section activity-section">
+      <div class="section-header-row">
+        <h4 class="section-heading">Recent Activities</h4>
+        <a routerLink="./" class="action-link-all">View All</a>
+      </div>
+      
+      <div class="activity-timeline">
+        <!-- Item 1 -->
+        <div class="activity-item">
+          <div class="icon-indicator blue-bg"><mat-icon>key</mat-icon></div>
+          <div class="activity-meta">
+            <span class="activity-text">Password changed</span>
+            <span class="activity-time">20 May 2026, 10:15 AM</span>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="activity-item">
+          <div class="icon-indicator green-bg"><mat-icon>person</mat-icon></div>
+          <div class="activity-meta">
+            <span class="activity-text">Profile updated</span>
+            <span class="activity-time">18 May 2026, 04:32 PM</span>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="activity-item">
+          <div class="icon-indicator orange-bg"><mat-icon>login</mat-icon></div>
+          <div class="activity-meta">
+            <span class="activity-text">Logged in</span>
+            <span class="activity-time">Today, 08:42 AM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,133 @@
+.quick-actions-section {
+  width: 100%;
+  box-sizing: border-box;
+
+  .section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 14px 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+}
+
+// 1. Grid Structure that naturally stretches to take up all empty space
+.actions-grid-container {
+  display: grid;
+  // Automatically fits 5 items across wide spaces, but establishes a min structural column safety block
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// 2. Individual Interactive Action Card Box
+.action-item-card {
+  background: #ffffff !important;
+  border: 1px solid #f0f1f3 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+
+  &:hover {
+    transform: translateY(-2px); // Subtle hover slide up effect
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .action-card-body {
+    padding: 14px 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-sizing: border-box;
+  }
+}
+
+// Left side grouping layout properties
+.left-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0; // Enables inner text ellipsis if string stretches out
+
+  .icon-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    // Color palettes directly targeting your custom design images
+    &.blue-theme { background-color: #eff6ff; color: #2563eb; }
+    &.purple-theme { background-color: #f5f3ff; color: #7c3aed; }
+    &.orange-theme { background-color: #fff7ed; color: #ea580c; }
+    &.green-theme { background-color: #f0fdf4; color: #16a34a; }
+    &.teal-theme { background-color: #f0fdfa; color: #0d9488; }
+  }
+
+  .meta-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    .card-heading {
+      font-size: 0.875rem; // 14px standard
+      font-weight: 600;
+      color: #111827;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-desc {
+      font-size: 0.75rem; // 12px compact descriptive fonts
+      color: #6b7280;
+      margin: 2px 0 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+// Muted Right Action Indicator Chevron Arrow
+.chevron-arrow {
+  color: #9ca3af;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   BREAKPOINTS: Medium & Small Screen Adjustments (Tablets / Mobile)
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .actions-grid-container {
+    // Re-adjust grid layout map tracking arrays down into 2/3 rows
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  .actions-grid-container {
+    grid-template-columns: 1fr; // Full-width stack column blocks on phones
+    gap: 10px;
+  }
+  
+  .action-item-card .action-card-body {
+    padding: 12px !important;
+  }
+}
