@@ -1,0 +1,117 @@
+$mobile-breakpoint: 600px;
+
+.aggregate-footer-container {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 0.5rem;
+  box-shadow: none !important;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  .footer-grid-body {
+    padding: 1.25rem 2rem !important;
+    display: grid;
+    // Uses template mapping to fit clean columns across desktops
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-stat-node {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+
+    // Adds a clean vertical separator line between nodes matching the mockup
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -1rem;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background-color: #f1f5f9;
+    }
+
+    @media (max-width: 992px) {
+      &:not(:last-child)::after { display: none; }
+    }
+  }
+
+  // Exact Large Circular Avatar Configs
+  .stat-icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%; // Perfect circle background
+    flex-shrink: 0;
+
+    mat-icon {
+      font-size: 1.65rem;
+      width: 1.65rem;
+      height: 1.65rem;
+    }
+  }
+
+  // Text stack order formatting (Label -> Value -> Subtitle)
+  .stat-text-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    .stat-label-title {
+      font-size: 0.76rem;
+      color: #64748b; // Secondary grey text label
+      font-weight: 500;
+    }
+
+    .stat-numeric-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0f172a; // Deep black bold number text
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .stat-subtitle-text {
+      font-size: 0.72rem;
+      font-weight: 600;
+      
+      &.text-blue { color: #0061ff; }
+      &.text-green { color: #16a34a; }
+      &.text-orange { color: #ea580c; }
+      &.text-purple { color: #7c3aed; }
+    }
+  }
+
+  // ==========================================
+  // EXACT THEMING PALETTE CODES FROM MOCKUP
+  // ==========================================
+  .theme-blue {
+    .stat-icon-circle { background-color: #eff6ff; color: #0061ff; }
+  }
+
+  .theme-green {
+    .stat-icon-circle { background-color: #f0fdf4; color: #16a34a; }
+  }
+
+  .theme-orange {
+    .stat-icon-circle { background-color: #fff7ed; color: #ea580c; }
+  }
+
+  .theme-purple {
+    .stat-icon-circle { background-color: #f5f3ff; color: #7c3aed; }
+  }
+
+  // Mobile layout fallback configurations
+  @media (max-width: $mobile-breakpoint) {
+    .footer-grid-body {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 1.25rem !important;
+    }
+  }
+}

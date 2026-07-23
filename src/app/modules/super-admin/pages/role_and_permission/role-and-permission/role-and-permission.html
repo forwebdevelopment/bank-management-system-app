@@ -1,0 +1,43 @@
+<div class="dashboard-layout-container">
+  
+  <!-- Section 1: Top Header Component Container -->
+  <!-- <header class="component-section layout-header">
+    <div class="layout-placeholder">Component 1: Header Bar Layout Slot</div>
+  </header> -->
+  <app-role-header></app-role-header>
+
+  <!-- Section 2: Top KPI Metrics Component Container -->
+  <!-- <section class="component-section layout-metrics">
+    <div class="layout-placeholder">Component 2: Metrics Summary Layout Slot</div>
+  </section> -->
+<app-summary-card></app-summary-card>
+  <!-- Central Workspace Grid (Houses Sections 3, 4, and 5) -->
+  <div class="layout-workspace-body">
+    
+    <!-- Section 3: Left Roles Selector Component Container -->
+    <!-- <aside class="component-section layout-roles-selector">
+      <div class="layout-placeholder">Component 3: Roles Selector Layout Slot</div>
+    </aside> -->
+    <app-roles></app-roles>
+
+    <!-- Section 4: Main Center Permission Matrix Component Container -->
+    <!-- <main class="component-section layout-permission-matrix">
+
+    </main> -->
+        
+       <app-permission-matric></app-permission-matric>
+
+    <!-- Section 5: Right Role Details Component Container -->
+    <!-- <section class="component-section layout-role-details">
+      <div class="layout-placeholder">Component 5: Role Details Summary Layout Slot</div>
+    </section> -->
+    <app-role-detials></app-role-detials>
+
+  </div>
+
+  <!-- Section 6: Bottom Summary Banner Component Container -->
+  <!-- <footer class="component-section layout-footer-banner">
+    <div class="layout-placeholder">Component 6: Bottom Summary Banner Layout Slot</div>
+  </footer> -->
+<app-role-footer></app-role-footer>
+</div>

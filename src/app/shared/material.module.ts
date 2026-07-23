@@ -21,7 +21,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +54,7 @@ import { RouterLink , RouterLinkActive  } from '@angular/router';
         MatExpansionModule,
         LayoutModule,
         MatDatepickerModule,
+        MatSlideToggleModule,
         // other module 
         BaseChartDirective,
         CommonModule,
@@ -86,6 +87,7 @@ import { RouterLink , RouterLinkActive  } from '@angular/router';
         MatSortModule,
         LayoutModule,
         MatDatepickerModule,
+        MatSlideToggleModule,
         //outer module export
         BaseChartDirective,
         CommonModule,

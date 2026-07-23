@@ -1,0 +1,102 @@
+<mat-card class="roles-selector-container">
+  <mat-card-content class="selector-body">
+    
+    <!-- Section Header Title -->
+    <h3 class="panel-title">Roles</h3>
+
+    <!-- Search Input & Funnel Filter Row Block -->
+    <div class="search-filter-row">
+      <div class="search-input-wrapper">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text" class="custom-search-input" placeholder="Search roles...">
+      </div>
+      <!-- <button mat-stroked-button class="filter-action-btn" aria-label="Open advanced filters list">
+        <mat-icon>filter_list</mat-icon>
+      </button> -->
+    </div>
+
+    <!-- Active List Component Items Track Container -->
+    <div class="roles-list-wrapper">
+      
+      <!-- Role Item 1: Super Admin (Selected/Active State Example) -->
+      <div class="role-list-item item-active">
+        <div class="role-left-content">
+          <div class="role-avatar bg-blue">
+            <mat-icon>verified_user</mat-icon>
+          </div>
+          <div class="role-meta-details">
+            <span class="role-display-name">Super Admin</span>
+            <span class="role-user-count">12 Users</span>
+          </div>
+        </div>
+        <div class="role-right-content">
+          <span class="status-badge status-active">Active</span>
+          <mat-icon class="arrow-indicator">chevron_right</mat-icon>
+        </div>
+      </div>
+
+      <!-- Role Item 2: Branch Manager -->
+      <div class="role-list-item">
+        <div class="role-left-content">
+          <div class="role-avatar bg-purple">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="role-meta-details">
+            <span class="role-display-name">Branch Manager</span>
+            <span class="role-user-count">45 Users</span>
+          </div>
+        </div>
+        <div class="role-right-content">
+          <span class="status-badge status-active">Active</span>
+          <mat-icon class="arrow-indicator">chevron_right</mat-icon>
+        </div>
+      </div>
+
+      <!-- Role Item 3: Bank Staff -->
+      <div class="role-list-item">
+        <div class="role-left-content">
+          <div class="role-avatar bg-orange">
+            <mat-icon>group</mat-icon>
+          </div>
+          <div class="role-meta-details">
+            <span class="role-display-name">Bank Staff</span>
+            <span class="role-user-count">58 Users</span>
+          </div>
+        </div>
+        <div class="role-right-content">
+          <span class="status-badge status-active">Active</span>
+          <mat-icon class="arrow-indicator">chevron_right</mat-icon>
+        </div>
+      </div>
+
+      <!-- Role Item 4: Customer -->
+      <div class="role-list-item">
+        <div class="role-left-content">
+          <div class="role-avatar bg-teal">
+            <mat-icon>account_circle</mat-icon>
+          </div>
+          <div class="role-meta-details">
+            <span class="role-display-name">Customer</span>
+            <span class="role-user-count">13 Users</span>
+          </div>
+        </div>
+        <div class="role-right-content">
+          <span class="status-badge status-active">Active</span>
+          <mat-icon class="arrow-indicator">chevron_right</mat-icon>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Mockup Pagination Control Block Grid -->
+    <footer class="pagination-footer-block">
+      <span class="entries-counter-lbl">Showing 1 to 4 of 4 roles</span>
+      <div class="pager-buttons-group">
+        <button class="pager-btn" aria-label="Previous Page">&lt;</button>
+        <button class="pager-btn page-number active">1</button>
+        <button class="pager-btn" aria-label="Next Page">&gt;</button>
+      </div>
+    </footer>
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,95 @@
+<div class="role-details-wrapper-fixed">
+  
+  <!-- Card A: Role Details Meta Layout -->
+  <mat-card class="details-card-flexible-panel">
+    <mat-card-content class="panel-inner-body-dense">
+      <h3 class="panel-section-headline">Role Details</h3>
+      
+      <div class="metadata-compact-rows">
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Role Name</span>
+          <strong class="meta-val-text val-dark">Super Admin</strong>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Description</span>
+          <span class="meta-val-text val-muted text-ellipses" title="Full system access with complete administrative rights.">Full system access with com...</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Default Landing Page</span>
+          <span class="meta-val-text val-dark">Dashboard</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Assigned Users</span>
+          <span class="meta-val-text val-link">12 Users</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Access Level</span>
+          <span class="badge-pill pill-purple">Full Access</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Created By</span>
+          <span class="meta-val-text val-dark">System</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Created Date</span>
+          <span class="meta-val-text val-dark">May 01, 2026</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Last Modified</span>
+          <span class="meta-val-text val-dark">June 20, 2026</span>
+        </div>
+        
+        <div class="meta-row-item">
+          <span class="meta-lbl-text">Role Status</span>
+          <span class="badge-pill pill-green">Active</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Card B: Permission Summary Side-By-Side Layout -->
+  <mat-card class="details-card-flexible-panel chart-expansion-panel">
+    <mat-card-content class="panel-inner-body-dense flex-fill-content">
+      <h3 class="panel-section-headline">Permission Summary</h3>
+      
+      <div class="chart-horizontal-alignment">
+        <!-- Compact Chart Canvas Container -->
+        <div class="chart-canvas-bounding-box">
+          <canvas baseChart
+                  [data]="doughnutChartData"
+                  [options]="doughnutChartOptions"
+                  [type]="'doughnut'">
+          </canvas>
+          <div class="inner-centered-labels">
+            <span class="num-bold">98%</span>
+            <span class="lbl-small">Access</span>
+          </div>
+        </div>
+
+        <!-- Inline Legend Nodes -->
+        <ul class="legend-inline-list">
+          <li class="legend-row-node">
+            <div class="node-left"><span class="dot-icon dot-blue"></span><span>Permissions Granted</span></div>
+            <strong class="count-value">109</strong>
+          </li>
+          <li class="legend-row-node">
+            <div class="node-left"><span class="dot-icon dot-red"></span><span>Permissions Restricted</span></div>
+            <strong class="count-value">3</strong>
+          </li>
+          <li class="legend-row-node">
+            <div class="node-left"><span class="dot-icon dot-grey"></span><span>Not Applicable</span></div>
+            <strong class="count-value">2</strong>
+          </li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

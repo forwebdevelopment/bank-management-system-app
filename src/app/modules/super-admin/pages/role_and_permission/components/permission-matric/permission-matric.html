@@ -1,0 +1,264 @@
+<mat-card class="matrix-layout-container">
+  <mat-card-content class="matrix-body">
+    
+    <!-- Title Header Panel -->
+    <div class="matrix-header-title">
+      <h3>Permission Matrix - <span class="accent-role">Super Admin</span></h3>
+    </div>
+
+    <!-- Scrollable Matrix Viewport Wrapper -->
+    <div class="table-scroll-track">
+      <table class="banking-matrix-table">
+        <thead>
+          <tr>
+            <th class="col-module">Module</th>
+            <th>View</th>
+            <th>Create</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Approve</th>
+            <th>Export</th>
+            <th>Print</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <!-- ========================================== -->
+          <!-- CATEGORY 1: ADMINISTRATION                -->
+          <!-- ========================================== -->
+          <tr class="category-header-row">
+            <td colspan="8">Administration</td>
+          </tr>
+          
+          <!-- Dashboard -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Dashboard</td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Branch Management -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Branch Management</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- User Management -->
+          <tr class="data-module-row">
+            <td class="lbl-module">User Management</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Role Management -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Role Management</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+
+          <!-- ========================================== -->
+          <!-- CATEGORY 2: CORE SECTION                   -->
+          <!-- ========================================== -->
+          <tr class="category-header-row">
+            <td colspan="8">Core Section</td>
+          </tr>
+          
+          <!-- Customer Management -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Customer Management</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Account Management -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Account Management</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Transaction -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Transaction</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [disabled]="true" [checked]="false" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Fund Transfer -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Fund Transfer</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+
+
+          <!-- ========================================== -->
+          <!-- CATEGORY 3: DEPOSIT & SERVICE              -->
+          <!-- ========================================== -->
+          <tr class="category-header-row">
+            <td colspan="8">Deposit & Service</td>
+          </tr>
+          
+          <!-- Loan Management -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Loan Management</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Fixed Deposit -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Fixed Deposit</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Recurring Deposit -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Recurring Deposit</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- ATM Card -->
+          <tr class="data-module-row">
+            <td class="lbl-module">ATM Card</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Cheque Book -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Cheque Book</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+
+
+           <!-- ========================================== -->
+          <!-- CATEGORY 4: REPORTING & COMPLIANCE        -->
+          <!-- ========================================== -->
+          <tr class="category-header-row">
+            <td colspan="8">Reporting & Compliance</td>
+          </tr>
+          
+          <!-- Reports -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Reports</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Settings -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Settings</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Audit Log -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Audit Log</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+          
+          <!-- Notification -->
+          <tr class="data-module-row">
+            <td class="lbl-module">Notification</td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+            <td><mat-slide-toggle [checked]="true" color="primary" class="custom-mat-toggle"></mat-slide-toggle></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </mat-card-content>
+</mat-card>
