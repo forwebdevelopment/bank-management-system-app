@@ -10,7 +10,7 @@ import { RoleAndPermission } from '../pages/role_and_permission/role-and-permiss
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [ SidebarComponent ,Topbar , Footer , RoleAndPermission  ],
+  imports: [ SidebarComponent ,Topbar , Footer,Branchmanagement , RoleAndPermission  ],
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })

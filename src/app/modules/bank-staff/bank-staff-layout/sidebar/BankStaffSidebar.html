@@ -1,0 +1,120 @@
+<aside
+  class="staff-sidebar"
+  [class.staff-sidebar--collapsed]="collapsed"
+>
+  <!-- Logo header -->
+  <header class="staff-sidebar__header">
+    <a
+      class="staff-sidebar__brand"
+      routerLink="/bank-staff/dashboard"
+      aria-label="Global Bank dashboard"
+    >
+      <span class="staff-sidebar__logo">
+        <mat-icon>account_balance</mat-icon>
+      </span>
+
+      <span class="staff-sidebar__brand-text">
+        <strong>GLOBAL BANK</strong>
+        <small>Trust. Security. Progress.</small>
+      </span>
+    </a>
+
+    <button
+      mat-icon-button
+      type="button"
+      class="staff-sidebar__toggle"
+      (click)="toggleSidebar()"
+      [matTooltip]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+      matTooltipPosition="right"
+      [attr.aria-label]="
+        collapsed ? 'Expand sidebar' : 'Collapse sidebar'
+      "
+    >
+      <mat-icon>
+        {{ collapsed ? 'keyboard_double_arrow_right' : 'menu' }}
+      </mat-icon>
+    </button>
+  </header>
+
+  <!-- Scrollable menu -->
+  <div class="staff-sidebar__body">
+    <mat-nav-list class="staff-sidebar__navigation">
+
+      @for (group of menuGroups; track $index) {
+        <section class="staff-sidebar__group">
+
+          @if (group.title) {
+            <h3 class="staff-sidebar__group-title">
+              {{ group.title }}
+            </h3>
+          }
+
+          @for (item of group.items; track item.route) {
+            <a
+              mat-list-item
+              class="staff-sidebar__menu-link"
+              [routerLink]="item.route"
+              routerLinkActive="staff-sidebar__menu-link--active"
+              [routerLinkActiveOptions]="{
+                exact: item.route === dashboardRoute
+              }"
+              [matTooltip]="collapsed ? item.label : ''"
+              matTooltipPosition="right"
+            >
+              <mat-icon
+                matListItemIcon
+                class="staff-sidebar__menu-icon"
+              >
+                {{ item.icon }}
+              </mat-icon>
+
+              <span
+                matListItemTitle
+                class="staff-sidebar__menu-label"
+              >
+                {{ item.label }}
+              </span>
+            </a>
+          }
+
+        </section>
+      }
+
+    </mat-nav-list>
+  </div>
+
+  <!-- Bottom section -->
+  <footer class="staff-sidebar__footer">
+    <mat-divider></mat-divider>
+
+    <a
+      mat-list-item
+      class="staff-sidebar__footer-link"
+      routerLink="/bank-staff/help"
+      routerLinkActive="staff-sidebar__footer-link--active"
+      [matTooltip]="collapsed ? 'Help Center' : ''"
+      matTooltipPosition="right"
+    >
+      <mat-icon matListItemIcon>help_outline</mat-icon>
+
+      <span matListItemTitle class="staff-sidebar__menu-label">
+        Help Center
+      </span>
+    </a>
+
+    <button
+      mat-list-item
+      type="button"
+      class="staff-sidebar__footer-link staff-sidebar__logout"
+      (click)="logout()"
+      [matTooltip]="collapsed ? 'Logout' : ''"
+      matTooltipPosition="right"
+    >
+      <mat-icon matListItemIcon>logout</mat-icon>
+
+      <span matListItemTitle class="staff-sidebar__menu-label">
+        Logout
+      </span>
+    </button>
+  </footer>
+</aside>

@@ -1,0 +1,172 @@
+<mat-toolbar class="bank-topbar">
+
+  <!-- Left Section -->
+  <div class="topbar-left">
+
+    <button
+      mat-icon-button
+      class="menu-btn"
+      (click)="toggleSidebar.emit()">
+
+      <mat-icon>menu</mat-icon>
+
+    </button>
+
+    <div class="branch-info">
+
+      <h3>Chandigarh Branch</h3>
+
+      <div class="user-info">
+        <span class="welcome">
+          Welcome,
+          <strong>Priya Sharma</strong>
+        </span>
+
+        <span class="dot"></span>
+
+        <span class="designation">
+          Customer Service Executive
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Center -->
+  <div class="topbar-search">
+
+    <mat-form-field
+      appearance="outline"
+      class="search-field">
+
+      <mat-icon matPrefix>
+        search
+      </mat-icon>
+
+      <input
+        matInput
+        placeholder="Search customers, accounts, transactions..." />
+
+    </mat-form-field>
+
+  </div>
+
+  <!-- Right -->
+  <div class="topbar-right">
+
+    <!-- Date -->
+    <div class="date-card">
+
+      <mat-icon>calendar_today</mat-icon>
+
+      <div>
+
+        <span class="date">
+          26 Jul 2026
+        </span>
+
+        <span class="time">
+          10:45 AM
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- Notification -->
+
+    <button
+      mat-icon-button
+      matBadge="3"
+      matBadgeColor="warn"
+      class="action-btn">
+
+      <mat-icon>
+        notifications
+      </mat-icon>
+
+    </button>
+
+    <!-- Messages -->
+
+    <button
+      mat-icon-button
+      matBadge="5"
+      matBadgeColor="accent"
+      class="action-btn">
+
+      <mat-icon>
+        mail
+      </mat-icon>
+
+    </button>
+
+    <!-- Profile -->
+
+    <button
+      mat-button
+      [matMenuTriggerFor]="profileMenu"
+      class="profile-btn">
+
+      <div class="avatar">
+
+        <img
+          src="assets/images/avatar.jpg"
+          alt="User">
+
+        <span class="online"></span>
+
+      </div>
+
+      <div class="profile-details">
+
+        <span class="name">
+          Priya Sharma
+        </span>
+
+        <span class="role">
+          Bank Staff
+        </span>
+
+      </div>
+
+      <mat-icon>
+        expand_more
+      </mat-icon>
+
+    </button>
+
+  </div>
+
+</mat-toolbar>
+
+<mat-menu #profileMenu="matMenu">
+
+  <button mat-menu-item>
+
+    <mat-icon>person</mat-icon>
+
+    <span>Profile</span>
+
+  </button>
+
+  <button mat-menu-item>
+
+    <mat-icon>settings</mat-icon>
+
+    <span>Settings</span>
+
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button mat-menu-item>
+
+    <mat-icon>logout</mat-icon>
+
+    <span>Logout</span>
+
+  </button>
+
+</mat-menu>
