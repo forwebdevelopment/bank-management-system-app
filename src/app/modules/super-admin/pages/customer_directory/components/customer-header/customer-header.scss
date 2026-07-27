@@ -1,97 +1,90 @@
-// Color Foundations & Theme Variables
-$color-text-dark: #0f172a;       
-$color-text-muted: #64748b;      
-$color-blue-primary: #0052cc; // Overrides primary button accent to match screenshot
-$font-family-stack: system-ui, -apple-system, sans-serif;
+// Color Variables matching the dashboard palette
+$color-text-main: #1e293b; 
+$color-text-sub: #64748b;
+$color-primary: #2563eb; 
+$color-border: #e2e8f0;
 
-// Responsive Breakpoint Scope
-$mobile-cutoff: 640px;
-
-.directory-header-container {
+.directory-header {
   display: flex;
-  flex-direction: column;        // Vertical stack on narrow mobile viewports
-  gap: 16px;
-  width: 100%;
-  background-color: #ffffff;
-  font-family: $font-family-stack;
-
-  @media (min-width: $mobile-cutoff) {
-    flex-direction: row;         // Side-by-side split configuration on desktop screens
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-}
-
-// Left side layout adjustments
-.header-titles {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  .main-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: $color-text-dark;
-    margin: 0;
-    letter-spacing: -0.02em;
-
-    @media (max-width: 480px) {
-      font-size: 20px;           
-    }
-  }
-
-  .sub-title {
-    font-size: 13.5px;
-    color: $color-text-muted;
-    margin: 0;
-    line-height: 1.4;
-  }
-}
-
-// Right side dynamic layout button alignments
-.header-actions {
-  display: flex;
-  flex-wrap: wrap;               // Fluid wrapping adjustment engine on ultra-narrow views
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  padding: 16px 24px;
+  // background-color: #ffffff;
+  // border-bottom: 1px solid $color-border;
+  font-family: 'Roboto', sans-serif;
 
-  @media (max-width: $mobile-cutoff) {
-    width: 100%;                 
-    
-    // Stretch material buttons symmetrically to occupy full screen container row span 
-    .action-btn {
-      flex: 1;
-      min-width: 140px;          
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .main-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: $color-text-main;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: $color-text-sub;
+      margin: 0;
+    }
+  }
+
+  .action-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    // Custom styles to match the thin, clean look in the image
+    .btn-action {
+      border-color: $color-border;
+      color: $color-primary;
+      font-weight: 500;
+      font-size: 13px;
+      border-radius: 6px;
+      height: 38px;
+      
+      mat-icon {
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+        margin-right: 6px;
+      }
+    }
+
+    .btn-refresh {
+      background-color: $color-primary;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 13px;
+      border-radius: 6px;
+      height: 38px;
+      box-shadow: none;
+
+      mat-icon {
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+        margin-right: 6px;
+      }
     }
   }
 }
 
-// Micro alignment overrides for native Material button inner text layouts
-.action-btn {
-  height: 38px !important;       // Strict matching to screenshot action bar layout
-  line-height: 38px !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  border-radius: 6px !important; 
-  white-space: nowrap;
+// Responsive layout for smaller viewports
+@media (max-width: 768px) {
+  .directory-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
 
-  .btn-icon {
-    font-size: 18px !important;
-    width: 18px !important;
-    height: 18px !important;
-    margin-right: 4px;
-    vertical-align: middle;
-  }
-
-  // Exact custom coloring to match your theme palette perfectly
-  &.primary-blue-btn {
-    background-color: $color-blue-primary !important;
-    color: #ffffff !important;
-  }
-
-  &.secondary-btn {
-    color: #334155 !important;
-    border-color: #e2e8f0 !important;
+    .action-container {
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
   }
 }

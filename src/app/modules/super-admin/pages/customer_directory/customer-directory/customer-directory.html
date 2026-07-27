@@ -8,21 +8,23 @@
     </div> -->
     <app-customer-header></app-customer-header>
 
-    <div class="layout-box section-2-slot">
-      <p>Section 2: KPI Grid Slot</p>
-    </div>
+   <app-summary-card></app-summary-card>
 
-    <div class="layout-box section-3-slot">
-      <p>Section 3: Filters & Main Table Slot</p>
-    </div>
+   <app-customer-list
+    (customerSelected)="selectedCustomer = $event"></app-customer-list>
 
   </main>
 
   <!-- RIGHT INSPECTION DRAWER: Adapts position depending on viewport break rules -->
-  <aside class="profile-drawer">
-    <div class="layout-box section-4-slot">
+   @if (selectedCustomer) {
+  <aside class="profile-drawer" >
+    <!-- <div class="layout-box section-4-slot">
       <p>Section 4: Profile Sidebar Slot</p>
-    </div>
+    </div> -->
+    <app-customer-details
+     [customer]="selectedCustomer"
+    (closePanel)="selectedCustomer = null"
+    ></app-customer-details>
   </aside>
-
+   }
 </div>

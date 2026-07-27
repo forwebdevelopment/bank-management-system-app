@@ -1,11 +1,12 @@
 <section class="filters-container">
-  <form class="filters-form">
+  <!-- Added (submit) handler to run the text-matching loops -->
+  <form class="filters-form" (submit)="applyDirectoryFilters($event)">
     
     <!-- Input Field: Customer ID -->
     <div class="form-group">
       <label class="input-label">Customer ID</label>
       <div class="input-wrapper">
-        <input type="text" placeholder="Enter Customer ID">
+        <input type="text" name="customerId" [(ngModel)]="filterModel.customerId" placeholder="Enter Customer ID">
       </div>
     </div>
 
@@ -13,7 +14,7 @@
     <div class="form-group">
       <label class="input-label">Full Name</label>
       <div class="input-wrapper">
-        <input type="text" placeholder="Enter Full Name">
+        <input type="text" name="fullName" [(ngModel)]="filterModel.fullName" placeholder="Enter Full Name">
       </div>
     </div>
 
@@ -21,7 +22,7 @@
     <div class="form-group">
       <label class="input-label">Mobile Number</label>
       <div class="input-wrapper">
-        <input type="tel" placeholder="Enter Mobile Number">
+        <input type="tel" name="mobileNumber" [(ngModel)]="filterModel.mobileNumber" placeholder="Enter Mobile Number">
       </div>
     </div>
 
@@ -29,7 +30,7 @@
     <div class="form-group">
       <label class="input-label">Email Address</label>
       <div class="input-wrapper">
-        <input type="email" placeholder="Enter Email Address">
+        <input type="email" name="email" [(ngModel)]="filterModel.email" placeholder="Enter Email Address">
       </div>
     </div>
 
@@ -39,13 +40,14 @@
       <div class="custom-dropdown">
         <input type="checkbox" id="dropdown-branch" class="dropdown-toggle">
         <label for="dropdown-branch" class="dropdown-header">
-          <span>Select Branch</span>
+          <!-- Dynamically swaps placeholder label text when an item option is clicked -->
+          <span>{{ filterModel.branch || 'Select Branch' }}</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
         </label>
         <ul class="dropdown-menu">
-          <li class="dropdown-item">Mumbai Main Branch</li>
-          <li class="dropdown-item">Delhi Connaught Place</li>
-          <li class="dropdown-item">Bangalore MG Road</li>
+          <li class="dropdown-item" (keyup)="setDropdownValue('branch', 'Mumbai Main Branch', 'dropdown-branch')">Mumbai Main Branch</li>
+          <li class="dropdown-item" (keyup)="setDropdownValue('branch', 'Delhi Connaught Place', 'dropdown-branch')">Delhi Connaught Place</li>
+          <li class="dropdown-item" (keyup)="setDropdownValue('branch', 'Bangalore MG Road', 'dropdown-branch')">Bangalore MG Road</li>
         </ul>
       </div>
     </div>
@@ -56,13 +58,13 @@
       <div class="custom-dropdown">
         <input type="checkbox" id="dropdown-account" class="dropdown-toggle">
         <label for="dropdown-account" class="dropdown-header">
-          <span>Select Account Type</span>
+          <span>{{ filterModel.accountType || 'Select Account Type' }}</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
         </label>
         <ul class="dropdown-menu">
-          <li class="dropdown-item">Savings Account</li>
-          <li class="dropdown-item">Current Account</li>
-          <li class="dropdown-item">Fixed Deposit</li>
+          <li class="dropdown-item" (keyup)="setDropdownValue('accountType', 'Savings', 'dropdown-account')">Savings</li>
+          <li class="dropdown-item" (keyup)="setDropdownValue('accountType', 'Current', 'dropdown-account')">Current</li>
+          <li class="dropdown-item" (keyup)="setDropdownValue('accountType', 'FD', 'dropdown-account')">Fixed Deposit</li>
         </ul>
       </div>
     </div>
@@ -73,13 +75,13 @@
       <div class="custom-dropdown">
         <input type="checkbox" id="dropdown-status" class="dropdown-toggle">
         <label for="dropdown-status" class="dropdown-header">
-          <span>Select Status</span>
+          <span>{{ filterModel.customerStatus || 'Select Status' }}</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
         </label>
         <ul class="dropdown-menu">
-          <li class="dropdown-item status-active">Active</li>
-          <li class="dropdown-item status-inactive">Inactive</li>
-          <li class="dropdown-item status-suspended">Suspended</li>
+          <li class="dropdown-item status-active" (keyup)="setDropdownValue('customerStatus', 'Active', 'dropdown-status')">Active</li>
+          <li class="dropdown-item status-inactive" (keyup)="setDropdownValue('customerStatus', 'Inactive', 'dropdown-status')">Inactive</li>
+          <li class="dropdown-item status-suspended" (keyup)="setDropdownValue('customerStatus', 'Suspended', 'dropdown-status')">Suspended</li>
         </ul>
       </div>
     </div>
@@ -90,13 +92,13 @@
       <div class="custom-dropdown">
         <input type="checkbox" id="dropdown-kyc" class="dropdown-toggle">
         <label for="dropdown-kyc" class="dropdown-header">
-          <span>Select KYC Status</span>
+          <span>{{ filterModel.kycStatus || 'Select KYC Status' }}</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
         </label>
         <ul class="dropdown-menu">
-          <li class="dropdown-item kyc-verified">Verified</li>
-          <li class="dropdown-item kyc-pending">Pending</li>
-          <li class="dropdown-item kyc-rejected">Rejected</li>
+          <li class="dropdown-item kyc-verified" (keyup)="setDropdownValue('kycStatus', 'Verified', 'dropdown-kyc')">Verified</li>
+          <li class="dropdown-item kyc-pending" (keyup)="setDropdownValue('kycStatus', 'Pending', 'dropdown-kyc')">Pending</li>
+          <li class="dropdown-item kyc-rejected" (keyup)="setDropdownValue('kycStatus', 'Rejected', 'dropdown-kyc')">Rejected</li>
         </ul>
       </div>
     </div>
@@ -117,7 +119,8 @@
           <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.603 10.603Z" /></svg>
           Search
         </button>
-        <button type="reset" class="btn btn-reset">
+        <!-- Converted button type to standard action handler to call manual reset loops -->
+        <button type="button" class="btn btn-reset" (click)="resetDirectoryFilters()">
           <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
           <div class="btn-text-stacked">
             <span>Reset</span>
@@ -131,7 +134,7 @@
 
   <!-- Export Row -->
   <div class="export-container">
-    <button type="button" class="btn-export">
+    <button type="button" class="btn-export"  (click)="exportFilteredData()">
       <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
       Export Filtered Data
     </button>
@@ -227,7 +230,7 @@
             <button mat-icon-button title="View Detail" title="View Detail" (click)="onViewCustomer(element)"><mat-icon>visibility</mat-icon></button>
             <button mat-icon-button title="Edit Record"><mat-icon>edit_note</mat-icon></button>
             <button mat-icon-button title="Sync Transactions"><mat-icon>sync_alt</mat-icon></button>
-            <button mat-icon-button title="Download PDF"><mat-icon>file_download</mat-icon></button>
+            <button mat-icon-button title="Download PDF" (click)="downloadPdf(element)"><mat-icon>file_download</mat-icon></button>
           </div>
         </td>
       </ng-container>

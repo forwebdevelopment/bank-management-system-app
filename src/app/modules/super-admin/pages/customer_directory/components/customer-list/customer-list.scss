@@ -1,0 +1,407 @@
+$color-text-main: #0f172a;
+$color-text-label: #334155;
+$color-text-muted: #94a3b8;
+$color-border: #cbd5e1;
+$color-primary: #2563eb;
+$color-primary-hover: #1d4ed8;
+
+.filters-container {
+  background-color: #ffffff;
+  padding: 20px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-radius: 10px;
+}
+
+.filters-form {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  width: 100%;
+  align-items: flex-end; // Automatically lines up standard inputs and custom list dropdowns perfectly
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .input-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-text-label;
+  }
+
+  // Input Fields Styling
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    height: 36px;
+    background-color: #ffffff;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    padding: 0 12px;
+    font-size: 13px;
+    color: $color-text-main;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+
+    &::placeholder { color: $color-text-muted; }
+    &:focus {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+  }
+
+  // Pure HTML/SCSS UL & LI Dropdown Implementation
+  .custom-dropdown {
+    position: relative;
+    width: 100%;
+
+    .dropdown-toggle {
+      display: none; // Completely hides the logical functional checkbox indicator
+    }
+
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 36px;
+      background-color: #ffffff;
+      border: 1px solid $color-border;
+      border-radius: 6px;
+      padding: 0 12px;
+      font-size: 13px;
+      color: $color-text-muted;
+      cursor: pointer;
+      user-select: none;
+      box-sizing: border-box;
+      transition: all 0.15s ease;
+
+      .arrow-icon {
+        width: 14px;
+        height: 14px;
+        color: $color-text-label;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover { border-color: $color-primary; }
+    }
+
+    // Hidden menu list state
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid $color-border;
+      border-radius: 6px;
+      padding: 4px 0;
+      margin: 0;
+      list-style: none;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      z-index: 50;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.15s ease;
+    }
+
+    .dropdown-item {
+      padding: 8px 12px;
+      font-size: 13px;
+      color: $color-text-main;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+
+      &:hover {
+        background-color: #f1f5f9;
+        color: $color-primary;
+      }
+    }
+
+    // Toggle interaction layout state handler rules
+    .dropdown-toggle:checked ~ .dropdown-header {
+      border-color: $color-primary;
+      color: $color-text-main;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+
+      .arrow-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    .dropdown-toggle:checked ~ .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  // Date Field Design Element Wrapper
+  .date-wrapper {
+    position: relative;
+    width: 100%;
+
+    input { padding-right: 36px; color: $color-text-main; }
+    .icon-calendar {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: $color-text-label;
+      pointer-events: none;
+    }
+  }
+
+  // Control Buttons block element structures
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    height: 36px;
+
+    .btn {
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+      height: 100%;
+
+      .btn-icon { width: 14px; height: 14px; flex-shrink: 0; }
+    }
+
+    .btn-search {
+      background-color: $color-primary;
+      color: #ffffff;
+      flex: 1.2;
+      &:hover { background-color: $color-primary-hover; }
+    }
+
+    .btn-reset {
+      background-color: #ffffff;
+      border: 1px solid $color-border;
+      color: $color-primary;
+      flex: 1;
+      &:hover { background-color: #f8fafc; border-color: $color-primary; }
+
+      .btn-text-stacked {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1.1;
+        font-size: 10px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.export-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4px;
+
+  .btn-export {
+    background-color: #ffffff;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    color: $color-primary;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    .btn-icon { width: 14px; height: 14px; }
+    &:hover { background-color: #f8fafc; border-color: $color-primary; }
+  }
+}
+
+
+$color-text-main: #0f172a;
+$color-text-sub: #475569;
+$color-border: #f1f5f9;
+$color-border-dark: #e2e8f0;
+$color-primary: #2563eb;
+
+.table-card-container {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid $color-border-dark;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin-top: 20px;
+}
+
+// Crucial Container Layout Block for Horizontal Mobile Scrolling 
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; // Crisp sliding mechanics for Safari touch screens
+}
+
+.custom-mat-table {
+  width: 100%;
+  background: #ffffff;
+  border-collapse: collapse;
+
+  // Header Box Styling Rules
+  .mat-mdc-header-row {
+    background-color: #f8fafc;
+    min-height: 48px;
+    border-bottom: 1px solid $color-border-dark;
+  }
+
+  .mat-mdc-header-cell {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-text-sub;
+    padding: 12px 16px;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+  }
+
+  // Row Data Layout Rules
+  .mat-mdc-row {
+    min-height: 52px;
+    border-bottom: 1px solid $color-border;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: #f8fafc;
+    }
+  }
+
+  .mat-mdc-cell {
+    font-size: 13px;
+    color: $color-text-main;
+    padding: 10px 16px;
+    white-space: nowrap; // Keeps column layouts perfectly linear
+    vertical-align: middle;
+  }
+
+  // Common Layout Position Helpers
+  .text-right { text-align: right !important; }
+  .text-center { text-align: center !important; }
+  .font-medium { font-weight: 500; }
+  .font-semibold { font-weight: 600; }
+  .font-bold { font-weight: 700; }
+  .text-slate { color: #334155; }
+
+  // Customer Circle Profile Avatar Sizing
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 1px solid $color-border-dark;
+  }
+
+  // Status Color Tags Layout Configuration
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    line-height: 1;
+
+    &.verified, &.active { background-color: #ecfdf5; color: #059669; }
+    &.pending { background-color: #fff7ed; color: #ea580c; }
+    &.inactive { background-color: #f1f5f9; color: #475569; }
+    &.rejected, &.suspended { background-color: #fef2f2; color: #dc2626; }
+  }
+
+  // Action Buttons Packaging
+  .action-buttons-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    button[mat-icon-button] {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      border: 1px solid $color-border-dark;
+      border-radius: 6px;
+      color: $color-primary;
+      background-color: #ffffff;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+
+      ::v-deep .mat-icon {
+        font-size: 15px;
+        width: 15px;
+        height: 15px;
+      }
+
+      &:hover {
+        background-color: #eff6ff;
+        border-color: $color-primary;
+      }
+    }
+  }
+}
+
+// Clean Custom Theme Overrides for Material Paginator Block
+::v-deep .custom-paginator {
+  background: #ffffff;
+  border-top: 1px solid $color-border-dark;
+  font-size: 13px;
+  color: $color-text-sub;
+
+  .mat-mdc-paginator-container {
+    padding: 8px 24px;
+    justify-content: space-between;
+  }
+
+  .mat-mdc-paginator-range-label {
+    font-weight: 500;
+    color: $color-text-main;
+  }
+
+  // Formatting page navigation arrows to lock exactly like standard theme shapes
+  .mat-mdc-icon-button {
+    color: $color-text-sub;
+    
+    &:hover {
+      background-color: #f1f5f9;
+    }
+  }
+}
+
+/* Fluid Responsive Breakpoint Scale Tiers */
+@media (max-width: 1280px) { .filters-form { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .filters-form { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .filters-form { grid-template-columns: 1fr; } }

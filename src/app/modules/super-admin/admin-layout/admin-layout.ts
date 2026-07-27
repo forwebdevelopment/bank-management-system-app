@@ -11,7 +11,7 @@ import { CustomerDirectory } from '../pages/customer_directory/customer-director
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [ RouterOutlet, SidebarComponent ,Topbar , Footer , RoleAndPermission , CustomerDirectory ],
+  imports: [ RouterOutlet, SidebarComponent ,Topbar , Footer , RoleAndPermission , CustomerDirectory , Branchmanagement ],
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })

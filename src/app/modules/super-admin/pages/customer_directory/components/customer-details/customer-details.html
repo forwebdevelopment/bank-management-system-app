@@ -1,1 +1,137 @@
-<p>customer-details works!</p>
+<aside class="profile-panel" [class.panel-open]="customer">
+  <!-- Top Header Bar -->
+  <div class="panel-header">
+    <div class="header-titles">
+      <h3>Customer Profile</h3>
+      <span class="customer-sub-id">{{customer?.customerId}}</span>
+    </div>
+    <button class="btn-close" (click)="onClosePanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="panel-content" *ngIf="customer">
+    <!-- Profile Avatar & Status Pill Area -->
+    <div class="avatar-container-block">
+      <div class="avatar-wrapper">
+        <img [src]="customer.profilePic" alt="Profile picture" class="profile-img-large">
+      </div>
+      <span class="status-badge active">Active</span>
+    </div>
+
+    <!-- Section 1: Basic Information -->
+    <div class="detail-section">
+      <h4 class="section-divider-title">Basic Information</h4>
+      
+      <div class="data-row">
+        <span class="data-label">Full Name</span>
+        <span class="data-value font-semibold">{{customer.fullName}}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Gender</span>
+        <span class="data-value">Male</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Date of Birth</span>
+        <span class="data-value">15 Aug 1990</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Customer ID</span>
+        <span class="data-value">{{customer.customerId}}</span>
+      </div>
+    </div>
+
+    <!-- Section 2: Contact Information -->
+    <div class="detail-section">
+      <h4 class="section-divider-title">Contact Information</h4>
+      
+      <div class="data-row">
+        <span class="data-label">Mobile Number</span>
+        <span class="data-value">{{customer.mobileNumber}}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Email Address</span>
+        <span class="data-value text-break-all">{{customer.email}}</span>
+      </div>
+      <div class="data-row align-start">
+        <span class="data-label">Address</span>
+        <span class="data-value address-block-text">
+          123, Park Street, Andheri West,<br>
+          Mumbai, Maharashtra - 400058
+        </span>
+      </div>
+    </div>
+
+    <!-- Section 3: Bank Information -->
+    <div class="detail-section">
+      <h4 class="section-divider-title">Bank Information</h4>
+      
+      <div class="data-row">
+        <span class="data-label">Home Branch</span>
+        <span class="data-value">{{customer.branch}}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Total Accounts</span>
+        <span class="data-value">{{customer.totalAccounts}}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Total Balance</span>
+        <span class="data-value font-bold text-slate">{{customer.totalBalance | currency:'INR':'symbol':'1.2-2'}}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Account Types</span>
+        <span class="data-value">Savings, Current, FD</span>
+      </div>
+    </div>
+
+    <!-- Section 4: Verification -->
+    <div class="detail-section">
+      <h4 class="section-divider-title">Verification</h4>
+      
+      <div class="data-row">
+        <span class="data-label">KYC Status</span>
+        <div class="data-value">
+          <span class="pill-status-green">Verified</span>
+        </div>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Aadhaar Verified</span>
+        <div class="data-value inline-flex-center">
+          <svg class="icon-check-circle" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.14-.1l4.15-5.815Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-green font-medium">Verified</span>
+        </div>
+      </div>
+      <div class="data-row">
+        <span class="data-label">PAN Verified</span>
+        <div class="data-value inline-flex-center">
+          <svg class="icon-check-circle" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.14-.1l4.15-5.815Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-green font-medium">Verified</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Recent Activity -->
+    <div class="detail-section">
+      <h4 class="section-divider-title">Recent Activity</h4>
+      
+      <div class="data-row">
+        <span class="data-label">Last Login</span>
+        <span class="data-value">25 Jun 2026, 10:30 AM</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Last Transaction</span>
+        <span class="data-value">25 Jun 2026, 09:15 AM</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Last Account Opened</span>
+        <span class="data-value">10 May 2026</span>
+      </div>
+    </div>
+  </div>
+</aside>
