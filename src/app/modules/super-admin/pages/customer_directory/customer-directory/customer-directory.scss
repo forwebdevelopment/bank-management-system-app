@@ -1,0 +1,101 @@
+// Responsive Design Breakpoints
+$breakpoint-tablet: 992px;
+
+// Structural Dimensions & Color Scheme
+$drawer-width: 360px;
+$bg-workspace: #f8f9fa;
+$border-color: #e2e8f0;
+
+.customer-directory-layout {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-workspace;
+  box-sizing: border-box;
+
+  div, main, aside {
+    box-sizing: border-box;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: row; 
+    height: 100vh;       
+    overflow: hidden;
+  }
+}
+
+// --- LABELS 1 & 2 FIXED HERE ---
+// Main area for Directory Tables and Cards (Minimized padding to eliminate large white gaps)
+.directory-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;       // Reduced interior space gap between inner sections
+  padding: 12px;   // Minimized outer margins to bring text right up against edges
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: 16px;     // Clean, compact desktop gap layout
+    padding: 16px; // Snug margins to match mock layout perfectly
+    height: 100%;
+    overflow-y: auto; 
+  }
+}
+
+// --- LABEL 3 FIXED HERE ---
+// Contextual Right-Side Profile Drawer Panel (Removed all top padding gaps)
+.profile-drawer {
+  width: 100%; 
+  background-color: #ffffff;
+  border-top: 1px solid $border-color;
+  padding: 0; // REMOVED TOP/ALL GAP MARGINS so section content lines up flush with top bar
+
+  @media (min-width: $breakpoint-tablet) {
+    width: $drawer-width;
+    min-width: $drawer-width;
+    height: 100%;
+    padding: 0; // Stays fully flush with right-side layout margins
+    border-top: none;
+    border-left: 1px solid $border-color;
+    overflow-y: auto; 
+  }
+}
+
+// Global layout utility selectors
+.layout-box {
+  background-color: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+}
+
+.section-1-slot {
+  min-height: 70px;
+}
+
+.section-2-slot {
+  min-height: 140px; 
+}
+
+.section-3-slot {
+  min-height: 400px;
+
+  @media (min-width: $breakpoint-tablet) {
+    flex: 1; 
+  }
+}
+
+// Makes sure section 4 fills up the entire right panel starting right from index 0 pixel height line
+.section-4-slot {
+  height: 100%;
+  width: 100%;
+  border: none; 
+}

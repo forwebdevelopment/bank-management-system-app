@@ -1,0 +1,97 @@
+// Color Foundations & Theme Variables
+$color-text-dark: #0f172a;       
+$color-text-muted: #64748b;      
+$color-blue-primary: #0052cc; // Overrides primary button accent to match screenshot
+$font-family-stack: system-ui, -apple-system, sans-serif;
+
+// Responsive Breakpoint Scope
+$mobile-cutoff: 640px;
+
+.directory-header-container {
+  display: flex;
+  flex-direction: column;        // Vertical stack on narrow mobile viewports
+  gap: 16px;
+  width: 100%;
+  background-color: #ffffff;
+  font-family: $font-family-stack;
+
+  @media (min-width: $mobile-cutoff) {
+    flex-direction: row;         // Side-by-side split configuration on desktop screens
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+// Left side layout adjustments
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .main-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: $color-text-dark;
+    margin: 0;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 480px) {
+      font-size: 20px;           
+    }
+  }
+
+  .sub-title {
+    font-size: 13.5px;
+    color: $color-text-muted;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Right side dynamic layout button alignments
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;               // Fluid wrapping adjustment engine on ultra-narrow views
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: $mobile-cutoff) {
+    width: 100%;                 
+    
+    // Stretch material buttons symmetrically to occupy full screen container row span 
+    .action-btn {
+      flex: 1;
+      min-width: 140px;          
+    }
+  }
+}
+
+// Micro alignment overrides for native Material button inner text layouts
+.action-btn {
+  height: 38px !important;       // Strict matching to screenshot action bar layout
+  line-height: 38px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important; 
+  white-space: nowrap;
+
+  .btn-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  // Exact custom coloring to match your theme palette perfectly
+  &.primary-blue-btn {
+    background-color: $color-blue-primary !important;
+    color: #ffffff !important;
+  }
+
+  &.secondary-btn {
+    color: #334155 !important;
+    border-color: #e2e8f0 !important;
+  }
+}
