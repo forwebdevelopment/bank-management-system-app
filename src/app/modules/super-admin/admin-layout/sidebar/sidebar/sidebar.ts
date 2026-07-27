@@ -37,17 +37,17 @@ export class SidebarComponent {
         {
           label: 'Branch Management',
           icon: 'account_balance',
-          route: '/super-admin/branches',
+          route: '/super-admin/branch-management',
         },
         {
           label: 'User Management',
           icon: 'group',
-          route: '/super-admin/users',
+          route: '/super-admin/user-management',
         },
         {
           label: 'Role & Permissions',
           icon: 'manage_accounts',
-          route: '/super-admin/roles',
+          route: '/super-admin/roles-permissions',
         },
       ],
     },
@@ -57,7 +57,7 @@ export class SidebarComponent {
         {
           label: 'Customer Directory',
           icon: 'badge',
-          route: '/super-admin/customers',
+          route: '/super-admin/customer-directory',
         },
         {
           label: 'Account Directory',
@@ -117,5 +117,14 @@ export class SidebarComponent {
       ],
     },
   ];
+
+
+
+
+
+  routerLinks(routerlink:any){
+    console.log(routerlink)
+  }
+
 
 }
