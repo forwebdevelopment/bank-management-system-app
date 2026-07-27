@@ -1,1 +1,249 @@
-<p>customer-list works!</p>
+<section class="filters-container">
+  <form class="filters-form">
+    
+    <!-- Input Field: Customer ID -->
+    <div class="form-group">
+      <label class="input-label">Customer ID</label>
+      <div class="input-wrapper">
+        <input type="text" placeholder="Enter Customer ID">
+      </div>
+    </div>
+
+    <!-- Input Field: Full Name -->
+    <div class="form-group">
+      <label class="input-label">Full Name</label>
+      <div class="input-wrapper">
+        <input type="text" placeholder="Enter Full Name">
+      </div>
+    </div>
+
+    <!-- Input Field: Mobile Number -->
+    <div class="form-group">
+      <label class="input-label">Mobile Number</label>
+      <div class="input-wrapper">
+        <input type="tel" placeholder="Enter Mobile Number">
+      </div>
+    </div>
+
+    <!-- Input Field: Email Address -->
+    <div class="form-group">
+      <label class="input-label">Email Address</label>
+      <div class="input-wrapper">
+        <input type="email" placeholder="Enter Email Address">
+      </div>
+    </div>
+
+    <!-- Custom Dropdown 1: Branch -->
+    <div class="form-group">
+      <label class="input-label">Branch</label>
+      <div class="custom-dropdown">
+        <input type="checkbox" id="dropdown-branch" class="dropdown-toggle">
+        <label for="dropdown-branch" class="dropdown-header">
+          <span>Select Branch</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </label>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">Mumbai Main Branch</li>
+          <li class="dropdown-item">Delhi Connaught Place</li>
+          <li class="dropdown-item">Bangalore MG Road</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown 2: Account Type -->
+    <div class="form-group">
+      <label class="input-label">Account Type</label>
+      <div class="custom-dropdown">
+        <input type="checkbox" id="dropdown-account" class="dropdown-toggle">
+        <label for="dropdown-account" class="dropdown-header">
+          <span>Select Account Type</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </label>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">Savings Account</li>
+          <li class="dropdown-item">Current Account</li>
+          <li class="dropdown-item">Fixed Deposit</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown 3: Customer Status -->
+    <div class="form-group">
+      <label class="input-label">Customer Status</label>
+      <div class="custom-dropdown">
+        <input type="checkbox" id="dropdown-status" class="dropdown-toggle">
+        <label for="dropdown-status" class="dropdown-header">
+          <span>Select Status</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </label>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item status-active">Active</li>
+          <li class="dropdown-item status-inactive">Inactive</li>
+          <li class="dropdown-item status-suspended">Suspended</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown 4: KYC Status -->
+    <div class="form-group">
+      <label class="input-label">KYC Status</label>
+      <div class="custom-dropdown">
+        <input type="checkbox" id="dropdown-kyc" class="dropdown-toggle">
+        <label for="dropdown-kyc" class="dropdown-header">
+          <span>Select KYC Status</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+        </label>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item kyc-verified">Verified</li>
+          <li class="dropdown-item kyc-pending">Pending</li>
+          <li class="dropdown-item kyc-rejected">Rejected</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Input Field: Date Range -->
+    <div class="form-group">
+      <label class="input-label">Date Range</label>
+      <div class="date-wrapper">
+        <input type="text" placeholder="01/06/2026 - 28/06/2026">
+        <svg class="icon-calendar" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
+      </div>
+    </div>
+
+    <!-- Action Group: Search & Reset -->
+    <div class="form-group">
+      <div class="action-buttons">
+        <button type="submit" class="btn btn-search">
+          <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.603 10.603Z" /></svg>
+          Search
+        </button>
+        <button type="reset" class="btn btn-reset">
+          <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+          <div class="btn-text-stacked">
+            <span>Reset</span>
+            <span>Filters</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- Export Row -->
+  <div class="export-container">
+    <button type="button" class="btn-export">
+      <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+      Export Filtered Data
+    </button>
+  </div>
+</section>
+
+<section class="table-card-container">
+  <!-- Scrollable Wrapper Shell -->
+  <div class="table-responsive-wrapper">
+    <table mat-table [dataSource]="dataSource" class="custom-mat-table">
+
+      <!-- Column 1: Customer ID -->
+      <ng-container matColumnDef="customerId">
+        <th mat-header-cell *matHeaderCellDef> Customer ID </th>
+        <td mat-cell *matCellDef="let element" class="font-bold text-slate"> {{element.customerId}} </td>
+      </ng-container>
+
+      <!-- Column 2: Profile -->
+      <ng-container matColumnDef="profile">
+        <th mat-header-cell *matHeaderCellDef> Profile </th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="element.profilePic" alt="Avatar" class="profile-avatar">
+        </td>
+      </ng-container>
+
+      <!-- Column 3: Full Name -->
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef> Full Name </th>
+        <td mat-cell *matCellDef="let element" class="font-semibold text-slate"> {{element.fullName}} </td>
+      </ng-container>
+
+      <!-- Column 4: Mobile Number -->
+      <ng-container matColumnDef="mobileNumber">
+        <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+      </ng-container>
+
+      <!-- Column 5: Email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Column 6: Branch -->
+      <ng-container matColumnDef="branch">
+        <th mat-header-cell *matHeaderCellDef> Branch </th>
+        <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
+      </ng-container>
+
+      <!-- Column 7: Total Accounts -->
+      <ng-container matColumnDef="totalAccounts">
+        <th mat-header-cell *matHeaderCellDef class="text-right"> Total Accounts </th>
+        <td mat-cell *matCellDef="let element" class="text-right font-medium"> {{element.totalAccounts}} </td>
+      </ng-container>
+
+      <!-- Column 8: Total Balance -->
+      <ng-container matColumnDef="totalBalance">
+        <th mat-header-cell *matHeaderCellDef class="text-right"> Total Balance </th>
+        <td mat-cell *matCellDef="let element" class="text-right font-bold text-slate"> {{element.totalBalance | currency:'INR':'symbol':'1.2-2'}} </td>
+      </ng-container>
+
+      <!-- Column 9: KYC Status -->
+      <ng-container matColumnDef="kycStatus">
+        <th mat-header-cell *matHeaderCellDef> KYC Status </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="status-badge" [ngClass]="element.kycStatus.toLowerCase()">
+            {{element.kycStatus}}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Column 10: Customer Status -->
+      <ng-container matColumnDef="customerStatus">
+        <th mat-header-cell *matHeaderCellDef> Customer Status </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="status-badge" [ngClass]="element.customerStatus.toLowerCase()">
+            {{element.customerStatus}}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Column 11: Registration Date -->
+      <ng-container matColumnDef="registrationDate">
+        <th mat-header-cell *matHeaderCellDef> Registration Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.registrationDate}} </td>
+      </ng-container>
+
+      <!-- Column 12: Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Actions </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <div class="action-buttons-group">
+            <button mat-icon-button title="View Detail" title="View Detail" (click)="onViewCustomer(element)"><mat-icon>visibility</mat-icon></button>
+            <button mat-icon-button title="Edit Record"><mat-icon>edit_note</mat-icon></button>
+            <button mat-icon-button title="Sync Transactions"><mat-icon>sync_alt</mat-icon></button>
+            <button mat-icon-button title="Download PDF"><mat-icon>file_download</mat-icon></button>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Structural Header and Row Triggers -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <!-- Material Paginator Component -->
+  <mat-paginator [length]="48752"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 aria-label="Select page"
+                 class="custom-paginator">
+  </mat-paginator>
+</section>
+
