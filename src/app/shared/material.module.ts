@@ -23,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
-
+import {MatTabsModule} from '@angular/material/tabs'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
@@ -55,6 +55,7 @@ import { RouterLink , RouterLinkActive  } from '@angular/router';
         LayoutModule,
         MatDatepickerModule,
         MatSlideToggleModule,
+        MatTabsModule,
         // other module 
         BaseChartDirective,
         CommonModule,
@@ -88,6 +89,7 @@ import { RouterLink , RouterLinkActive  } from '@angular/router';
         LayoutModule,
         MatDatepickerModule,
         MatSlideToggleModule,
+        MatTabsModule,
         //outer module export
         BaseChartDirective,
         CommonModule,

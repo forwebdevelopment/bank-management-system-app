@@ -1,1 +1,119 @@
-<p>account-dire-account-details works!</p>
+<div class="detail-container">
+  <!-- Navigation Header Tabs -->
+  <mat-tab-group animationDuration="0ms" class="custom-tabs">
+    <mat-tab label="Overview">
+      <div class="tab-content">
+        
+        <!-- Section 1: Account Information -->
+        <section class="info-section">
+          <div class="section-title">
+            <mat-icon class="icon-blue">badge</mat-icon>
+            <h2>Account Information</h2>
+          </div>
+          <div class="info-grid">
+            <div class="label">Account Type</div>
+            <div class="value">{{ accountData.accountInfo.type }}</div>
+            
+            <div class="label">Branch</div>
+            <div class="value">{{ accountData.accountInfo.branch }}</div>
+            
+            <div class="label">Currency</div>
+            <div class="value">{{ accountData.accountInfo.currency }}</div>
+            
+            <div class="label">Opening Date</div>
+            <div class="value">{{ accountData.accountInfo.openingDate }}</div>
+            
+            <div class="label">Status</div>
+            <div class="value">
+              <span class="status-badge active">{{ accountData.accountInfo.status }}</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Customer Information -->
+        <section class="info-section">
+          <div class="section-title">
+            <mat-icon class="icon-blue">person_outline</mat-icon>
+            <h2>Customer Information</h2>
+          </div>
+          <div class="info-grid">
+            <div class="label">Customer Name</div>
+            <div class="value text-semibold">{{ accountData.customerInfo.name }}</div>
+            
+            <div class="label">Customer ID</div>
+            <div class="value">{{ accountData.customerInfo.id }}</div>
+            
+            <div class="label">Mobile Number</div>
+            <div class="value">{{ accountData.customerInfo.mobile }}</div>
+            
+            <div class="label">Email</div>
+            <div class="value">{{ accountData.customerInfo.email }}</div>
+          </div>
+        </section>
+
+        <!-- Section 3: Financial Summary -->
+        <section class="info-section">
+          <div class="section-title">
+            <mat-icon class="icon-blue">account_balance_wallet</mat-icon>
+            <h2>Financial Summary</h2>
+          </div>
+          <div class="info-grid">
+            <div class="label">Available Balance</div>
+            <div class="value text-green text-semibold">
+              {{ accountData.financialSummary.availableBalance | currency:'INR':'symbol':'1.2-2':'en-IN' }}
+            </div>
+            
+            <div class="label">Total Deposits</div>
+            <div class="value">
+              {{ accountData.financialSummary.totalDeposits | currency:'INR':'symbol':'1.2-2':'en-IN' }}
+            </div>
+            
+            <div class="label">Total Withdrawals</div>
+            <div class="value">
+              {{ accountData.financialSummary.totalWithdrawals | currency:'INR':'symbol':'1.2-2':'en-IN' }}
+            </div>
+            
+            <div class="label">Last Transaction Amount</div>
+            <div class="value text-red text-semibold">
+              -{{ mathAbs(accountData.financialSummary.lastTransactionAmount) | currency:'INR':'symbol':'1.2-2':'en-IN' }}
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4: Activity -->
+        <section class="info-section no-border">
+          <div class="section-title">
+            <mat-icon class="icon-blue">track_changes</mat-icon>
+            <h2>Activity</h2>
+          </div>
+          <div class="info-grid margin-bottom">
+            <div class="label">Last Transaction Date</div>
+            <div class="value">{{ accountData.activity.lastDate }}</div>
+            
+            <div class="label">Recent Activity</div>
+            <div class="value list-value">
+              <div *ngFor="let item of accountData.activity.recentList">{{ item }}</div>
+            </div>
+          </div>
+
+          <!-- Sub-section: Linked Services -->
+          <div class="services-wrapper">
+            <h3 class="sub-label">Linked Services</h3>
+            <div class="chip-container">
+              <div class="custom-chip" *ngFor="let service of accountData.activity.services">
+                <mat-icon class="icon-green-check">check_circle_outline</mat-icon>
+                <span>{{ service }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </mat-tab>
+    <mat-tab label="Transactions">
+      <div class="tab-content structural-placeholder">
+        Transaction history view pipeline.
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

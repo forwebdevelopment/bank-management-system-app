@@ -22,12 +22,10 @@ export interface AccountRecord {
   customerName: string;
   customerId: string;
   branch: string;
-  branchKey: string; // Used for filter mapping matches
   accountType: string;
-  accountTypeKey: string;
-  availableBalance: string;
+  availableBalance: number;
   currency: string;
-  status: 'active' | 'frozen' | 'dormant' | 'closed';
+  status: 'Active' | 'Frozen' | 'Dormant' | 'Closed';
   openedDate: string;
   lastTransaction: string;
 }

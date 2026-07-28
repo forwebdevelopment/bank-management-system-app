@@ -1,62 +1,35 @@
-// Theme Variables
+// Layout System Variables
 $bg-workspace: #f8fafc;
-$border-color: #e2e8f0;
+$border-color: #cbd5e1;
 $spacing-xl: 1.5rem;
-$spacing-md: 1rem;
-$bg-workspace: #f8fafc;
-$border-color: #e2e8f0;
-$spacing-xl: 1.5rem;
+
 .account-directory-layout {
-  display: grid;
-  // Splits screen: Main content takes remaining width, Panel takes fixed 380px width
-  grid-template-columns: 1fr 380px; 
-  column-gap: $spacing-xl;
-  padding: $spacing-xl;
-  background-color: $bg-workspace;
-  min-height: calc(100vh - 70px); // Subtracts global navbar height
-  box-sizing: border-box;
+  // FIX: Force a strict row layout layout so children stack horizontally
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important; // Prevent sidebar from sliding underneath
+  justify-content: flex-start;
+  align-items: flex-start;
+  
   width: 100%;
-
-  .workspace-main {
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    row-gap: $spacing-xl;
-    min-width: 0; // Prevents data tables from stretching layout
-  }
-
-  .layout-content {
-    background: #ffffff;
-    border: 1px solid $border-color;
-    border-radius: 8px;
-    padding: $spacing-md;
-  }
-
-  .workspace-sidebar {
-    background: #ffffff;
-    border-left: 1px solid $border-color;
-    height: 100%;
-    border-radius: 8px;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.02);
-    overflow-y: auto;
-  }
-}
-.account-directory-layout {
-  display: grid;
-  grid-template-columns: 1fr; // Defualt view state leaves sidebar hidden
-  column-gap: 0;
-  padding: $spacing-xl;
-  background-color: $bg-workspace;
   min-height: calc(100vh - 64px);
+  background-color: $bg-workspace;
   box-sizing: border-box;
-  width: 100%;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: $spacing-xl;
+  gap: $spacing-xl;
+  overflow: hidden;
 
+  // FIX: dynamically calculate size so it shrinks and leaves space for the sidebar
   .workspace-main {
+    flex: 1 1 0% !important; // Fill remaining space flexibly
+    min-width: 0 !important; // Stop children from breaking standard width limits
     display: flex;
     flex-direction: column;
     gap: $spacing-xl;
-    min-width: 0;
+  }
+
+  .layout-header, .layout-metrics {
+    width: 100%;
   }
 
   .layout-filters, .layout-content {
@@ -64,86 +37,52 @@ $spacing-xl: 1.5rem;
     border: 1px solid $border-color;
     border-radius: 4px;
     padding: 1.25rem;
+    box-sizing: border-box;
+    width: 100%;
   }
 
-  // Active grid layouts when visual state toggled open on desktops
-  &.sidebar-visible {
-    grid-template-columns: 1fr 380px;
-    column-gap: $spacing-xl;
-  }
-
+  // FIX: Lock the side panel layout container so it stays fixed on the right
   .workspace-sidebar {
+    flex: 0 0 380px !important; // Lock width precisely at 380px
+    width: 380px !important;
+    min-width: 380px !important;
     background: #ffffff;
     border: 1px solid $border-color;
     border-radius: 4px;
-    height: 100%;
-    position: relative;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    padding: 1.25rem;
+    box-sizing: border-box;
+    align-self: stretch; // Match height of the main grid content container
     overflow-y: auto;
-    animation: slideIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-
-    .close-panel-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      font-size: 1.15rem;
-      color: #64748b;
-      cursor: pointer;
-      z-index: 10;
-      
-      &:hover { color: #0f172a; }
-    }
+    background-color: #ffffff;
+    box-shadow: -2px 0 8px rgba(15, 23, 42, 0.03);
   }
 }
 
-// Media view queries managing smaller devices / overlay behaviors
-@media (max-width: 1024px) {
-  .account-directory-layout.sidebar-visible {
-    grid-template-columns: 1fr; // Forces main workspace baseline focus on tablets
-    column-gap: 0;
+/* Responsive Overrides */
+@media (max-width: 1150px) {
+  // Turn sidebar into an overlay on smaller tablets/mobiles
+  .account-directory-layout {
+    position: relative;
 
     .workspace-sidebar {
       position: fixed;
       top: 0;
       right: 0;
-      width: 400px;
+      width: 360px !important;
+      min-width: 360px !important;
       height: 100vh;
       z-index: 999;
-      box-shadow: -6px 0 24px rgba(15, 23, 42, 0.15);
+      box-shadow: -6px 0 24px rgba(15, 23, 42, 0.12);
       border-radius: 0;
     }
   }
 }
 
-@media (max-width: 540px) {
-  .account-directory-layout.sidebar-visible {
-    .workspace-sidebar {
-      width: 100%; // Fully fills space across extra small viewports
-    }
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-// Responsive design: Collapse sidebar on smaller screens
-@media (max-width: 1200px) {
+@media (max-width: 580px) {
   .account-directory-layout {
-    grid-template-columns: 1fr;
-    row-gap: $spacing-xl;
-    
     .workspace-sidebar {
-      border-left: none;
-      border-top: 1px solid $border-color;
+      width: 100% !important; // Full width view screens on phone devices
+      min-width: 100% !important;
     }
   }
 }

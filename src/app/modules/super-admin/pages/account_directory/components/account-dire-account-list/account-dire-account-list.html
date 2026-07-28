@@ -120,99 +120,97 @@
 
 <!-- Table Section -->
 
-<div class="table-card-wrapper">
-  <!-- Dynamic horizontal scroll containment layer -->
-  <div class="responsive-scroll-boundary">
-    <table mat-table [dataSource]="dataSource" class="custom-banking-grid">
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="custom-table">
 
-      <!-- Column: Account Number -->
-      <ng-container matColumnDef="accountNumber">
-        <th mat-header-cell *matHeaderCellDef> Account Number </th>
-        <td mat-cell *matCellDef="let element" class="font-medium text-dark text-nowrap"> {{element.accountNumber}} </td>
-      </ng-container>
+    <!-- Account Number -->
+    <ng-container matColumnDef="accountNumber">
+      <th mat-header-cell *matHeaderCellDef>Account Number</th>
+      <td mat-cell *matCellDef="let element">{{element.accountNumber}}</td>
+    </ng-container>
 
-      <!-- Column: Customer Name -->
-      <ng-container matColumnDef="customerName">
-        <th mat-header-cell *matHeaderCellDef> Customer Name </th>
-        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.customerName}} </td>
-      </ng-container>
+    <!-- Customer Name -->
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef>Customer Name</th>
+      <td mat-cell *matCellDef="let element" class="font-medium">{{element.customerName}}</td>
+    </ng-container>
 
-      <!-- Column: Customer ID -->
-      <ng-container matColumnDef="customerId">
-        <th mat-header-cell *matHeaderCellDef> Customer ID </th>
-        <td mat-cell *matCellDef="let element" class="font-mono text-secondary"> {{element.customerId}} </td>
-      </ng-container>
+    <!-- Customer ID -->
+    <ng-container matColumnDef="customerId">
+      <th mat-header-cell *matHeaderCellDef>Customer ID</th>
+      <td mat-cell *matCellDef="let element">{{element.customerId}}</td>
+    </ng-container>
 
-      <!-- Column: Branch -->
-      <ng-container matColumnDef="branch">
-        <th mat-header-cell *matHeaderCellDef> Branch </th>
-        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.branch}} </td>
-      </ng-container>
+    <!-- Branch -->
+    <ng-container matColumnDef="branch">
+      <th mat-header-cell *matHeaderCellDef>Branch</th>
+      <td mat-cell *matCellDef="let element">{{element.branch}}</td>
+    </ng-container>
 
-      <!-- Column: Account Type -->
-      <ng-container matColumnDef="accountType">
-        <th mat-header-cell *matHeaderCellDef> Account Type </th>
-        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.accountType}} </td>
-      </ng-container>
+    <!-- Account Type -->
+    <ng-container matColumnDef="accountType">
+      <th mat-header-cell *matHeaderCellDef>Account Type</th>
+      <td mat-cell *matCellDef="let element">{{element.accountType}}</td>
+    </ng-container>
 
-      <!-- Column: Available Balance -->
-      <ng-container matColumnDef="availableBalance">
-        <th mat-header-cell *matHeaderCellDef> Available Balance </th>
-        <td mat-cell *matCellDef="let element" class="font-semibold text-dark text-nowrap"> {{element.availableBalance}} </td>
-      </ng-container>
+    <!-- Available Balance -->
+    <ng-container matColumnDef="availableBalance">
+      <th mat-header-cell *matHeaderCellDef>Available Balance</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.availableBalance | currency:'INR':'symbol':'1.2-2':'en-IN'}}
+      </td>
+    </ng-container>
 
-      <!-- Column: Currency -->
-      <ng-container matColumnDef="currency">
-        <th mat-header-cell *matHeaderCellDef> Currency </th>
-        <td mat-cell *matCellDef="let element" class="text-center text-secondary"> {{element.currency}} </td>
-      </ng-container>
+    <!-- Currency -->
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef>Currency</th>
+      <td mat-cell *matCellDef="let element">{{element.currency}}</td>
+    </ng-container>
 
-      <!-- Column: Status Badges -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef class="text-center"> Status </th>
-        <td mat-cell *matCellDef="let element" class="text-center">
-          <span class="status-badge" [ngClass]="'badge-' + element.status">
-            {{element.status | titlecase}}
-          </span>
-        </td>
-      </ng-container>
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="status-badge" [ngClass]="element.status.toLowerCase()">
+          {{element.status}}
+        </span>
+      </td>
+    </ng-container>
 
-      <!-- Column: Opened Date -->
-      <ng-container matColumnDef="openedDate">
-        <th mat-header-cell *matHeaderCellDef> Opened Date </th>
-        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.openedDate}} </td>
-      </ng-container>
+    <!-- Opened Date -->
+    <ng-container matColumnDef="openedDate">
+      <th mat-header-cell *matHeaderCellDef>Opened Date</th>
+      <td mat-cell *matCellDef="let element">{{element.openedDate}}</td>
+    </ng-container>
 
-      <!-- Column: Last Transaction (Formatted to group text on mobile) -->
-      <ng-container matColumnDef="lastTransaction">
-        <th mat-header-cell *matHeaderCellDef> Last Transaction </th>
-        <td mat-cell *matCellDef="let element" class="datetime-block-cell">
-          <span class="date-row">{{element.lastTransaction.split(' ')[0]}}</span>
-          <span class="time-row">{{element.lastTransaction.split(' ')[1]}} {{element.lastTransaction.split(' ')[2]}}</span>
-        </td>
-      </ng-container>
+    <!-- Last Transaction -->
+    <ng-container matColumnDef="lastTransaction">
+      <th mat-header-cell *matHeaderCellDef>Last Transaction</th>
+      <td mat-cell *matCellDef="let element" class="time-cell">{{element.lastTransaction}}</td>
+    </ng-container>
 
-      <!-- Column: Row Action Buttons -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef class="text-center sticky-action-col"> Actions </th>
-        <td mat-cell *matCellDef="let element" class="text-center actions-flex-container sticky-action-col">
-          <button mat-icon-button class="row-action-btn" aria-label="View Profile">
-            <mat-icon>visibility</mat-icon>
-          </button>
-          <button mat-icon-button class="row-action-btn" aria-label="Edit Profile">
-            <mat-icon>person_outline</mat-icon>
-          </button>
-          <button mat-icon-button class="row-action-btn" aria-label="View Logs">
-            <mat-icon>description</mat-icon>
-          </button>
-          <button mat-icon-button class="row-action-btn" aria-label="More Actions">
-            <mat-icon>list</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+    <!-- Actions -->
+   <ng-container matColumnDef="actions">
+  <th mat-header-cell *matHeaderCellDef class="text-center">Actions</th>
+  <td mat-cell *matCellDef="let element" class="action-buttons">
+    
+    <!-- Dynamic toggle action button -->
+    <button mat-icon-button class="btn-view" (click)="toggleRowVisibility(element)">
+      <mat-icon>{{ isRowVisible(element.accountNumber) ? 'visibility' : 'visibility_off' }}</mat-icon>
+    </button>
+    
+    <button mat-icon-button class="btn-profile"><mat-icon>person</mat-icon></button>
+    <button mat-icon-button class="btn-edit"><mat-icon>edit_note</mat-icon></button>
+    <button mat-icon-button class="btn-menu"><mat-icon>notes</mat-icon></button>
+  </td>
+</ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="interactive-table-row"></tr>
-    </table>
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginator Footer -->
+  <mat-paginator [length]="48625" [pageSize]="10" showFirstLastButtons></mat-paginator>
 </div>
+
+

@@ -14,13 +14,14 @@
 
     <!-- Section 3: Filters & Data Grid Table -->
     <section class="layout-content">
-     <app-account-dire-account-list></app-account-dire-account-list>
+     <app-account-dire-account-list (viewAccount)="showAccountDetails($event)"></app-account-dire-account-list>
     </section>
   </div>
 
   <!-- Right Side: Section 4 - Account Details Sidebar -->
-  <aside class="workspace-sidebar">
-    <!-- <app-account-details-sidebar></app-account-details-sidebar> -->
-     details
+   @if (this.accountDetials) {
+  <aside class="workspace-sidebar"  >
+     <app-account-dire-account-details (AccountDetails)="this.accountDetials"></app-account-dire-account-details>
   </aside>
+}
 </main>
