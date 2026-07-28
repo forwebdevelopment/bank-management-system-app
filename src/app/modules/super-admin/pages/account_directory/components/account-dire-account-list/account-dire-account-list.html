@@ -1,0 +1,218 @@
+<div class="filter-panel">
+  <div class="filter-grid">
+    
+    <!-- 1. Input: Account Number -->
+    <div class="filter-item">
+      <label for="accNum">Search by Account Number</label>
+      <div class="input-container">
+        <input type="text" id="accNum" placeholder="Enter account number" [(ngModel)]="filters.accountNumber">
+        <span class="field-icon">🔍</span>
+      </div>
+    </div>
+
+    <!-- 2. Input: Customer Name -->
+    <div class="filter-item">
+      <label for="custName">Search by Customer Name</label>
+      <div class="input-container">
+        <input type="text" id="custName" placeholder="Enter customer name" [(ngModel)]="filters.customerName">
+        <span class="field-icon">🔍</span>
+      </div>
+    </div>
+
+    <!-- 3. Input: Customer ID -->
+    <div class="filter-item">
+      <label for="custId">Search by Customer ID</label>
+      <div class="input-container">
+        <input type="text" id="custId" placeholder="Enter customer ID" [(ngModel)]="filters.customerId">
+        <span class="field-icon">🔍</span>
+      </div>
+    </div>
+
+    <!-- 4. Custom Select: Branch -->
+    <div class="filter-item">
+      <label>Branch</label>
+      <div class="custom-dropdown" [class.open]="activeDropdown === 'branch'">
+        <div class="dropdown-trigger" (click)="toggleDropdown('branch', $event)">
+          <span class="selected-value">{{ selectedBranchLabel }}</span>
+          <span class="chevron-icon">▼</span>
+        </div>
+        <ul class="dropdown-menu">
+          <li class="dropdown-option" [class.option-active]="filters.branch === ''" (click)="selectOption('branch', '', 'All Branches')">All Branches</li>
+          <li class="dropdown-option" [class.option-active]="filters.branch === 'connaught-place'" (click)="selectOption('branch', 'connaught-place', 'Connaught Place')">Connaught Place</li>
+          <li class="dropdown-option" [class.option-active]="filters.branch === 'koramangala'" (click)="selectOption('branch', 'koramangala', 'Koramangala')">Koramangala</li>
+          <li class="dropdown-option" [class.option-active]="filters.branch === 'bandra-west'" (click)="selectOption('branch', 'bandra-west', 'Bandra West')">Bandra West</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. Custom Select: Account Type -->
+    <div class="filter-item">
+      <label>Account Type</label>
+      <div class="custom-dropdown" [class.open]="activeDropdown === 'accountType'">
+        <div class="dropdown-trigger" (click)="toggleDropdown('accountType', $event)">
+          <span class="selected-value">{{ selectedTypeLabel }}</span>
+          <span class="chevron-icon">▼</span>
+        </div>
+        <ul class="dropdown-menu">
+          <li class="dropdown-option" [class.option-active]="filters.accountType === ''" (click)="selectOption('accountType', '', 'All Account Types')">All Account Types</li>
+          <li class="dropdown-option" [class.option-active]="filters.accountType === 'savings'" (click)="selectOption('accountType', 'savings', 'Savings Account')">Savings Account</li>
+          <li class="dropdown-option" [class.option-active]="filters.accountType === 'current'" (click)="selectOption('accountType', 'current', 'Current Account')">Current Account</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6. Custom Select: Account Status -->
+    <div class="filter-item">
+      <label>Account Status</label>
+      <div class="custom-dropdown" [class.open]="activeDropdown === 'status'">
+        <div class="dropdown-trigger" (click)="toggleDropdown('status', $event)">
+          <span class="selected-value">{{ selectedStatusLabel }}</span>
+          <span class="chevron-icon">▼</span>
+        </div>
+        <ul class="dropdown-menu">
+          <li class="dropdown-option" [class.option-active]="filters.status === ''" (click)="selectOption('status', '', 'All Statuses')">All Statuses</li>
+          <li class="dropdown-option" [class.option-active]="filters.status === 'active'" (click)="selectOption('status', 'active', 'Active')">Active</li>
+          <li class="dropdown-option" [class.option-active]="filters.status === 'dormant'" (click)="selectOption('status', 'dormant', 'Dormant')">Dormant</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7. Custom Select: Currency -->
+    <div class="filter-item">
+      <label>Currency</label>
+      <div class="custom-dropdown" [class.open]="activeDropdown === 'currency'">
+        <div class="dropdown-trigger" (click)="toggleDropdown('currency', $event)">
+          <span class="selected-value">{{ selectedCurrencyLabel }}</span>
+          <span class="chevron-icon">▼</span>
+        </div>
+        <ul class="dropdown-menu">
+          <li class="dropdown-option" [class.option-active]="filters.currency === ''" (click)="selectOption('currency', '', 'All Currencies')">All Currencies</li>
+          <li class="dropdown-option" [class.option-active]="filters.currency === 'inr'" (click)="selectOption('currency', 'inr', 'INR')">INR</li>
+          <li class="dropdown-option" [class.option-active]="filters.currency === 'usd'" (click)="selectOption('currency', 'usd', 'USD')">USD</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 8. Date Opened Range Picker Mock Field -->
+    <div class="filter-item">
+      <label for="dateRange">Date Opened Range</label>
+      <div class="input-container">
+        <input type="text" id="dateRange" placeholder="01/05/2026 - 26/05/2026" disabled>
+        <span class="field-icon">📅</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Action Layout Buttons Block -->
+  <div class="filter-actions-row">
+    <div class="action-buttons-left">
+      <button type="button" class="btn btn-search" (click)="onSearch()">
+        <span class="btn-icon">🔍</span> Search
+      </button>
+      <button type="button" class="btn btn-reset" (click)="onReset()">
+        <span class="btn-icon">🔄</span> Reset Filters
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Table Section -->
+
+<div class="table-card-wrapper">
+  <!-- Dynamic horizontal scroll containment layer -->
+  <div class="responsive-scroll-boundary">
+    <table mat-table [dataSource]="dataSource" class="custom-banking-grid">
+
+      <!-- Column: Account Number -->
+      <ng-container matColumnDef="accountNumber">
+        <th mat-header-cell *matHeaderCellDef> Account Number </th>
+        <td mat-cell *matCellDef="let element" class="font-medium text-dark text-nowrap"> {{element.accountNumber}} </td>
+      </ng-container>
+
+      <!-- Column: Customer Name -->
+      <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.customerName}} </td>
+      </ng-container>
+
+      <!-- Column: Customer ID -->
+      <ng-container matColumnDef="customerId">
+        <th mat-header-cell *matHeaderCellDef> Customer ID </th>
+        <td mat-cell *matCellDef="let element" class="font-mono text-secondary"> {{element.customerId}} </td>
+      </ng-container>
+
+      <!-- Column: Branch -->
+      <ng-container matColumnDef="branch">
+        <th mat-header-cell *matHeaderCellDef> Branch </th>
+        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.branch}} </td>
+      </ng-container>
+
+      <!-- Column: Account Type -->
+      <ng-container matColumnDef="accountType">
+        <th mat-header-cell *matHeaderCellDef> Account Type </th>
+        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.accountType}} </td>
+      </ng-container>
+
+      <!-- Column: Available Balance -->
+      <ng-container matColumnDef="availableBalance">
+        <th mat-header-cell *matHeaderCellDef> Available Balance </th>
+        <td mat-cell *matCellDef="let element" class="font-semibold text-dark text-nowrap"> {{element.availableBalance}} </td>
+      </ng-container>
+
+      <!-- Column: Currency -->
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef> Currency </th>
+        <td mat-cell *matCellDef="let element" class="text-center text-secondary"> {{element.currency}} </td>
+      </ng-container>
+
+      <!-- Column: Status Badges -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Status </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <span class="status-badge" [ngClass]="'badge-' + element.status">
+            {{element.status | titlecase}}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Column: Opened Date -->
+      <ng-container matColumnDef="openedDate">
+        <th mat-header-cell *matHeaderCellDef> Opened Date </th>
+        <td mat-cell *matCellDef="let element" class="text-nowrap"> {{element.openedDate}} </td>
+      </ng-container>
+
+      <!-- Column: Last Transaction (Formatted to group text on mobile) -->
+      <ng-container matColumnDef="lastTransaction">
+        <th mat-header-cell *matHeaderCellDef> Last Transaction </th>
+        <td mat-cell *matCellDef="let element" class="datetime-block-cell">
+          <span class="date-row">{{element.lastTransaction.split(' ')[0]}}</span>
+          <span class="time-row">{{element.lastTransaction.split(' ')[1]}} {{element.lastTransaction.split(' ')[2]}}</span>
+        </td>
+      </ng-container>
+
+      <!-- Column: Row Action Buttons -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center sticky-action-col"> Actions </th>
+        <td mat-cell *matCellDef="let element" class="text-center actions-flex-container sticky-action-col">
+          <button mat-icon-button class="row-action-btn" aria-label="View Profile">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button class="row-action-btn" aria-label="Edit Profile">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <button mat-icon-button class="row-action-btn" aria-label="View Logs">
+            <mat-icon>description</mat-icon>
+          </button>
+          <button mat-icon-button class="row-action-btn" aria-label="More Actions">
+            <mat-icon>list</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="interactive-table-row"></tr>
+    </table>
+  </div>
+</div>

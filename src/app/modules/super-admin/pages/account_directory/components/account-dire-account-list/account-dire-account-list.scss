@@ -1,0 +1,420 @@
+// Layout Variable Palette Definitions
+$text-label: #475569;
+$text-input: #1e293b;
+$border-color: #cbd5e1;
+$bg-input: #ffffff;
+$brand-blue: #2563eb;
+$bg-hover: #f1f5f9;
+$text-muted: #94a3b8;
+$font-family: 'Inter', system-ui, -apple-system, sans-serif;
+$text-main: #0f172a;
+$text-sub: #64748b;
+$border-color: #f1f5f9;
+$brand-blue: #2563eb;
+.filter-panel {
+  width: 100%;
+  font-family: $font-family;
+  box-sizing: border-box;
+
+  // Adaptive Multi-column Grid Core Layout
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: $text-label;
+    }
+
+    input {
+      width: 100%;
+      height: 38px;
+      padding: 0 0.75rem;
+      font-size: 0.85rem;
+      color: $text-input;
+      background-color: $bg-input;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.15s ease-in-out;
+
+      &:focus {
+        border-color: $brand-blue;
+      }
+
+      &::placeholder {
+        color: $text-muted;
+      }
+    }
+
+    // Input Icon Positioning Structure
+    .input-container {
+      position: relative;
+      width: 100%;
+
+      input {
+        padding-right: 2.2rem;
+      }
+
+      .field-icon {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.85rem;
+        color: $text-muted;
+        pointer-events: none;
+      }
+    }
+  }
+
+  // Refined Custom Dropdown Ul/Li Layout Engine
+  .custom-dropdown {
+    position: relative;
+    width: 100%;
+
+    .dropdown-toggle-input {
+      display: none; // Completely isolate the mechanical click monitor checkbox
+    }
+
+    .dropdown-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 38px;
+      padding: 0 0.75rem;
+      font-size: 0.85rem;
+      color: $text-input;
+      background-color: $bg-input;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      box-sizing: border-box;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease-in-out;
+
+      .chevron-icon {
+        font-size: 0.6rem;
+        color: #64748b;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover {
+        border-color: #94a3b8;
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      background-color: #ffffff;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      padding: 0.25rem 0;
+      margin: 0;
+      list-style: none;
+      overflow-y: auto;
+      z-index: 110;
+      
+      // Hidden baseline
+      display: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .dropdown-option {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      color: $text-input;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+
+      &:hover {
+        background-color: $bg-hover;
+        color: $brand-blue;
+      }
+
+      &.option-active {
+        background-color: #eff6ff;
+        color: $brand-blue;
+        font-weight: 500;
+      }
+    }
+
+    // Pure functional CSS toggling via checked states
+    .dropdown-toggle-input:checked {
+      & ~ .dropdown-trigger {
+        border-color: $brand-blue;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+
+        .chevron-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      & ~ .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  
+
+  // Footer Filter Action Layout Row
+  .filter-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1.25rem;
+    gap: 1rem;
+
+    .action-buttons-left {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      height: 38px;
+      padding: 0 1rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      box-sizing: border-box;
+
+      .btn-icon {
+        font-size: 0.9rem;
+      }
+    }
+
+    .btn-search {
+      background-color: $brand-blue;
+      color: #ffffff;
+      border: none;
+
+      &:hover {
+        background-color: #1d4ed8;
+      }
+    }
+
+    .btn-reset, .btn-export {
+      background-color: transparent;
+      color: $brand-blue;
+      border: 1px solid $border-color;
+
+      &:hover {
+        background-color: #f8fafc;
+        border-color: #94a3b8;
+      }
+    }
+  }
+}
+
+
+
+.table-card-wrapper {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  // The critical layer containing overflow grid tables safely
+  .responsive-scroll-boundary {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling for mobile browsers
+    
+    // Custom fine-scrollbar styles for clean design integration
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+  }
+
+  .custom-banking-grid {
+    width: 100%;
+    min-width: 1100px; // Guarantees columns have breathing room on screens
+    border-collapse: collapse;
+
+    th.mat-mdc-header-cell {
+      background-color: #f8fafc;
+      color: #475569;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    td.mat-mdc-cell {
+      color: #334155;
+      font-size: 0.825rem;
+      padding: 1rem;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .interactive-table-row {
+      &:hover {
+        background-color: #f8fafc;
+      }
+    }
+  }
+
+  // Utility classes for standard data structure items
+  .font-medium { font-weight: 500; }
+  .font-semibold { font-weight: 600; }
+  .text-dark { color: $text-main !important; }
+  .text-secondary { color: $text-sub !important; }
+  .text-nowrap { white-space: nowrap; }
+  .text-center { text-style: center; justify-content: center; }
+  .font-mono { font-family: monospace; font-size: 0.775rem; }
+
+  // Keeps timestamp rows tightly stacked together
+  .datetime-block-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.15rem;
+    white-space: nowrap;
+
+    .date-row {
+      font-weight: 500;
+      color: #334155;
+    }
+    .time-row {
+      font-size: 0.725rem;
+      color: $text-sub;
+    }
+  }
+
+  // Visual status badge containers matching image layout details
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.725rem;
+    font-weight: 600;
+    border-radius: 4px;
+
+    &.badge-active {
+      background-color: #f0fdf4;
+      color: #16a34a;
+    }
+    &.badge-frozen {
+      background-color: #fff7ed;
+      color: #ea580c;
+    }
+    &.badge-dormant {
+      background-color: #f1f5f9;
+      color: #475569;
+    }
+    &.badge-closed {
+      background-color: #fef2f2;
+      color: #dc2626;
+    }
+  }
+
+  // Fixed inline flex structure mapping button indicators
+  .actions-flex-container {
+    display: flex !important;
+    align-items: center;
+    gap: 0.15rem;
+    min-width: 140px;
+
+    .row-action-btn {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: $brand-blue;
+
+      mat-icon {
+        font-size: 1.1rem;
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+
+      &:hover {
+        background-color: #eff6ff;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  // Optional: Pin the actions column to the right edge during scroll
+  .sticky-action-col {
+    position: sticky;
+    right: 0;
+    background: #ffffff;
+    z-index: 10;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.03);
+  }
+
+  th.sticky-action-col {
+    background: #f8fafc !important;
+  }
+}
+/* Responsive Viewport Grid Breakpoints */
+@media (max-width: 1200px) {
+  .filter-panel .filter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .filter-panel .filter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-panel .filter-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-panel .filter-actions-row {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .action-buttons-left {
+      width: 100%;
+    }
+    
+    .btn {
+      flex: 1;
+      width: 100%;
+    }
+  }
+}

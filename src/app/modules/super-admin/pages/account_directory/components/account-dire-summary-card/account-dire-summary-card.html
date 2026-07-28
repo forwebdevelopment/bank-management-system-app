@@ -1,0 +1,30 @@
+<div class="metrics-grid">
+  <div class="metric-card" *ngFor="let item of metrics">
+    
+    <!-- Top Row: Icon & Title Split -->
+    <div class="card-header">
+      <div class="icon-wrapper" [style.background-color]="item.color + '15'">
+        <mat-icon [style.color]="item.color">account_balance_wallet</mat-icon>
+      </div>
+      <div class="title-wrapper">
+        <span class="metric-title">{{ item.title }}</span>
+        <h2 class="metric-count">{{ item.count }}</h2>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Trend Percentage & Sparkline Chart -->
+    <div class="card-footer">
+      <div class="trend-indicator" [class.positive]="item.isPositive">
+        <mat-icon class="trend-icon">arrow_upward</mat-icon>
+        <span class="trend-text">{{ item.percentage }}</span>
+        <span class="trend-label">vs last month</span>
+      </div>
+      
+      <!-- Responsive Canvas Wrapper Container -->
+      <div class="chart-container">
+        <canvas #miniChart></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>

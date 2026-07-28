@@ -1,0 +1,25 @@
+<div class="account-header">
+  <!-- Title Stack -->
+  <div class="title-container">
+    <h1 class="main-title">Account Directory</h1>
+    <p class="subtitle">Monitor all customer bank accounts across every branch.</p>
+  </div>
+
+  <!-- Action Controls matching your exact layout -->
+  <div class="actions-container">
+    <button mat-stroked-button class="action-btn text-btn btn-blue" (click)="onExport()">
+      <mat-icon>download</mat-icon>
+      <span>Export Accounts</span>
+    </button>
+
+    <button mat-stroked-button class="action-btn text-btn btn-blue" (click)="onPrint()">
+      <mat-icon>print</mat-icon>
+      <span>Print Report</span>
+    </button>
+
+    <button mat-stroked-button class="action-btn text-btn btn-blue" (click)="onRefresh()">
+      <mat-icon>refresh</mat-icon>
+      <span>Refresh</span>
+    </button>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { Branchmanagement } from './pages/branch_managerment/branchmanagement/br
 import { UserManagement } from './pages/user_management/user-management/user-management';
 import { RoleAndPermission } from './pages/role_and_permission/role-and-permission/role-and-permission';
 import { CustomerDirectory } from './pages/customer_directory/customer-directory/customer-directory';
+import { AccountDirectory } from './pages/account_directory/account-directory/account-directory';
 
 export const Admin_Routs: Routes = [
     {
@@ -16,7 +17,8 @@ export const Admin_Routs: Routes = [
             { path: 'branch-management', component: Branchmanagement },
             { path: 'user-management', component: UserManagement },
             { path: 'roles-permissions', component: RoleAndPermission },
-            { path: 'customer-directory', component: CustomerDirectory }
+            { path: 'customer-directory', component: CustomerDirectory },
+            {path:'account-directory', component:AccountDirectory}
         ]
     }
 

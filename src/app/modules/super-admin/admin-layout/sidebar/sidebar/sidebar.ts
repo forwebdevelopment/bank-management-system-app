@@ -62,7 +62,7 @@ export class SidebarComponent {
         {
           label: 'Account Directory',
           icon: 'credit_card',
-          route: '/super-admin/accounts',
+          route: '/super-admin/account-directory',
         },
       ],
     },
