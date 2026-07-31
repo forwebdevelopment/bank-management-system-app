@@ -1,0 +1,168 @@
+$card-bg: #ffffff;
+$border-color: #e2e8f0;
+$text-main: #1e293b;
+$text-sub: #64748b;
+$toggle-active: #0f62fe; // Balanced primary theme blueprint action blue hue
+$toggle-track-bg: #cbd5e1;
+
+.dense-card {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  // STRICT HEIGHT MATCHING AND INDEPENDENT OVERFLOW MONITORING
+  &.height-aligned-card {
+    height: 346px; // Fixed box frame sizing matching your Business Configuration height profile exactly
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+
+    .section-icon {
+      width: 18px;
+      height: 18px;
+      color: #0f62fe;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: $text-main;
+      margin: 0;
+    }
+  }
+}
+
+// Custom internal scrollable frame layer viewport bounds 
+.scrollable-viewport {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  box-sizing: border-box;
+
+  // Clean custom thin scrollbar branding to fit premium light dashboards parameters
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+    &:hover { background: #94a3b8; }
+  }
+}
+
+// 2-COLUMN DENSE SUBGRID ARCHITECTURE
+.toggles-grid-split-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); // Split matrix rows into two clean balancing tracks
+  gap: 10px; // Optimized tight dense gap
+  width: 100%;
+
+  // Gracefully falls back to fluid single row on narrow smartphone dimensions
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .toggle-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      background-color: #f1f5f9;
+      border-color: #e2e8f0;
+    }
+
+    .meta-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-right: 10px;
+      text-align: left;
+
+      .toggle-title {
+        font-size: 12px; // Refined high-density typography sizing look
+        font-weight: 500;
+        color: $text-main;
+      }
+
+      .toggle-desc {
+        font-size: 10px;
+        color: $text-sub;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+// Premium iOS-style interactive animated switches engine structures
+.switch-container {
+  position: relative;
+  display: inline-block;
+  width: 36px; // Dense switch dimensions
+  height: 20px;
+  flex-shrink: 0;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .switch-slider {
+      background-color: $toggle-active;
+
+      &::before {
+        transform: translateX(16px);
+        background-color: #ffffff;
+      }
+    }
+
+    &:focus + .switch-slider {
+      box-shadow: 0 0 0 2.5px rgba(15, 98, 254, 0.2);
+    }
+  }
+
+  .switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: $toggle-track-bg;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}

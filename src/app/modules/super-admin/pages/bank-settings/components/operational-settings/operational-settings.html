@@ -1,0 +1,122 @@
+<mat-card class="dense-card height-aligned-card">
+  <mat-card-header>
+    <div class="header-icon-title">
+      <mat-icon class="section-icon">schedule</mat-icon>
+      <mat-card-title>6. Operational Settings</mat-card-title>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="operationalForm" class="dense-form-grid">
+      
+      <!-- Business Start Time -->
+      <div class="form-group">
+        <label class="field-label">Business Start Time <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'startTime' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'startTime')">
+            <span>{{ getSelectedLabel('businessStartTime', timeOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of timeOptions" 
+                [ngClass]="{ 'selected': operationalForm.get('businessStartTime')?.value === opt.value }"
+                (click)="selectOption('businessStartTime', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Business End Time -->
+      <div class="form-group">
+        <label class="field-label">Business End Time <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'endTime' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'endTime')">
+            <span>{{ getSelectedLabel('businessEndTime', timeOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of timeOptions" 
+                [ngClass]="{ 'selected': operationalForm.get('businessEndTime')?.value === opt.value }"
+                (click)="selectOption('businessEndTime', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Working Days -->
+      <div class="form-group">
+        <label class="field-label">Working Days <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'workingDays' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'workingDays')">
+            <span>{{ getSelectedLabel('workingDays', workingDaysOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of workingDaysOptions" 
+                [ngClass]="{ 'selected': operationalForm.get('workingDays')?.value === opt.value }"
+                (click)="selectOption('workingDays', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Weekend Configuration -->
+      <div class="form-group">
+        <label class="field-label">Weekend Configuration <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'weekends' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'weekends')">
+            <span>{{ getSelectedLabel('weekendConfig', weekendOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of weekendOptions" 
+                [ngClass]="{ 'selected': operationalForm.get('weekendConfig')?.value === opt.value }"
+                (click)="selectOption('weekendConfig', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Maximum Login Attempts -->
+      <div class="form-group">
+        <label class="field-label">Maximum Login Attempts <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'loginAttempts' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'loginAttempts')">
+            <span>{{ getSelectedLabel('maxLoginAttempts', loginAttemptsOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of loginAttemptsOptions" 
+                [ngClass]="{ 'selected': operationalForm.get('maxLoginAttempts')?.value === opt.value }"
+                (click)="selectOption('maxLoginAttempts', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Session Timeout -->
+      <div class="form-group">
+        <label class="field-label">Session Timeout <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'timeout' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'timeout')">
+            <span>{{ getSelectedLabel('sessionTimeout', timeoutOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of timeoutOptions" 
+                [ngClass]="{ 'selected': operationalForm.get('sessionTimeout')?.value === opt.value }"
+                (click)="selectOption('sessionTimeout', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,72 @@
+<mat-card class="branding-original-card">
+  
+  <mat-card-header>
+    <div class="header-icon-title">
+      <!-- Restored native mat-icon to match the style of Card 6 perfectly -->
+      <mat-icon class="section-icon">branding_watermark</mat-icon>
+      <mat-card-title>5. Branding</mat-card-title>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="horizontal-upload-row">
+      
+      <!-- Box 1: Login Background Image -->
+      <div class="uploader-column-item">
+        <span class="block-title">Login Background Image</span>
+        <div class="asset-preview-frame">
+          <img *ngIf="loginBgPreview" [src]="loginBgPreview" alt="Login BG">
+          <div *ngIf="!loginBgPreview" class="fallback-placeholder">
+            <span>Default Login BG</span>
+          </div>
+        </div>
+        <input type="file" id="loginBgFile" class="hidden-file-input" (change)="onFileChange($event, 'loginBg')" accept="image/png, image/jpeg">
+        <label for="loginBgFile" class="change-action-btn">Change</label>
+        <span class="block-hint">JPG, PNG (Max. 5MB)</span>
+      </div>
+
+      <!-- Box 2: Dashboard Banner -->
+      <div class="uploader-column-item">
+        <span class="block-title">Dashboard Banner</span>
+        <div class="asset-preview-frame">
+          <img *ngIf="dashBannerPreview" [src]="dashBannerPreview" alt="Dashboard Banner">
+          <div *ngIf="!dashBannerPreview" class="fallback-placeholder">
+            <span>Default Dashboard Banner</span>
+          </div>
+        </div>
+        <input type="file" id="dashBannerFile" class="hidden-file-input" (change)="onFileChange($event, 'dashBanner')" accept="image/png, image/jpeg">
+        <label for="dashBannerFile" class="change-action-btn">Change</label>
+        <span class="block-hint">JPG, PNG (Max. 5MB)</span>
+      </div>
+
+      <!-- Box 3: Email Header Logo -->
+      <div class="uploader-column-item">
+        <span class="block-title">Email Header Logo</span>
+        <div class="asset-preview-frame">
+          <img *ngIf="emailHeaderPreview" [src]="emailHeaderPreview" alt="Email Header">
+          <div *ngIf="!emailHeaderPreview" class="fallback-placeholder">
+            <span>Default Email Header</span>
+          </div>
+        </div>
+        <input type="file" id="emailHeaderFile" class="hidden-file-input" (change)="onFileChange($event, 'emailHeader')" accept="image/png, image/jpeg">
+        <label for="emailHeaderFile" class="change-action-btn">Change</label>
+        <span class="block-hint">JPG, PNG (Max. 2MB)</span>
+      </div>
+
+      <!-- Box 4: PDF Report Logo -->
+      <div class="uploader-column-item">
+        <span class="block-title">PDF Report Logo</span>
+        <div class="asset-preview-frame">
+          <img *ngIf="pdfLogoPreview" [src]="pdfLogoPreview" alt="PDF Logo">
+          <div *ngIf="!pdfLogoPreview" class="fallback-placeholder">
+            <span>Default PDF Logo</span>
+          </div>
+        </div>
+        <input type="file" id="pdfLogoFile" class="hidden-file-input" (change)="onFileChange($event, 'pdfLogo')" accept="image/png, image/jpeg">
+        <label for="pdfLogoFile" class="change-action-btn">Change</label>
+        <span class="block-hint">JPG, PNG (Max. 2MB)</span>
+      </div>
+
+    </div>
+  </mat-card-content>
+</mat-card>

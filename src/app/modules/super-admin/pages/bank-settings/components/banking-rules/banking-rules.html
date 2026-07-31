@@ -1,0 +1,30 @@
+<div class="dense-card height-aligned-card">
+  <div class="card-header">
+    <!-- Security Shield SVG Icon -->
+    <svg xmlns="http://w3.org" class="section-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+    <h2 class="card-title">4. Banking Rules</h2>
+  </div>
+
+  <!-- Scroll-restricted core canvas container box -->
+  <div class="card-content scrollable-viewport">
+    <form [formGroup]="rulesForm" class="toggles-grid-split-2col">
+      
+      <!-- List displaying all 9 configuration parameters split into 2-columns -->
+      <div class="toggle-row-item" *ngFor="let rule of rulesList">
+        <div class="meta-texts">
+          <span class="toggle-title">{{ rule.label }}</span>
+          <span class="toggle-desc">{{ rule.description }}</span>
+        </div>
+        
+        <!-- Native pure HTML/SCSS animated slider switch button -->
+        <label class="switch-container">
+          <input type="checkbox" [formControlName]="rule.key">
+          <span class="switch-slider"></span>
+        </label>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,164 @@
+$card-bg: #ffffff;
+$border-color: #e2e8f0;
+$text-main: #1e293b;       // Matched to the soft slate-navy title color of the green box
+$text-sub: #475569;        // Matched label color
+$text-hint: #64748b;       // Matched subtitle hint color
+
+.branding-original-card {
+  background-color: $card-bg !important;
+  border: 1px solid $border-color !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  height: 310px !important; 
+  display: flex;
+  flex-direction: column;
+
+  ::ng-deep .mat-card-header {
+    padding: 0;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+    .mat-card-header-text { margin: 0 !important; }
+  }
+
+  .header-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    ::ng-deep .mat-icon.section-icon {
+      width: 16px !important;
+      height: 16px !important;
+      font-size: 16px !important;
+      color: #3b82f6 !important;
+    }
+
+    mat-card-title {
+      font-size: 13px !important;
+      font-weight: 500 !important; // Matched exact font-weight from green box titles
+      color: $text-main !important;
+      margin: 0;
+    }
+  }
+
+  mat-card-content {
+    padding: 0 !important;
+    flex-grow: 1;
+    display: flex;
+    align-items: center; 
+  }
+}
+
+.horizontal-upload-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); 
+  gap: 12px;
+  width: 100%;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr; 
+    gap: 16px;
+  }
+}
+
+.uploader-column-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  .block-title {
+    font-size: 11px;
+    font-weight: 500; // Synchronized down from bold 700 to match green row labels
+    color: $text-sub;
+    height: 28px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .asset-preview-frame {
+    width: 100%;
+    max-width: 160px;
+    height: 90px; 
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .fallback-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      box-sizing: border-box;
+
+      span {
+        font-size: 10px;
+        font-weight: 400;
+        color: #94a3b8;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .hidden-file-input {
+    display: none;
+  }
+.mat-mdc-card-header {
+  padding: 0;
+}
+  .change-action-btn {
+    font-size: 11px;
+    font-weight: 500;
+    color: #0f62fe;
+    cursor: pointer;
+    padding: 5px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    text-align: center;
+    width: 100%;
+    max-width: 140px;
+    user-select: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      background-color: #f8fafc;
+      border-color: #94a3b8;
+    }
+  }
+
+  .block-hint {
+    font-size: 9px;
+    color: $text-hint; // Synchronized soft caption color
+    margin-top: 6px;
+    white-space: nowrap;
+  }
+}

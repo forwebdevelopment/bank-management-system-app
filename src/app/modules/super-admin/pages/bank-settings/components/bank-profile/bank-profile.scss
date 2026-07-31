@@ -1,0 +1,121 @@
+$text-main-color: #0f2547; // Matching the rich dark blue/navy typography color from your mockup
+$text-slate: #5e6e82;      // Soft muted gray-blue for metric labels
+$brand-blue: #0b50be;      // Vibrant solid blue for the center emblem
+
+.original-profile-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+
+  .profile-card-header {
+    margin-bottom: 20px;
+    text-align: left;
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: $text-main-color;
+      margin: 0;
+    }
+  }
+}
+
+// CENTERED EMBLEM GRAPHIC DESIGN SYSTEM
+.emblem-center-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 24px;
+
+  .blue-circle-logo {
+    width: 108px;
+    height: 108px;
+    background-color: $brand-blue;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(11, 80, 190, 0.15);
+
+    ::ng-deep .mat-icon.white-bank-icon {
+      color: #ffffff !important;
+      font-size: 38px !important;
+      width: 38px !important;
+      height: 38px !important;
+      margin-bottom: 4px;
+    }
+
+    .logo-subtext {
+      color: #ffffff;
+      font-size: 8px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+      letter-spacing: 0.2px;
+      max-width: 80px;
+    }
+  }
+}
+
+// INSTITUTION IDENTIFIER TEXT
+.legal-title-container {
+  text-align: left;
+  margin-bottom: 18px;
+
+  .legal-name-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-main-color;
+    margin: 0;
+  }
+}
+
+// CLEAN CONTINUOUS ROWS WITHOUT GRID BORDERS
+.metrics-list-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // Uniform dense spacing spacing
+  width: 100%;
+
+  .metric-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .metric-label-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    ::ng-deep mat-icon.row-icon {
+      font-size: 16px !important;
+      width: 16px !important;
+      height: 16px !important;
+      color: $text-slate !important;
+    }
+
+    .label-text {
+      color: $text-slate;
+      font-weight: 500;
+    }
+  }
+
+  .value-text {
+    color: $text-main-color;
+    font-weight: 700;
+    text-align: right;
+  }
+}

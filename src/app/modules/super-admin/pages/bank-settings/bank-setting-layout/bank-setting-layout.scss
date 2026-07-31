@@ -1,0 +1,165 @@
+// Light-Mode Unified Scheme Configuration Variables
+$spacing-base: 24px;
+$bg-canvas: #f8fafc;        // Outer canvas color matching the clean light look
+$bg-placeholder: #ffffff;   // Main card surfaces
+$border-color: #e2e8f0;     // Soft light gray dividing borders
+$text-primary: #1e293b;     // Dark slate text
+$text-secondary: #64748b;   // Slate gray sub-labels
+
+.settings-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-base;
+  padding: $spacing-base;
+  background-color: $bg-canvas;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  // Header Sub-Bar Layout
+  .settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $border-color;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .header-left {
+      h1 {
+        color: $text-primary;
+        font-family: sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+      }
+      p {
+        color: $text-secondary;
+        font-family: sans-serif;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      button {
+        font-family: sans-serif;
+        font-weight: 500;
+        border-radius: 6px;
+        
+        mat-icon {
+          font-size: 18px;
+          height: 18px;
+          width: 18px;
+          margin-right: 4px;
+        }
+      }
+
+      button[mat-flat-button][color="primary"] {
+        background-color: #0f62fe; // Clean primary dashboard action blue tint
+      }
+
+      button[mat-stroked-button] {
+        border-color: $border-color;
+        color: $text-primary;
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  // Two-Column Flex Distribution Layout Setup
+  .settings-content-wrapper {
+    display: flex;
+    gap: $spacing-base;
+    width: 100%;
+    align-items: flex-start;
+
+    @media (max-width: 1200px) {
+      flex-direction: column;
+    }
+  }
+
+  // Left Content Stream Panel (Takes majority space)
+  .forms-column {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-base;
+    width: 75%;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+
+  // Right Content Tracker Sidebar Stream Panel
+  .sidebar-column {
+    width: 25%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-base;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+
+  // Inner Form Panels Grid Splits
+  .form-grid-row {
+    width: 100%;
+
+    &.grid-2-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: $spacing-base;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &.full-width-row {
+      display: block;
+    }
+  }
+
+  // Clean Structural Blueprint Dotted Boundary Boxes
+  .component-placeholder {
+    background-color: $bg-placeholder;
+    border: 1px dashed rgba($text-secondary, 0.3);
+    border-radius: 8px;
+    min-height: 360px; // Proportional standard container panel height 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-secondary;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+
+    &.status-placeholder {
+      min-height: 100px; // Shorter strip for bottom monitors
+    }
+
+    &.sidebar-item {
+      min-height: 240px; // Proportional sidebar blocks height profile
+    }
+
+    &.footer-stamp-item {
+      min-height: 120px; // Proportional footer block height profile
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<div class="settings-dashboard-container">
+  
+  <!-- ROW 1: Full-Width Settings Sub-Header Section (1) -->
+  <header class="settings-header">
+    <div class="header-left">
+      <h1>Bank Settings</h1>
+      <p>Configure global banking information, branding, business rules, and operational preferences.</p>
+    </div>
+    <div class="header-actions">
+      <button mat-flat-button color="primary">
+        <mat-icon>save</mat-icon> Save Changes
+      </button>
+      <button mat-stroked-button>
+        <mat-icon>restart_alt</mat-icon> Reset
+      </button>
+      <button mat-stroked-button>
+        <mat-icon>visibility</mat-icon> Preview
+      </button>
+      <button mat-stroked-button>
+        <mat-icon>refresh</mat-icon> Refresh
+      </button>
+    </div>
+  </header>
+
+  <!-- TWO-COLUMN CANVAS LAYOUT (Main Forms Left vs Summary Sidebar Right) -->
+  <div class="settings-content-wrapper">
+    
+    <!-- LEFT MAIN COLUMN: Configuration Form Panels -->
+    <main class="forms-column">
+      
+      <!-- GRID ROW A: Bank Info (2) & Contact Details (3) -->
+      <div class="form-grid-row grid-2-columns">
+        <!-- <app-bank-info-form></app-bank-info-form> -->
+       <app-bank-information></app-bank-information>
+        
+        <!-- <app-contact-info-form></app-contact-info-form> -->
+         <app-contact-information></app-contact-information>
+      </div>
+
+      <!-- GRID ROW B: Business Config (5) & Banking Rules (6) -->
+      <div class="form-grid-row grid-2-columns">
+        <!-- <app-business-config-form></app-business-config-form> -->
+        <app-business-configuration></app-business-configuration>
+        
+        <!-- <app-banking-rules></app-banking-rules> -->
+        <app-banking-rules></app-banking-rules>
+      </div>
+
+      <!-- GRID ROW C: Branding Assets (8) & Operational Config (9) -->
+      <div class="form-grid-row grid-2-columns">
+        <!-- <app-branding-uploader></app-branding-uploader> -->
+       <app-branding></app-branding>
+        
+        <!-- <app-operational-settings></app-operational-settings> -->
+           <app-operational-settings></app-operational-settings>
+      </div>
+
+      <!-- GRID ROW D: Full-Width Infrastructure Micro Status Strip (11) -->
+      <div class="form-grid-row full-width-row">
+        <!-- <app-bank-status-strip></app-bank-status-strip> -->
+         <app-bank-status></app-bank-status>
+      </div>
+
+    </main>
+
+    <!-- RIGHT COLUMN: Metadata Tracking Sidebar -->
+    <aside class="sidebar-column">
+      
+      <!-- <app-sidebar-profile-card></app-sidebar-profile-card> -->
+      <app-bank-profile></app-bank-profile>
+      
+      <!-- <app-sidebar-summary-chart></app-sidebar-summary-chart> -->
+    <app-configuration-summary></app-configuration-summary>
+      
+      <!-- <app-sidebar-changes-log></app-sidebar-changes-log> -->
+      <app-resent-setting-changes></app-resent-setting-changes>
+      
+      <!-- <app-sidebar-footer-stamp></app-sidebar-footer-stamp> -->
+      <app-last-update-by></app-last-update-by>
+
+    </aside>
+
+  </div>
+</div>

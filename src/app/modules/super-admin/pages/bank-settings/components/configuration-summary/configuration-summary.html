@@ -1,0 +1,51 @@
+<div class="custom-sidebar-card">
+  <!-- Card Header Panel -->
+  <div class="card-header">
+    <svg xmlns="http://w3.org" class="section-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.003 9.003 0 1020.945 13H11V3.055z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+    </svg>
+    <h3 class="card-title">Configuration Summary</h3>
+  </div>
+
+  <!-- Visual Graph Canvas Layout Viewport Wrapper -->
+  <div class="chart-content-layout">
+    <div class="circular-svg-viewport">
+      <svg class="radial-canvas-frame" viewBox="0 0 120 120">
+        <!-- Baseline track background background ring stroke -->
+        <circle class="track-bg-ring" 
+                cx="60" cy="60" 
+                [attr.r]="radius" 
+                stroke-width="10" />
+        
+        <!-- Active filling programmatic percentage overlay ring -->
+        <circle class="active-completion-ring" 
+                cx="60" cy="60" 
+                [attr.r]="radius" 
+                stroke-width="10"
+                [attr.stroke-dasharray]="circumference"
+                [attr.stroke-dashoffset]="calculateStrokeOffset(overallCompletion)" />
+      </svg>
+      
+      <!-- Central Absolute Text Overlay Metrics Badge -->
+      <div class="center-metrics-bubble">
+        <span class="completion-value">{{ overallCompletion }}%</span>
+        <span class="completion-label">Complete</span>
+      </div>
+    </div>
+
+    <!-- Structured Formatted Metrics Legends List -->
+    <div class="legends-counters-list">
+      <div class="legend-row-item" *ngFor="let item of summaryBreakdown">
+        <div class="item-left-group">
+          <span class="indicator-dot" [style.background-color]="item.color"></span>
+          <span class="legend-label-text">{{ item.label }}</span>
+        </div>
+        <div class="item-right-group">
+          <span class="count-badge">{{ item.count }} settings</span>
+          <span class="percentage-label">{{ item.percentage }}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

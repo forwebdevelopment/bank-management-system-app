@@ -1,0 +1,185 @@
+$card-bg: #ffffff;
+$border-color: #e2e8f0;
+$input-border: #cbd5e1;
+$input-focus: #0f62fe;
+$text-main: #1e293b;       // Matched to the soft slate-navy title color of the green box
+$text-label: #475569;      // Matched label color
+
+.dense-card {
+  background-color: $card-bg !important;
+  border: 1px solid $border-color !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  height: 310px !important; 
+  display: flex;
+  flex-direction: column;
+
+  ::ng-deep .mat-card-header {
+    padding: 0;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+    .mat-card-header-text { margin: 0 !important; }
+  }
+
+  .header-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    ::ng-deep .mat-icon.section-icon {
+      width: 16px !important;
+      height: 16px !important;
+      font-size: 16px !important;
+      color: #3b82f6 !important;
+    }
+
+    mat-card-title {
+      font-size: 13px !important;
+      font-weight: 500 !important; // Matched exact font-weight from green box titles
+      color: $text-main !important;
+      margin: 0;
+    }
+  }
+
+  mat-card-content {
+    padding: 0 !important;
+    flex-grow: 1;
+    display: flex;
+    align-items: center; 
+  }
+}
+
+.dense-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .field-label {
+      font-size: 10px; // Synchronized down from 11px to match Section 3 labels perfectly
+      font-weight: 500; // Exact font-weight matching
+      color: $text-label;
+      text-align: left;
+
+      .required {
+        color: #ef4444;
+        margin-left: 1px;
+      }
+    }
+  }
+}
+
+.custom-dropdown-container {
+  position: relative;
+  width: 100%;
+
+  .select-trigger {
+    width: 100%;
+    height: 30px; 
+    padding: 0 10px;
+    border: 1px solid $input-border;
+    border-radius: 4px;
+    font-size: 12px; // Synchronized input value text sizing
+    color: $text-main;
+    font-weight: 500;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+
+    &:hover {
+      border-color: #94a3b8;
+    }
+
+    .chevron-arrow {
+      width: 0;
+      height: 0;
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-top: 4px solid $text-label;
+      transition: transform 0.15s ease;
+      margin-left: 6px;
+    }
+  }
+
+  .options-list {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 2px 0;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+    max-height: 120px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    
+    opacity: 0;
+    transform: translateY(-3px);
+    pointer-events: none;
+    transition: all 0.12s ease-out;
+  }
+
+  &.is-open {
+    .select-trigger {
+      border-color: $input-focus;
+      box-shadow: 0 0 0 2.5px rgba(15, 98, 254, 0.1);
+
+      .chevron-arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    .options-list {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
+  li {
+    font-size: 12px;
+    color: #334155;
+    padding: 6px 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.1s ease;
+
+    &:hover {
+      background-color: #f1f5f9;
+      color: $text-main;
+    }
+
+    &.selected {
+      background-color: #eff6ff;
+      color: $input-focus;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,129 @@
+<div class="dense-card">
+  <div class="card-header">
+    <!-- Inline SVG Business Icon -->
+    <svg xmlns="http://w3.org" class="section-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+    </svg>
+    <h2 class="card-title">3. Business Configuration</h2>
+  </div>
+
+  <div class="card-content">
+    <form [formGroup]="businessForm" class="dense-form-grid">
+      
+      <!-- Default Currency -->
+      <div class="form-group">
+        <label class="field-label">Default Currency <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'currency' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'currency')">
+            <span>{{ getSelectedLabel('defaultCurrency', currencyOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of currencyOptions" 
+                [ngClass]="{ 'selected': businessForm.get('defaultCurrency')?.value === opt.value }"
+                (click)="selectOption('defaultCurrency', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="form-group">
+        <label class="field-label">Language <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'language' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'language')">
+            <span>{{ getSelectedLabel('language', languageOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of languageOptions" 
+                [ngClass]="{ 'selected': businessForm.get('language')?.value === opt.value }"
+                (click)="selectOption('language', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Currency Symbol Input Field -->
+      <div class="form-group">
+        <label class="field-label" for="currencySymbol">Currency Symbol <span class="required">*</span></label>
+        <input type="text" id="currencySymbol" class="dense-input" formControlName="currencySymbol" placeholder="e.g. ₹ (INR)">
+      </div>
+
+      <!-- Date Format -->
+      <div class="form-group">
+        <label class="field-label">Date Format <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'date' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'date')">
+            <span>{{ getSelectedLabel('dateFormat', dateOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of dateOptions" 
+                [ngClass]="{ 'selected': businessForm.get('dateFormat')?.value === opt.value }"
+                (click)="selectOption('dateFormat', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Time Zone (Full Width Row Input) -->
+      <div class="form-group span-2">
+        <label class="field-label">Time Zone <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'zone' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'zone')">
+            <span>{{ getSelectedLabel('timeZone', zoneOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of zoneOptions" 
+                [ngClass]="{ 'selected': businessForm.get('timeZone')?.value === opt.value }"
+                (click)="selectOption('timeZone', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Number Format -->
+      <div class="form-group">
+        <label class="field-label">Number Format <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'number' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'number')">
+            <span>{{ getSelectedLabel('numberFormat', numberOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of numberOptions" 
+                [ngClass]="{ 'selected': businessForm.get('numberFormat')?.value === opt.value }"
+                (click)="selectOption('numberFormat', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Financial Year -->
+      <div class="form-group">
+        <label class="field-label">Financial Year <span class="required">*</span></label>
+        <div class="custom-dropdown-container" [ngClass]="{ 'is-open': openDropdownId === 'year' }">
+          <div class="select-trigger" (click)="toggleDropdown($event, 'year')">
+            <span>{{ getSelectedLabel('financialYear', yearOptions) }}</span>
+            <span class="chevron-arrow"></span>
+          </div>
+          <ul class="options-list">
+            <li *ngFor="let opt of yearOptions" 
+                [ngClass]="{ 'selected': businessForm.get('financialYear')?.value === opt.value }"
+                (click)="selectOption('financialYear', opt)">
+              {{ opt.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

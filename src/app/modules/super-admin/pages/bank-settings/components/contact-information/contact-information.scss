@@ -1,0 +1,221 @@
+$card-bg: #ffffff;
+$border-color: #e2e8f0;
+$input-border: #cbd5e1;
+$input-focus: #0f62fe; 
+$text-main: #1e293b;
+$text-sub: #64748b;
+$text-disabled: #94a3b8;
+
+.dense-card {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    .section-icon {
+      width: 18px;
+      height: 18px;
+      color: #0f62fe;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: $text-main;
+      margin: 0;
+    }
+  }
+}
+
+// SHARED GRID ALIGNMENT SPLIT (Matches Bank Information)
+.dense-layout-split {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.inputs-grid-column {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dense-fieldset {
+  border: 1px solid $input-border;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin: 0;
+  position: relative;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:focus-within {
+    border-color: $input-focus;
+    box-shadow: 0 0 0 2.5px rgba(15, 98, 254, 0.1);
+    
+    legend {
+      color: $input-focus;
+    }
+  }
+
+  legend {
+    font-size: 10px;
+    font-weight: 500;
+    color: $text-sub;
+    padding: 0 3px;
+    margin-left: -2px;
+    letter-spacing: 0.1px;
+
+    .required {
+      color: #ef4444;
+      margin-left: 1px;
+    }
+  }
+
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    height: 32px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: $text-main;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: $text-disabled;
+    }
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.inputs-row-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+// FIXED ALIGNMENT FOR THE RIGHT SIDEBAR AREA
+.map-sidebar {
+  width: 130px; // Exactly identical to the 130px panel layout in Bank Information
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .map-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  // Dimension box matched precisely to the double logo layout block sizes
+  .map-preview-canvas {
+    width: 110px; // Equal width to image upload canvases
+    height: 120px; // Spans cleanly to preserve proportional alignment
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    overflow: hidden;
+    margin-bottom: 6px;
+    position: relative;
+  }
+
+  .mock-map-canvas {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .map-pin {
+      color: #ef4444;
+      width: 20px;
+      height: 20px;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .map-bubble {
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 8px;
+      font-weight: 600;
+      padding: 1px 4px;
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+  }
+
+  // Action link button typography and padding matched to "Change" triggers
+  .custom-action-btn {
+    font-size: 11px;
+    font-weight: 600;
+    color: #0f62fe;
+    cursor: pointer;
+    padding: 4px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-align: center;
+    width: 84px; // Matches button widths of card 1 perfectly
+    user-select: none;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:hover {
+      background-color: #f8fafc;
+    }
+  }
+}

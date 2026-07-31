@@ -1,0 +1,49 @@
+<mat-card class="dense-timeline-card">
+  
+  <!-- Card Header -->
+  <mat-card-header>
+    <div class="header-icon-title">
+      <mat-icon class="section-icon">schedule</mat-icon>
+      <mat-card-title>Recent Setting Changes</mat-card-title>
+    </div>
+  </mat-card-header>
+
+  <!-- Timeline Core Content Body -->
+  <mat-card-content>
+    <div class="timeline-container-stack">
+      
+      <!-- Loop drawing timeline records matching mockup values -->
+      <div class="timeline-row-item" *ngFor="let log of changesLog">
+        
+        <!-- Timeline Rail Track Geometry -->
+        <div class="timeline-rail-column">
+          <div class="timeline-node-dot">
+            <div class="inner-core-dot"></div>
+          </div>
+          <div class="vertical-connector-line"></div>
+        </div>
+        
+        <!-- Timeline Content Meta Description Info -->
+        <div class="timeline-meta-box">
+          <h4 class="activity-title-text">{{ log.activity }}</h4>
+          <div class="sub-label-metadata-line">
+            <span class="timestamp-string">{{ log.timestamp }}</span>
+            <span class="inline-bullet-separator">•</span>
+            <span class="operator-profile-name">{{ log.adminUser }}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </mat-card-content>
+
+  <!-- Interactive Footer CTA Button Link -->
+  <div class="card-footer-action-panel">
+    <button type="button" class="view-all-link-btn" (click)="onViewAllClick()">
+      <span>View All Changes</span>
+      <mat-icon class="arrow-forward-icon">arrow_forward</mat-icon>
+    </button>
+  </div>
+
+</mat-card>

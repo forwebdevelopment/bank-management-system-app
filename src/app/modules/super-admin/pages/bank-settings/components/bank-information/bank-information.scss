@@ -1,0 +1,222 @@
+$card-bg: #ffffff;
+$border-color: #e2e8f0;
+$input-border: #cbd5e1;
+$input-focus: #0f62fe; 
+$text-main: #1e293b;
+$text-sub: #64748b;
+$text-disabled: #94a3b8;
+
+.dense-card {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 16px; // Tightened container padding
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    .section-icon {
+      width: 18px;
+      height: 18px;
+      color: #0f62fe;
+    }
+
+    .card-title {
+      font-size: 14px; // Scaled down heading
+      font-weight: 600;
+      color: $text-main;
+      margin: 0;
+    }
+  }
+}
+
+.dense-layout-split {
+  display: flex;
+  gap: 24px; // Balanced column spacing gap
+  width: 100%;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.inputs-grid-column {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // Reduced dense vertical field rows gap
+}
+
+.dense-fieldset {
+  border: 1px solid $input-border;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin: 0;
+  position: relative;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:focus-within, &.class-focused {
+    border-color: $input-focus;
+    box-shadow: 0 0 0 2.5px rgba(15, 98, 254, 0.1);
+    
+    legend {
+      color: $input-focus;
+    }
+  }
+
+  legend {
+    font-size: 10px; // Compact micro label text sizing
+    font-weight: 500;
+    color: $text-sub;
+    padding: 0 3px;
+    margin-left: -2px;
+    letter-spacing: 0.1px;
+
+    .required {
+      color: #ef4444;
+      margin-left: 1px;
+    }
+  }
+
+  input[type="text"] {
+    width: 100%;
+    height: 32px; // Dense input tracking line limits
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: $text-main;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: $text-disabled;
+    }
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.inputs-row-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.media-uploaders-sidebar {
+  width: 130px; // Compact side column footprint
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.uploader-component-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  .uploader-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+
+  .asset-preview-canvas {
+    width: 84px; // Optimized small preview layout boundary dimensions
+    height: 54px;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    overflow: hidden;
+
+    .placeholder-svg {
+      width: 20px;
+      height: 20px;
+      color: #94a3b8;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &.square-box {
+      width: 54px;
+      height: 54px;
+    }
+  }
+
+  .hidden-file-input {
+    display: none;
+  }
+
+  .custom-action-btn {
+    font-size: 11px; // Tight action button typography footprint
+    font-weight: 600;
+    color: #0f62fe;
+    cursor: pointer;
+    padding: 4px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-align: center;
+    min-width: 64px;
+    user-select: none;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+
+    &:hover {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+    }
+  }
+
+  .spec-hint-text {
+    font-size: 9px;
+    color: $text-sub;
+    margin-top: 4px;
+    text-align: center;
+  }
+}
