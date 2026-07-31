@@ -1,0 +1,33 @@
+
+<mat-card class="distribution-card">
+  <mat-card-header>
+    <mat-card-title>Customer Distribution</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <div class="content-layout">
+      <!-- Donut Visual Overlay Group -->
+      <div class="chart-container">
+        <canvas #customerCanvas></canvas>
+        <div class="center-total">
+          <span class="total-count">125.4K</span>
+          <span class="total-label">Total Users</span>
+        </div>
+      </div>
+
+      <!-- Detail Breakdowns Stack -->
+      <div class="legend-container">
+        <div class="legend-item" *ngFor="let item of customerData">
+          <div class="label-group">
+            <span class="indicator-dot" [style.background-color]="item.color"></span>
+            <span class="segment-name">{{ item.label }}</span>
+          </div>
+          <div class="value-group">
+            <span class="segment-count">{{ item.count | number }}</span>
+            <span class="segment-percentage">{{ item.percentage }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

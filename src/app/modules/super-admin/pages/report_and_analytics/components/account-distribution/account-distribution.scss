@@ -1,0 +1,144 @@
+.distribution-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+
+  ::ng-deep .mat-card-header {
+    padding: 0;
+    margin-bottom: 20px;
+
+    .mat-card-header-text { margin: 0 !important; }
+  }
+
+  mat-card-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    font-family: sans-serif;
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+    padding: 0;
+  }
+
+  // Flex Layout wrapper splitting graphic and legend entries
+  .content-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+
+    // Switch to row view on wider panels
+    @media (min-width: 1450px) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  }
+
+  // Donut relative container frame
+  .chart-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+
+    canvas {
+      z-index: 2;
+    }
+  }
+
+  // Centered summary badge absolute positioning overlay
+  .center-total {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    pointer-events: none;
+
+    .total-count {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .total-label {
+      font-size: 11px;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+  }
+
+  // Full-width flex distribution for details list items
+  .legend-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+
+    .legend-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: sans-serif;
+      font-size: 13px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed #f1f5f9;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .label-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .indicator-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .account-name {
+        color: #475569;
+        font-weight: 500;
+      }
+    }
+
+    .value-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .account-count {
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      .account-percentage {
+        color: #94a3b8;
+        font-size: 11px;
+        background-color: #f8fafc;
+        padding: 2px 6px;
+        border-radius: 4px;
+        min-width: 38px;
+        text-align: right;
+      }
+    }
+  }
+}

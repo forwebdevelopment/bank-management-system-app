@@ -1,0 +1,58 @@
+.branches-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+
+  ::ng-deep .mat-card-header {
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .mat-card-header-text { 
+      margin: 0 !important; 
+      width: 100%;
+    }
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  mat-card-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    font-family: sans-serif;
+  }
+
+  .metric-badge {
+    font-size: 11px;
+    color: #64748b;
+    font-family: sans-serif;
+    background-color: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+    padding: 0;
+    min-height: 320px; // Gives enough space for all 10 horizontal bars on mobile
+  }
+
+  .chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}

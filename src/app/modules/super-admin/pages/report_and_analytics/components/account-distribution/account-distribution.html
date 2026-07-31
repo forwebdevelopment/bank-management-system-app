@@ -1,0 +1,32 @@
+<mat-card class="distribution-card">
+  <mat-card-header>
+    <mat-card-title>Account Distribution</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <div class="content-layout">
+      <!-- Donut Graphical Canvas -->
+      <div class="chart-container">
+        <canvas #donutCanvas></canvas>
+        <div class="center-total">
+          <span class="total-count">328.5K</span>
+          <span class="total-label">Total Accounts</span>
+        </div>
+      </div>
+
+      <!-- Formatted Custom Metrics List -->
+      <div class="legend-container">
+        <div class="legend-item" *ngFor="let item of accountData">
+          <div class="label-group">
+            <span class="indicator-dot" [style.background-color]="item.color"></span>
+            <span class="account-name">{{ item.label }}</span>
+          </div>
+          <div class="value-group">
+            <span class="account-count">{{ item.count | number }}</span>
+            <span class="account-percentage">{{ item.percentage }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

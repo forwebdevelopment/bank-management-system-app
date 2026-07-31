@@ -1,0 +1,58 @@
+.chart-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+
+  ::ng-deep .mat-card-header {
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .mat-card-header-text {
+      margin: 0 !important;
+      width: 100%;
+    }
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  mat-card-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    font-family: sans-serif;
+  }
+
+  .currency-tag {
+    font-size: 12px;
+    color: #94a3b8;
+    font-family: sans-serif;
+    background-color: #f8fafc;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #f1f5f9;
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+    padding: 0;
+    min-height: 280px; // Guarantees proper canvas draw frame dimensions
+  }
+
+  .chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}

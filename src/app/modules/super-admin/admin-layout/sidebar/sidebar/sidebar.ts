@@ -70,14 +70,9 @@ export class SidebarComponent {
       title: 'Reports',
       items: [
         {
-          label: 'Reports',
+          label: 'Reports & Analytics',
           icon: 'assessment',
-          route: '/super-admin/reports',
-        },
-        {
-          label: 'Analytics Dashboard',
-          icon: 'analytics',
-          route: '/super-admin/analytics',
+          route: '/super-admin/report-analytics',
         },
       ],
     },

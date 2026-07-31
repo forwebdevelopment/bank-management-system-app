@@ -1,0 +1,18 @@
+<mat-card class="reports-shortcut-card">
+  <mat-card-header>
+    <mat-card-title>Available Reports</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <div class="shortcuts-grid">
+      <div class="shortcut-item" 
+           *ngFor="let report of reportTypes" 
+           (click)="onShortcutClick(report.title)">
+        <div class="icon-box" [ngClass]="report.class">
+          <mat-icon>{{ report.icon }}</mat-icon>
+        </div>
+        <span class="shortcut-label">{{ report.title }}</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
