@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MatModule } from '../../../../../../shared/material.module';
 
 @Component({
   selector: 'app-audit-detials',
-  imports: [],
+  imports: [MatModule],
   templateUrl: './audit-detials.html',
-  styleUrl: './audit-detials.css',
+  styleUrl: './audit-detials.scss',
 })
 export class AuditDetials {}

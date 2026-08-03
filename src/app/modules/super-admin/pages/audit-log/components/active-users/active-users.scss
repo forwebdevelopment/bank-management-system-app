@@ -1,0 +1,182 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.top-users-panel-card {
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(160, 175, 190, 0.015);
+  width: 100%;
+  height: 100%; 
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+// Panel header formatting 
+.users-panel-header-row {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-shrink: 0;
+
+  .users-panel-main-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .users-panel-view-all-btn {
+    background: none;
+    border: none;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #2563eb;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.users-list-rows-viewport {
+  flex-grow: 1;
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+}
+
+// CORE FIX: Switched to independent left/right dual wrapper layers to safeguard name strings
+.leaderboard-flex-row-item {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f8fafc;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 12px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// Left alignment profile elements group block - safely isolates the username text stack
+.user-left-profile-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px;
+  flex-grow: 1;
+  min-width: 0; // Crucial fix to allow username text truncation rules to lock down
+}
+
+.rank-index-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.user-avatar-circle-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  flex-shrink: 0;
+  display: block;
+
+  .user-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.user-text-meta-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  line-height: 1.3;
+  min-width: 0; 
+  flex-grow: 1;
+
+  .user-fullname-text {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; // Protects text fields against layout breakages
+  }
+
+  .user-role-sublabel {
+    font-size: 0.74rem;
+    color: #64748b;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// Right Block Metrics layout alignment parameters
+.user-right-metrics-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 6px;
+  flex-shrink: 0;
+  width: 90px; // Sets a strict bounding block to balance width profiles perfectly
+}
+
+// Center green activity line tracking layout bounds
+.user-activity-bar-track {
+  width: 100%; 
+  max-width: 90px;
+  height: 4px;
+  background-color: #f1f5f9; 
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  .progress-fill-fill {
+    height: 100%;
+    background-color: #16a34a; 
+    border-radius: 2px;
+  }
+
+  @media (max-width: 1300px) {
+    display: none !important; // Hides progress tracks lines if dashboard wraps down
+  }
+}
+
+.user-action-counter-block {
+  text-transform: lowercase;
+  text-align: right;
+  width: 100%;
+
+  .actions-total-numeric-count {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #475569;
+    white-space: nowrap;
+  }
+}

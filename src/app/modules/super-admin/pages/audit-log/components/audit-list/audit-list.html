@@ -1,1 +1,272 @@
-<p>audit-list works!</p>
+<section class="custom-filter-card">
+  
+  <!-- FIX ROW 1: Strictly constrained to a max 6-column system -->
+  <div class="filter-fixed-grid-row row-one-layout">
+    
+    <div class="filter-input-control">
+      <label class="filter-field-label">Search by User Name</label>
+      <div class="input-with-icon-wrap">
+        <span class="prefix-input-icon">
+          <svg xmlns="http://w3.org" height="16px" viewBox="0 -960 960 960" width="16px" fill="#64748b"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-54 54ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+        </span>
+        <input type="text" class="custom-filter-textbox" placeholder="Enter user name...">
+      </div>
+    </div>
+
+    <div class="filter-input-control">
+      <label class="filter-field-label">Employee ID</label>
+      <input type="text" class="custom-filter-textbox" placeholder="Enter employee ID...">
+    </div>
+
+    <div class="filter-input-control">
+      <label class="filter-field-label">User Role</label>
+      <select class="custom-filter-dropdown">
+        <option>All Roles</option>
+      </select>
+    </div>
+
+    <div class="filter-input-control">
+      <label class="filter-field-label">Branch</label>
+      <select class="custom-filter-dropdown">
+        <option>All Branches</option>
+      </select>
+    </div>
+
+    <div class="filter-input-control">
+      <label class="filter-field-label">Module</label>
+      <select class="custom-filter-dropdown">
+        <option>All Modules</option>
+      </select>
+    </div>
+
+    <div class="filter-input-control">
+      <label class="filter-field-label">Action Type</label>
+      <select class="custom-filter-dropdown">
+        <option>All Actions</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- FIX ROW 2: Managed inside an asymmetric 8-column layout context grid alignment -->
+  <div class="filter-fixed-grid-row row-two-layout">
+    
+    <div class="filter-input-control cell-span-1">
+      <label class="filter-field-label">Severity Level</label>
+      <select class="custom-filter-dropdown">
+        <option>All Severities</option>
+      </select>
+    </div>
+
+    <div class="filter-input-control cell-span-1">
+      <label class="filter-field-label">Date Range</label>
+      <input type="date" class="custom-filter-textbox">
+    </div>
+
+    <div class="filter-input-control cell-span-1">
+      <label class="filter-field-label">Time Range</label>
+      <input type="time" class="custom-filter-textbox">
+    </div>
+
+    <div class="filter-input-control cell-span-1">
+      <label class="filter-field-label">IP Address</label>
+      <input type="text" class="custom-filter-textbox" placeholder="Enter IP address...">
+    </div>
+
+    <div class="filter-input-control cell-span-1">
+      <label class="filter-field-label">Status</label>
+      <select class="custom-filter-dropdown">
+        <option>All Statuses</option>
+      </select>
+    </div>
+
+    <!-- FIX: Command Button Block takes up the remaining 3 columns space seamlessly -->
+    <div class="filter-button-operations-lane cell-span-3">
+      
+      <button class="native-action-btn search-submit-btn">
+        <svg xmlns="http://w3.org" height="16px" viewBox="0 -960 960 960" width="16px" fill="#ffffff"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-54 54ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+        <span>Search</span>
+      </button>
+
+      <button class="native-action-btn query-reset-btn">
+        <svg xmlns="http://w3.org" height="16px" viewBox="0 -960 960 960" width="16px" fill="#2563eb"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 130.5 28.5T720-692v-68h80v200H600v-80h98q-44-52-106-82t-112-30q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 108-114.5 176T480-160Z"/></svg>
+        <span>Reset Filters</span>
+      </button>
+
+      <button class="native-action-btn list-export-btn">
+        <svg xmlns="http://w3.org" height="16px" viewBox="0 -960 960 960" width="16px" fill="#475569"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+        <span>Export Filtered</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="exact-ledger-card-wrapper">
+  
+  <!-- Main Title Area -->
+  <header class="ledger-header-panel">
+    <h3 class="ledger-main-title">Audit Logs <span class="title-records-count">(125,764 records)</span></h3>
+  </header>
+
+  <!-- Horizontal Overflow Scrolling Axis -->
+  <div class="table-horizontal-scroll-axis">
+    <table mat-table [dataSource]="paginatedData" class="exact-audit-table-grid">
+
+      <!-- Column 1: Log ID -->
+      <ng-container matColumnDef="logId">
+        <th mat-header-cell *matHeaderCellDef> Log ID </th>
+        <td mat-cell *matCellDef="let log" class="font-semibold text-slate-800"> {{ log.logId }} </td>
+      </ng-container>
+
+      <!-- Column 2: Date & Time -->
+      <ng-container matColumnDef="dateTime">
+        <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+        <td mat-cell *matCellDef="let log">
+          <div class="date-time-cell-stack">
+            <span class="primary-date-text">{{ log.date }}</span>
+            <span class="secondary-time-subtext">{{ log.time }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Column 3: User Name with Avatar image -->
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef> User Name </th>
+        <td mat-cell *matCellDef="let log">
+          <div class="user-avatar-profile-cell">
+            <img [src]="log.avatarUrl" [alt]="log.userName" class="user-round-avatar-img">
+            <span class="user-name-label-text">{{ log.userName }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Column 4: Employee ID -->
+      <ng-container matColumnDef="employeeId">
+        <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+        <td mat-cell *matCellDef="let log" class="text-slate-600 font-medium"> {{ log.employeeId }} </td>
+      </ng-container>
+
+      <!-- Column 5: Role -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let log" class="text-slate-600"> {{ log.userRole }} </td>
+      </ng-container>
+
+      <!-- Column 6: Branch -->
+      <ng-container matColumnDef="branch">
+        <th mat-header-cell *matHeaderCellDef> Branch </th>
+        <td mat-cell *matCellDef="let log" class="text-slate-600"> {{ log.branch }} </td>
+      </ng-container>
+
+      <!-- Column 7: Module -->
+      <ng-container matColumnDef="module">
+        <th mat-header-cell *matHeaderCellDef> Module </th>
+        <td mat-cell *matCellDef="let log" class="text-slate-600"> {{ log.module }} </td>
+      </ng-container>
+
+      <!-- Column 8: Action Performed -->
+      <ng-container matColumnDef="actionPerformed">
+        <th mat-header-cell *matHeaderCellDef> Action Performed </th>
+        <td mat-cell *matCellDef="let log" class="text-slate-700 font-medium"> {{ log.actionType }} </td>
+      </ng-container>
+
+      <!-- Column 9: Execution Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let log">
+          <span class="exact-pill-badge" [ngClass]="'status-' + log.status.toLowerCase()">
+            {{ log.status }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Column 10: Severity Level -->
+      <ng-container matColumnDef="severity">
+        <th mat-header-cell *matHeaderCellDef> Severity </th>
+        <td mat-cell *matCellDef="let log">
+          <span class="exact-pill-badge" [ngClass]="'severity-' + log.severity.toLowerCase()">
+            {{ log.severity }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Column 11: Three-Dot Dropdown Actions Menu -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="center-align-th"> Actions </th>
+        <td mat-cell *matCellDef="let log" class="center-align-td">
+          <button mat-icon-button [matMenuTriggerFor]="actionMenu" class="table-three-dot-menu-btn" (click)="$event.stopPropagation()">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          
+          <!-- Angular Material Dynamic Context Trigger Menu Box -->
+          <mat-menu #actionMenu="matMenu" xPosition="before" class="exact-table-context-menu-panel">
+            <button mat-menu-item>
+              <mat-icon class="menu-icon-view">visibility</mat-icon>
+              <span class="menu-action-text-label">View Log Details</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon class="menu-icon-edit">edit</mat-icon>
+              <span class="menu-action-text-label">Edit Audit Entry</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon class="menu-icon-revert">restore</mat-icon>
+              <span class="menu-action-text-label">Rollback Action</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <!-- Table Initialization Directives Rows mapping entries -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.row-selected]="selectedLogId === row.id" (click)="selectLogRecord(row.id)"></tr>
+
+    </table>
+  </div>
+
+  <!-- Image-Matched Dynamic Pagination Footer Panel Box row structure -->
+  <footer class="exact-table-paginator-footer">
+    
+    <!-- Rows counter configuration tools dropdown select input box list -->
+    <div class="paginator-left-rows-select-tool">
+      <span class="paginator-label-dim">Rows per page:</span>
+      <div class="custom-pure-css-select-wrapper">
+        <select class="native-paginator-select">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Right Side Pagination numbers navigation matrix system layout elements tags -->
+    <div class="paginator-right-navigation-cluster">
+      <span class="paginator-entries-counter-label">1-10 of 125,764</span>
+      
+      <div class="exact-pages-button-timeline-row">
+        <button class="exact-page-btn active">1</button>
+        <button class="exact-page-btn">2</button>
+        <button class="exact-page-btn">3</button>
+        <button class="exact-page-btn">4</button>
+        <button class="exact-page-btn">5</button>
+        <span class="page-ellipsis-spacer">...</span>
+        <button class="exact-page-btn font-medium">12577</button>
+      </div>
+
+      <div class="paginator-arrow-actions-group">
+        <button class="paginator-arrow-btn" disabled>
+          <svg xmlns="http://w3.org" height="18px" viewBox="0 -960 960 960" width="18px" fill="#cbd5e1"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+        </button>
+        <button class="paginator-arrow-btn">
+          <svg xmlns="http://w3.org" height="18px" viewBox="0 -960 960 960" width="18px" fill="#475569"><path d="M375-240 319-296l184-184-184-184 56-56 240 240-240 240Z"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </footer>
+
+</section>
+

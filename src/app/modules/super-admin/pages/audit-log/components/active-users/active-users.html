@@ -1,1 +1,50 @@
-<p>active-users works!</p>
+<div class="top-users-panel-card">
+
+  <!-- Component Panel Header -->
+  <header class="users-panel-header-row">
+    <h3 class="users-panel-main-title">Top Active Users Today</h3>
+    <button class="users-panel-view-all-btn">View All</button>
+  </header>
+
+  <!-- High-Density Responsive Users List Viewport Container -->
+  <div class="users-list-rows-viewport">
+
+    <!-- Unified structural list blueprint driven by *ngFor loop -->
+    <div class="leaderboard-flex-row-item" *ngFor="let user of leaderboardData; let i = index">
+      
+      <!-- Left Block: Rank and Profile Details Core Wrapper -->
+      <div class="user-left-profile-wrapper">
+        <span class="rank-index-label">{{ i + 1 }}.</span>
+        
+        <div class="user-avatar-circle-wrap">
+          <img 
+            [src]="user.avatarUrl" 
+            [alt]="user.name" 
+            class="user-profile-img"
+          >
+        </div>
+        
+        <div class="user-text-meta-stack">
+          <h4 class="user-fullname-text">{{ user.name }}</h4>
+          <span class="user-role-sublabel">{{ user.role }}</span>
+        </div>
+      </div>
+      
+      <!-- Right Block: Progress Line and Actions Counter Stacked right next to each other -->
+      <div class="user-right-metrics-wrapper">
+        <!-- Strictly Fixed Width Activity Progress Line -->
+        <div class="user-activity-bar-track">
+          <div class="progress-fill-fill" [style.width.%]="calculateProgressBarWidth(user.actionCount)"></div>
+        </div>
+
+        <!-- Right Aligned Absolute Metric Counter -->
+        <div class="user-action-counter-block">
+          <span class="actions-total-numeric-count">{{ user.actionCount }} actions</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

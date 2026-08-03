@@ -1,1 +1,180 @@
-<p>audit-detials works!</p>
+<div class="audit-record-inspector-panel">
+
+  <!-- Fixed Header with Title and Close Cross Icon Button -->
+  <header class="inspector-fixed-header-strip">
+    <h3 class="inspector-main-title">Audit Details</h3>
+    <button class="panel-close-dismiss-cross-btn" aria-label="Close panel">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <!-- Scrollable Panel Content Frame -->
+  <main class="inspector-scrollable-body-viewport">
+    <div class="scroll-content-container">
+
+      <!-- Section 1: Activity Information -->
+      <section class="inspector-data-group-cluster">
+        <h4 class="group-section-heading">Activity Information</h4>
+        <div class="kv-grid-list-rows">
+          <div class="kv-row-item">
+            <span class="kv-key-label">Log ID:</span>
+            <span class="kv-value-data font-monospace">LOG-125764</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Date & Time:</span>
+            <span class="kv-value-data">26 Jun 2026 05:31:24 PM</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Module:</span>
+            <span class="kv-value-data">Customer Management</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Action:</span>
+            <span class="kv-value-data font-semibold text-slate-900">Update Customer</span>
+          </div>
+          <div class="kv-row-item description-row">
+            <span class="kv-key-label">Description:</span>
+            <span class="kv-value-data text-wrapped">Updated customer profile information for customer ID CUST-100234.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: User Information Card -->
+      <section class="inspector-data-group-cluster">
+        <h4 class="group-section-heading">User Information</h4>
+        
+          <div class="user-avatar-circle-wrap">
+            <img src="https://unsplash.com" alt="Rahul Sharma" class="user-profile-img">
+          </div>
+          <div class="user-text-meta-stack">
+            <h4 class="user-fullname-text">Rahul Sharma</h4>
+            <span class="user-meta-id-code">EMP00125</span>
+            <span class="user-meta-sublabel">Branch Manager</span>
+            <span class="user-meta-sublabel">Mumbai Main Branch</span>
+          </div>
+       
+      </section>
+
+      <!-- Section 3: System Information -->
+      <section class="inspector-data-group-cluster">
+        <h4 class="group-section-heading">System Information</h4>
+        <div class="kv-grid-list-rows">
+          <div class="kv-row-item">
+            <span class="kv-key-label">IP Address:</span>
+            <span class="kv-value-data font-monospace">192.168.1.25</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Device Name:</span>
+            <span class="kv-value-data font-monospace">DESKTOP-RAHUL01</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Browser:</span>
+            <span class="kv-value-data">Chrome 125.0.0.1</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Operating System:</span>
+            <span class="kv-value-data">Windows 11 Pro</span>
+          </div>
+          <div class="kv-row-item">
+            <span class="kv-key-label">Session ID:</span>
+            <span class="kv-value-data font-monospace text-wrapped text-xs">sess_26jun2026_abc123xyz</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Change Details Comparison Row -->
+      <section class="inspector-data-group-cluster">
+        <h4 class="group-section-heading">Change Details</h4>
+        <div class="comparison-flex-row-wrapper">
+          
+          <!-- Before Box Block -->
+          <div class="comparison-data-box state-before">
+            <span class="box-state-title">Before Value</span>
+            <div class="box-inner-field"><span class="f-lbl">Phone:</span> 9876543210</div>
+            <div class="box-inner-field"><span class="f-lbl">Email:</span> rahul&#64;gmail.com</div>
+            <div class="box-inner-field"><span class="f-lbl">Address:</span> Mumbai, India</div>
+          </div>
+
+          <!-- Connecting Flow Icon Direction indicator -->
+          <div class="comparison-arrow-indicator">
+            <mat-icon>arrow_forward</mat-icon>
+          </div>
+
+          <!-- After Box Block -->
+          <div class="comparison-data-box state-after">
+            <span class="box-state-title">After Value</span>
+            <div class="box-inner-field"><span class="f-lbl">Phone:</span> 9876543210</div>
+            <div class="box-inner-field"><span class="f-lbl">Email:</span> <span class="green-text">rahul.sharma&#64;bank.com</span></div>
+            <div class="box-inner-field"><span class="f-lbl">Address:</span> <span class="green-text">Mumbai, Maharashtra, India</span></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 5: Activity Timeline Module -->
+      <section class="inspector-data-group-cluster">
+        <h4 class="group-section-heading">Activity Timeline</h4>
+        <div class="activity-timeline-wrapper">
+          
+          <!-- Track Node 1 -->
+          <div class="timeline-node-step step-success-green">
+            <div class="node-indicator-icon-circle">
+              <mat-icon>check</mat-icon>
+            </div>
+            <div class="node-content-stack">
+              <span class="node-action-title">Login Successful</span>
+              <span class="node-timestamp-label">26 Jun 2026 09:12:45 AM</span>
+            </div>
+          </div>
+
+          <!-- Track Node 2 -->
+          <div class="timeline-node-step step-info-blue">
+            <div class="node-indicator-icon-circle">
+              <span>M</span>
+            </div>
+            <div class="node-content-stack">
+              <span class="node-action-title">Opened Customer Module</span>
+              <span class="node-timestamp-label">26 Jun 2026 09:13:02 AM</span>
+            </div>
+          </div>
+
+          <!-- Track Node 3 -->
+          <div class="timeline-node-step step-info-blue">
+            <div class="node-indicator-icon-circle">
+              <span>R</span>
+            </div>
+            <div class="node-content-stack">
+              <span class="node-action-title font-semibold">Updated Customer Record CUST-100234</span>
+              <span class="node-timestamp-label">26 Jun 2026 05:31:24 PM</span>
+            </div>
+          </div>
+
+          <!-- Track Node 4 -->
+          <div class="timeline-node-step step-info-blue">
+            <div class="node-indicator-icon-circle">
+              <span>L</span>
+            </div>
+            <div class="node-content-stack">
+              <span class="node-action-title">Approved Loan LN-2026-001234</span>
+              <span class="node-timestamp-label">26 Jun 2026 05:45:18 PM</span>
+            </div>
+          </div>
+
+          <!-- Track Node 5 -->
+          <div class="timeline-node-step step-neutral-gray">
+            <div class="node-indicator-icon-circle">
+              <mat-icon>power_settings_new</mat-icon>
+            </div>
+            <div class="node-content-stack">
+              <span class="node-action-title">Logged Out</span>
+              <span class="node-timestamp-label">26 Jun 2026 06:02:33 PM</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</div>

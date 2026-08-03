@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MatModule } from '../../../../../../shared/material.module';
 
 @Component({
   selector: 'app-card-summary',
-  imports: [],
+  imports: [MatModule],
   templateUrl: './card-summary.html',
-  styleUrl: './card-summary.css',
+  styleUrl: './card-summary.scss',
 })
 export class CardSummary {}
