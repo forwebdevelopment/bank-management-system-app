@@ -87,13 +87,9 @@ export class SidebarComponent {
         {
           label: 'Interest Rate Settings',
           icon: 'monitoring',
-          route: '/super-admin/interest-rates',
+          route: '/super-admin/interest-rate-settings',
         },
-        {
-          label: 'System Settings',
-          icon: 'settings_suggest',
-          route: '/super-admin/system-settings',
-        },
+       
       ],
     },
     {

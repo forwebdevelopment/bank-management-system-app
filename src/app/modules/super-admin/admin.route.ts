@@ -9,6 +9,8 @@ import { CustomerDirectory } from './pages/customer_directory/customer-directory
 import { AccountDirectory } from './pages/account_directory/account-directory/account-directory';
 import { ReportAndAnalyticsLayout } from './pages/report_and_analytics/report-and-analytics-layout/report-and-analytics-layout';
 import { BankSettingLayout } from './pages/bank-settings/bank-setting-layout/bank-setting-layout';
+import { InterestRateSettings } from './pages/interest_rate/interest-rate-settings/interest-rate-settings';
+import { AuditLog } from './pages/audit-log/audit-log/audit-log';
 
 export const Admin_Routs: Routes = [
     {
@@ -23,7 +25,9 @@ export const Admin_Routs: Routes = [
             { path: 'customer-directory', component: CustomerDirectory },
             {path:'account-directory', component:AccountDirectory},
             {path:'report-analytics', component:ReportAndAnalyticsLayout},
-            {path:'bank-settings', component:BankSettingLayout}
+            {path:'bank-settings', component:BankSettingLayout},
+            {path:'interest-rate-settings', component:InterestRateSettings},
+            {path:'audit-logs',component:AuditLog}
         ]
     }
 

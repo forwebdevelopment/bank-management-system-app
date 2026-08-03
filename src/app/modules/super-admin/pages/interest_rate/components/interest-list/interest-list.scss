@@ -1,0 +1,272 @@
+.custom-table-card {
+  background-color: #ffffff;
+  border: 1px solid #ebf0f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(160, 175, 190, 0.06);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+// Header Control Area Setup
+.table-control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  width: 100%;
+  box-sizing: border-box;
+  @media (max-width: 768px) { flex-direction: column; align-items: stretch; gap: 12px; }
+}
+
+.table-section-title { margin: 0; font-size: 1.15rem; font-weight: 700; color: #1a202c; }
+.table-actions-cluster { display: flex; align-items: center; gap: 12px; }
+
+// Pure HTML/CSS Custom Input Style Configuration
+.custom-search-wrapper {
+  position: relative;
+  width: 240px;
+  display: flex;
+  align-items: center;
+  @media (max-width: 480px) { width: 100%; }
+
+  .custom-table-search {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #d8e2ec;
+    border-radius: 8px;
+    padding: 0 12px 0 36px;
+    font-size: 0.85rem;
+    outline: none;
+    background-color: #ffffff;
+    color: #243b53;
+    transition: border-color 0.15s ease;
+
+    &:focus { border-color: #2e62e6; }
+    &::placeholder { color: #9fb3c8; }
+  }
+  .search-input-icon { position: absolute; left: 12px; display: flex; }
+}
+
+.custom-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  background-color: #ffffff;
+  border: 1px solid #d8e2ec;
+  border-radius: 8px;
+  color: #334e68;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover { background-color: #f0f4f8; }
+}
+
+// Horizontal Scroll Engine
+.table-horizontal-scroll-axis {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar { height: 6px; }
+  &::-webkit-scrollbar-track { background: #f0f4f8; }
+  &::-webkit-scrollbar-thumb { background: #bcccdc; border-radius: 4px; }
+}
+
+// Integrating custom styles with Angular Material mat-table components
+table.exact-data-grid.mat-mdc-table {
+  width: 100%;
+  min-width: 1150px;
+  background-color: #ffffff;
+
+  // Header customizations
+  .mat-mdc-header-cell {
+    padding: 14px 16px;
+    font-weight: 600;
+    color: #486581;
+    font-size: 0.78rem;
+    background-color: #f8fafc;
+    border-top: 1px solid #f0f4f8;
+    border-bottom: 1px solid #e1e8ed;
+    white-space: nowrap;
+
+    &.center-align-th { text-align: center; }
+  }
+
+  // Row configurations
+  .mat-mdc-row {
+    cursor: pointer;
+    border-bottom: 1px solid #f0f4f8;
+    transition: background-color 0.1s ease;
+
+    &:hover { background-color: #f7fafc; }
+    &.row-selected { background-color: #f0f5ff; }
+  }
+
+  .mat-mdc-cell {
+    padding: 12px 16px;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-bottom: none; // Handled by tr layout borders explicitly
+  }
+}
+
+// Identity Cells With Brand Accent Backgrounds
+.product-identity-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  .product-type-label { font-weight: 600; color: #102a43; }
+}
+
+.product-graphic-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  mat-icon { font-size: 18px; width: 18px; height: 18px; }
+
+  &.theme-savings       { background-color: #ebf7ee; mat-icon { color: #3fa752; } }
+  &.theme-current       { background-color: #edf2fe; mat-icon { color: #2e62e6; } }
+  &.theme-fixed         { background-color: #f7effd; mat-icon { color: #8e44ad; } }
+  &.theme-recurring     { background-color: #fef4e8; mat-icon { color: #e67e22; } }
+  &.theme-personal-loan { background-color: #eef2f7; mat-icon { color: #627d98; } }
+  &.theme-home-loan     { background-color: #e6f4fe; mat-icon { color: #1976d2; } }
+  &.theme-vehicle-loan  { background-color: #e6f7f4; mat-icon { color: #1abc9c; } }
+  &.theme-education-loan{ background-color: #fff9eb; mat-icon { color: #f39c12; } }
+}
+
+// FIX: Transitioned from standard row-flex into clean stacked block flows
+.product-identity-vertical-stack {
+  display: flex;
+  flex-direction: column; // Forces children text layers to flow vertically beneath the icon
+  align-items: flex-start; // Keeps contents cleanly aligned along the left boundary block
+  gap: 8px; // Controls precise vertical pixel spacing gap padding between icon and text row
+  padding: 4px 0;
+}
+
+// Compact structural container framework modifications matching your image specs
+.product-graphic-box-compact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; // Scaled down dimension settings for a compact look
+  height: 30px;
+  border-radius: 6px; // Crisp soft rounded edges mapping
+  flex-shrink: 0;
+
+  // Smaller micro typographic icon constraints
+  mat-icon { 
+    font-size: 16px; 
+    width: 16px; 
+    height: 16px; 
+  }
+
+  // Pure CSS Color Swatch Tints
+  &.theme-savings       { background-color: #ebf7ee; mat-icon { color: #3fa752; } }
+  &.theme-current       { background-color: #edf2fe; mat-icon { color: #2e62e6; } }
+  &.theme-fixed         { background-color: #f7effd; mat-icon { color: #8e44ad; } }
+  &.theme-recurring     { background-color: #fef4e8; mat-icon { color: #e67e22; } }
+  &.theme-personal-loan { background-color: #eef2f7; mat-icon { color: #627d98; } }
+  &.theme-home-loan     { background-color: #e6f4fe; mat-icon { color: #1976d2; } }
+  &.theme-vehicle-loan  { background-color: #e6f7f4; mat-icon { color: #1abc9c; } }
+  &.theme-education-loan{ background-color: #fff9eb; mat-icon { color: #f39c12; } }
+}
+
+// Downscaled Typography Configuration
+.product-type-label-small {
+  font-size: 0.82rem; // Trims font footprint down for cleaner tabular grid density
+  font-weight: 500;
+  color: #2d3748; // Crisp slate charcoal tone choice maximizing readability ratios
+  white-space: nowrap; // Prevents labels from breaking onto extra text lines
+  letter-spacing: -0.1px;
+}
+.dimmed-data-text { color: #627d98; font-weight: 500; }
+.currency-bold-text { font-weight: 600; color: #243b53; }
+
+.rate-indicator-text {
+  font-weight: 700;
+  &.text-green { color: #2ecc71; }
+  &.text-blue  { color: #2196f3; }
+  &.text-red   { color: #ef5350; }
+}
+
+.exact-status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 4px;
+  color: #627d98;
+  background-color: #f0f4f8;
+  &.status-active { color: #27ae60; background-color: #e8f8f0; }
+}
+
+.audit-log-cell {
+  display: flex;
+  flex-direction: column;
+  .user-stamp-title { font-weight: 600; color: #334e68; }
+  .date-stamp-subtext { font-size: 0.72rem; color: #9fb3c8; margin-top: 1px; }
+}
+
+.action-buttons-cell-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  .grid-icon-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    border: 1px solid #d8e2ec;
+    border-radius: 6px;
+    cursor: pointer;
+    mat-icon { font-size: 16px; width: 16px; height: 16px; }
+
+    &.view-btn { color: #2e62e6; &:hover { background-color: #edf2fe; } }
+    &.edit-btn { color: #f39c12; &:hover { background-color: #fff9eb; } }
+    &.history-btn { color: #627d98; &:hover { background-color: #f0f4f8; } }
+  }
+}
+
+// Custom Paginator Footer Strip Styles
+.table-control-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid #f0f4f8;
+  background-color: #ffffff;
+  @media (max-width: 600px) { flex-direction: column; gap: 12px; }
+  .pagination-counter-text { font-size: 0.8rem; color: #8a96a3; }
+}
+
+.custom-page-button-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d8e2ec;
+  border-radius: 6px;
+
+  button {
+    height: 34px; background: none; border: none; color: #495057; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+    &:not(:last-child) { border-right: 1px solid #d8e2ec; }
+    &:hover:not(:disabled):not(.active) { background-color: #f0f4f8; }
+    &:disabled { color: #cbd5e1; background-color: #f8fafc; cursor: not-allowed; }
+  }
+  .custom-page-arrow { width: 34px; font-size: 1.2rem; }
+  .custom-page-number {
+    width: 34px; font-weight: 600;
+    &.active { background-color: #2e62e6; color: #ffffff; cursor: default; }
+  }
+}
+
+.empty-table-fallback { text-align: center !important; padding: 48px !important; color: #94a3b8; font-weight: 500; }

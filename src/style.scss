@@ -1,0 +1,61 @@
+/* ==========================================================================
+   GLOBAL CUSTOM SCROLLBAR INTERFACE SPECIFICATIONS
+   ========================================================================== */
+
+/* 1. Target all scrollable elements across the entire application */
+::-webkit-scrollbar {
+  width: 8px;  /* Vertical scrollbar footprint line thickness */
+  height: 8px; /* Horizontal scrollbar footprint line thickness */
+}
+
+/* 2. Clear Track Layer Workspace (The background gutter rail) */
+::-webkit-scrollbar-track {
+  background-color: transparent !important; /* Forces transparency to blend with any layout background */
+}
+
+/* 3. Global Scroll Handle Indicators (The dark-charcoal muted pill) */
+::-webkit-scrollbar-thumb {
+  background-color: #7a7a7a !important; /* Exact gray value matching your layout image */
+  border-radius: 10px !important;       /* Curvature mapping for crisp capsule styling */
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+
+  // Darkens the handle indicator when a user moves focus over it
+  &:hover {
+    background-color: #555555 !important;
+  }
+}
+
+/* 4. Global Structural Up/Down Step Arrow Indicators */
+::-webkit-scrollbar-button:single-button {
+  background-color: transparent !important;
+  display: block !important;
+  height: 12px !important;
+  width: 8px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+// Global Upward Micro Chevron Arrow Vector Mask Injection
+::-webkit-scrollbar-button:single-button:start:decrement {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%237a7a7a'><path d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/></svg>") !important;
+  
+  &:hover {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%23555555'><path d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/></svg>") !important;
+  }
+}
+
+// Global Downward Micro Chevron Arrow Vector Mask Injection
+::-webkit-scrollbar-button:single-button:end:increment {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%237a7a7a'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/></svg>") !important;
+  
+  &:hover {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://w3.org' viewBox='0 0 24 24' fill='%23555555'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/></svg>") !important;
+  }
+}
+
+/* 5. Cross-Browser Specifications Fallback (Firefox Engines Standard overrides) */
+html, body, *, ::-webkit-scrollbar {
+  scrollbar-width: thin !important;
+  scrollbar-color: #7a7a7a transparent !important;
+}

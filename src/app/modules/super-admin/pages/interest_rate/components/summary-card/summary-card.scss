@@ -1,0 +1,134 @@
+.zone-overview-cards {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  width: 100%;
+}
+
+.metrics-grid-wrapper {
+  display: grid;
+  // Automatically fits cards dynamically across all screen viewports
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 1400px) { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 850px)  { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 480px)  { grid-template-columns: 1fr; }
+}
+
+mat-card.exact-metric-card {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.015), 0 2px 4px rgba(0, 0, 0, 0.01) !important;
+  border: none !important;
+  padding: 20px 16px !important;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  // Remove native material padding wrappers completely
+  .exact-card-content {
+    padding: 0 !important;
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: flex-start;
+  }
+}
+
+// Visual Icon Containers with Light Color Tints
+.card-left-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  &.bg-savings   { background-color: #ebf7ee; mat-icon { color: #3fa752; } }
+  &.bg-current   { background-color: #edf2fe; mat-icon { color: #2e62e6; } }
+  &.bg-fixed     { background-color: #f7effd; mat-icon { color: #8e44ad; } }
+  &.bg-recurring { background-color: #fef4e8; mat-icon { color: #e67e22; } }
+  &.bg-loan      { background-color: #e6f7f4; mat-icon { color: #1abc9c; } }
+  &.bg-meta      { background-color: #fff9eb; mat-icon { color: #f39c12; } }
+}
+
+// Right Vertically Oriented Content Stack
+.card-right-data {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .exact-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #5c6873;
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  .exact-value {
+    margin: 0 0 6px 0;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #1a2233;
+    line-height: 1;
+    
+    &.time-header-fix {
+      font-size: 1.25rem;
+      margin-bottom: 2px;
+    }
+  }
+
+  .exact-effective {
+    font-size: 0.72rem;
+    color: #8a96a3;
+    margin-bottom: 8px;
+  }
+
+  // Metadata Card specific textual overrides
+  .exact-time {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333d4d;
+    margin-bottom: 6px;
+  }
+
+  .exact-author {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #6a7b8c;
+  }
+}
+
+// Small Trend Text Indicators
+.exact-trend {
+  display: flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  gap: 2px;
+  margin-top: 2px;
+
+  mat-icon {
+    font-size: 12px;
+    width: 12px;
+    height: 12px;
+  }
+
+  &.trend-green {
+    color: #2ecc71;
+  }
+}

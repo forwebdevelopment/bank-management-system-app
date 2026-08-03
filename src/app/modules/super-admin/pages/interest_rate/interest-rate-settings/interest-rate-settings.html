@@ -1,0 +1,78 @@
+<div class="rate-dashboard-workspace">
+
+  <!-- Section 1: Header Control Toolbar Area -->
+<header class="blueprint-section zone-header-actions">
+  <div class="header-action-bar">
+    
+    <!-- Title and Subtext Context Block -->
+    <div class="title-context-block">
+      <h1 class="dashboard-main-title">Interest Rate Settings</h1>
+      <p class="dashboard-subtext">Configure and manage interest rates for all banking products.</p>
+    </div>
+
+    <!-- Action Buttons Cluster -->
+    <div class="actions-button-cluster">
+      
+      <button mat-flat-button color="primary" class="action-btn icon-btn-gap">
+        <mat-icon>add</mat-icon>
+        <span class="btn-text">Add Interest Rate</span>
+      </button>
+
+      <button mat-raised-button color="accent" class="action-btn icon-btn-gap">
+        <mat-icon>save</mat-icon>
+        <span class="btn-text">Save Changes</span>
+      </button>
+
+      <button mat-stroked-button class="action-btn icon-btn-gap">
+        <mat-icon>file_upload</mat-icon>
+        <span class="btn-text">Import Rates</span>
+      </button>
+
+      <button mat-stroked-button class="action-btn icon-btn-gap">
+        <mat-icon>file_download</mat-icon>
+        <span class="btn-text">Export Rates</span>
+      </button>
+
+      <button mat-icon-button class="refresh-action-btn" matTooltip="Refresh Page">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+  <!-- Section 2: Summary Metrics Row -->
+
+  <app-summary-card></app-summary-card>
+    <!-- <app-rate-overview-cards></app-rate-overview-cards> -->
+
+
+  <!-- Main Responsive Layout Wrapper -->
+  <div class="workspace-responsive-shell">
+    
+    <!-- Primary Workspace: Houses Table and Charts -->
+    <div class="primary-data-lane">
+      
+      <!-- Section 3: Product Interest Rate Data Table -->
+        <app-interest-list (open)="openProductDetials($event)"></app-interest-list>
+
+      <!-- Charts Responsive Wrapper Stack -->
+      <div class="charts-responsive-grid">
+        
+        <!-- Section 4: Trend Line Chart -->
+          <app-interest-rate-trend></app-interest-rate-trend>
+        
+        <!-- Section 5: Comparison Bar Chart -->
+          <app-current-interest-rate></app-current-interest-rate>
+
+      </div>
+    </div>
+
+     @if (openProductDetailsPopup){
+      <app-product-details (close)="closeProductDetials()"></app-product-details>
+     }
+
+  </div>
+
+</div>

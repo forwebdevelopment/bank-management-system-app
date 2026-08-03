@@ -1,0 +1,69 @@
+<div class="custom-modal-window-frame">
+  
+  <!-- Popup Header Context Area -->
+  <header class="modal-window-header">
+    <div class="header-title-flex">
+       <span>
+        <mat-icon>{{ data.iconCode }}</mat-icon>
+      </span>
+      <div class="header-text-stack">
+        <h3 class="modal-main-heading">Edit Product Settings</h3>
+        <p class="modal-sub-heading">{{ data.productType }} &bull; {{ data.category }}</p>
+      </div>
+    </div>
+    <button class="modal-close-corner-btn" (click)="onCancel()">&times;</button>
+  </header>
+
+  <!-- Input Form Entry Workspace Body Area -->
+  <main class="modal-window-body">
+    <div class="pure-css-form-grid-layout">
+      
+      <!-- Field 1: Interest Rate Percentage Slider -->
+      <div class="form-input-control-block grid-col-full">
+        <label class="form-field-label-text">Current Interest Rate (%)</label>
+        <div class="percentage-input-wrapper">
+          <input type="number" step="0.01" class="native-style-text-box input-highlight-bold" [(ngModel)]="editableRate">
+          <span class="input-right-suffix">%</span>
+        </div>
+      </div>
+
+      <!-- Field 2: Minimum Balance -->
+      <div class="form-input-control-block">
+        <label class="form-field-label-text">Minimum Balance Requirement</label>
+        <div class="currency-input-wrapper">
+          <span class="input-left-prefix">₹</span>
+          <input type="text" class="native-style-text-box" [(ngModel)]="editableMinBalance">
+        </div>
+      </div>
+
+      <!-- Field 3: Maximum Balance -->
+      <div class="form-input-control-block">
+        <label class="form-field-label-text">Maximum Balance Limit</label>
+        <div class="currency-input-wrapper">
+          <span class="input-left-prefix">₹</span>
+          <input type="text" class="native-style-text-box" [(ngModel)]="editableMaxBalance">
+        </div>
+      </div>
+
+      <!-- Field 4: Effective From Calendar Date picker -->
+      <div class="form-input-control-block">
+        <label class="form-field-label-text">Effective Start From</label>
+        <input type="date" class="native-style-text-box" [(ngModel)]="editableEffectiveFrom">
+      </div>
+
+      <!-- Field 5: Effective To Calendar Date picker -->
+      <div class="form-input-control-block">
+        <label class="form-field-label-text">Effective End Until</label>
+        <input type="date" class="native-style-text-box" [(ngModel)]="editableEffectiveTo">
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Command Button Triggers Row Layout -->
+  <footer class="modal-window-footer-row">
+    <button class="modal-action-btn dismiss-cancel-btn" (click)="onCancel()">Cancel</button>
+    <button class="modal-action-btn commit-save-btn" (click)="onSave()">Save Rate Changes</button>
+  </footer>
+
+</div>

@@ -1,0 +1,75 @@
+.analytics-card-container {
+  background-color: #ffffff;
+  border: 1px solid #ebf0f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(160, 175, 190, 0.06);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; // Scales into structural layout grid rows slots dynamically
+  box-sizing: border-box;
+}
+
+.chart-header-block {
+  margin-bottom: 20px;
+
+  .chart-main-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a2233;
+  }
+
+  .chart-sub-title {
+    margin: 3px 0 0 0;
+    font-size: 0.8rem;
+    color: #8a96a3;
+    font-weight: 400;
+  }
+}
+
+// Controls chart scaling dynamically, avoiding infinite layout container layout bugs
+.chart-canvas-viewport {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  min-height: 250px; // Solid base threshold constraint for cleaner tablet view responsive flow
+}
+.analytics-card-container {
+  background-color: #ffffff;
+  border: 1px solid #ebf0f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(160, 175, 190, 0.06);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; 
+  box-sizing: border-box;
+  overflow: hidden; // Blocks children from forcing outer container stretching bugs
+}
+
+.chart-header-block {
+  margin-bottom: 16px;
+  .chart-main-title { margin: 0; font-size: 1.05rem; font-weight: 700; color: #1a2233; }
+  .chart-sub-title { margin: 2px 0 0 0; font-size: 0.75rem; color: #8a96a3; }
+}
+
+// FIX: High-utility dynamic canvas wrapper structure 
+.chart-canvas-viewport {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 240px; // Sets solid footprint canvas base on mobile displays
+
+  // Force inner canvas element to follow wrapper container instructions exactly
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

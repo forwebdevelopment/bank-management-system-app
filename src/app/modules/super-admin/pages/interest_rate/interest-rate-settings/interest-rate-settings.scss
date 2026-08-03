@@ -1,0 +1,200 @@
+// Responsive Design Variables
+$detail-sidebar-desktop-width: 340px;
+$detail-sidebar-tablet-width: 280px;
+$layout-gap: 16px;
+
+// Blueprint Theme Palette
+$color-blueprint-line: #2196f3;
+$color-blueprint-tint: rgba(33, 150, 243, 0.04);
+
+// Mixin helper for clean media breaks
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'large-desktop' { @media (max-width: 1400px) { @content; } }
+  @else if $breakpoint == 'tablet-landscape' { @media (max-width: 1024px) { @content; } }
+  @else if $breakpoint == 'tablet-portrait' { @media (max-width: 768px) { @content; } }
+}
+
+.rate-dashboard-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-gap;
+  padding: $layout-gap;
+  box-sizing: border-box;
+//   background-color: #f8f9fa;
+  width: 100%;
+  min-height: 100vh;
+  
+  // Standard structural blueprint placeholder configurations
+  .blueprint-section {
+    // background-color: #ffffff;
+    // border: 1px dashed $color-blueprint-line;
+    // background-color: $color-blueprint-tint;
+    // border-radius: 8px;
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    // box-sizing: border-box;
+  }
+
+  // Centered labels inside blueprint blocks
+  .blueprint-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #1976d2;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 24px;
+    text-align: center;
+  }
+}
+
+// Section Heights - Minimum space enforcement
+.zone-header-actions { min-height: 90px; }
+.zone-overview-cards { min-height: 110px; }
+.zone-product-table  { min-height: 380px; }
+.zone-chart-card     { min-height: 300px; }
+
+// Main Horizontal Structural Container Breakout
+.workspace-responsive-shell {
+  display: flex;
+  gap: $layout-gap;
+  align-items: flex-start;
+  width: 100%;
+
+  // Tablet Landscape Breakpoint: Right sidebar moves below the main data content
+  @include respond-to('tablet-landscape') {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+// Section 1 Header Workspace Styling Integration
+.zone-header-actions {
+  min-height: auto !important; // Overriding placeholder mock min-heights to support dynamic text wrapping
+//   background-color: #ffffff !important; // Removes blueprint background color tint for finalized layout
+ // border: 1px solid #e0e0e0 !important; // Swaps layout blueprint lines for clean production borders
+}
+
+.header-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  // Medium Devices Breakpoint: Switches alignment when text blocks get crowded
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+}
+
+.title-context-block {
+  .dashboard-main-title {
+    margin: 0 0 4px 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #212529;
+    letter-spacing: -0.2px;
+  }
+
+  .dashboard-subtext {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+}
+
+.actions-button-cluster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; // Enables wrap protection for mid-sized tablet displays
+  gap: 10px;
+
+  @media (max-width: 1100px) {
+    width: 100%;
+  }
+
+  // Individual Control Button Structural Rules
+  .action-btn {
+    height: 40px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+
+    &.icon-btn-gap {
+      mat-icon {
+        margin-right: 6px;
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    // Small Mobile Breakpoint Layout Reductions: Trims text labels out to rely cleanly on icons
+    @media (max-width: 600px) {
+      min-width: 40px;
+      padding: 0 10px;
+      
+      .btn-text {
+        display: none; // Hides descriptive text labels safely on small screen widths
+      }
+      &.icon-btn-gap mat-icon {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .refresh-action-btn {
+    color: #495057;
+    
+    mat-icon {
+      font-size: 20px;
+    }
+  }
+}
+
+
+// Left primary workflow lane containing table and chart grid
+.primary-data-lane {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-gap;
+  flex-grow: 1;
+  min-width: 0; // Crucial flex layout mechanism preventing horizontal overflow bugs
+}
+
+// Charts Dual Column System
+.charts-responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $layout-gap;
+
+  // Tablet Portrait Breakpoint: Stacks charts one below the other
+  @include respond-to('tablet-portrait') {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Section 6: Right Side Inspector Context Drawer
+.zone-detail-inspector {
+  width: $detail-sidebar-desktop-width;
+  flex-shrink: 0;
+  align-self: stretch; // Matches height dynamically with left column content on desktop layout
+
+  @include respond-to('large-desktop') {
+    width: $detail-sidebar-tablet-width;
+  }
+
+  // Tablet Breakout: Re-flows to match width structure when pushed to the bottom
+  @include respond-to('tablet-landscape') {
+    width: 100%;
+    align-self: initial;
+    min-height: 400px;
+  }
+}

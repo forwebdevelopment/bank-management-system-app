@@ -1,0 +1,126 @@
+// Layout Variable Parameters
+$inspector-panel-width: 350px;
+$layout-gap: 16px;
+$color-blueprint-line: #2196f3;
+$color-blueprint-tint: rgba(33, 150, 243, 0.04);
+
+// Mixed-Device Breakpoint Management Mixin Engine
+@mixin handle-responsive-break($device-breakpoint) {
+  @if $device-breakpoint == 'large-widescreen' { @media (max-width: 1440px) { @content; } }
+  @else if $device-breakpoint == 'tablet-view' { @media (max-width: 1024px) { @content; } }
+  @else if $device-breakpoint == 'mobile-view' { @media (max-width: 680px) { @content; } }
+}
+
+.audit-workspace-layout {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-gap;
+  padding: $layout-gap;
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+  width: 100%;
+  min-height: 100vh;
+
+  // Global styled blueprint wrapper card framework for subcomponents
+  .blueprint-section {
+    background-color: #ffffff;
+    border: 1px dashed $color-blueprint-line;
+    background-color: $color-blueprint-tint;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.015);
+    box-sizing: border-box;
+  }
+
+  // Centered blueprint identity display label tags
+  .blueprint-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #1976d2;
+    font-weight: 500;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 24px;
+    text-align: center;
+  }
+}
+
+// Section Base Blueprint Heights Enforcement
+.zone-audit-header      { min-height: 80px; }
+.zone-summary-kpis      { min-height: 110px; }
+.zone-advanced-filters  { min-height: 140px; }
+.zone-audit-ledger-table { min-height: 420px; }
+
+// Main Multi-Column Split Framework Row
+.audit-split-workspace {
+  display: flex;
+  gap: $layout-gap;
+  align-items: flex-start;
+  width: 100%;
+
+  // Tablet View: Pushes the right side auditor inspection block directly below the data grid table
+  @include handle-responsive-break('tablet-view') {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+// Left side flexible content assembly stack
+.primary-data-lane {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-gap;
+  flex-grow: 1;
+  min-width: 0; // Standard layout reset protection blocking inner table clipping bugs
+}
+
+// Bottom Analytics Trio-Column Framework Row (Sections 4, 5, and 6)
+.bottom-analytics-trio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr; // Accurately matches the component width variances seen on layout image
+  gap: $layout-gap;
+  width: 100%;
+
+  // Widescreen/Desktop breaks: Collapses into two columns when screen sizes get tighter
+  @include handle-responsive-break('large-widescreen') {
+    grid-template-columns: 1fr 1fr;
+    
+    // Forces third element (Leaderboard) to snap full-width along the bottom row trace
+    .zone-user-leaderboard {
+      grid-column: span 2;
+    }
+  }
+
+  // Tablet portrait breaks: Collapse arrays cleanly into stacks on compact viewports
+  @include handle-responsive-break('mobile-view') {
+    grid-template-columns: 1fr;
+    
+    .zone-user-leaderboard {
+      grid-column: span 1;
+    }
+  }
+  
+  .zone-security-alerts, .zone-live-monitor, .zone-user-leaderboard {
+    min-height: 280px;
+  }
+}
+
+// Section 7: Right Structural Activity Inspector Panel Drawer Sidebar
+.zone-audit-inspector {
+  width: $inspector-panel-width;
+  flex-shrink: 0;
+  align-self: stretch; // Scales full-height symmetrically alongside left column rows elements flow on desktop
+
+  @include handle-responsive-break('large-widescreen') {
+    width: 300px;
+  }
+
+  // Tablet View: Converts side tracker panel structure into full-width base card workspace section
+  @include handle-responsive-break('tablet-view') {
+    width: 100%;
+    align-self: initial;
+    min-height: 500px;
+  }
+}

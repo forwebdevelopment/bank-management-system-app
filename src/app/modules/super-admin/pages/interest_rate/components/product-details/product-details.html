@@ -1,0 +1,192 @@
+<div class="inspector-side-panel">
+
+  <!-- Fixed Top Panel Header Card -->
+  <header class="inspector-fixed-header">
+    <h3 class="inspector-header-title">Savings Account - Regular Savings</h3>
+    <button class="panel-close-btn" aria-label="Close panel" (click)="this.close.emit()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <!-- FIX: High-Density Scrollable Content Body Viewport Area -->
+  <main class="inspector-scrollable-body-viewport">
+    <div class="scroll-content-container">
+
+      <!-- Section 1: Product Information -->
+      <section class="inspector-data-group">
+        <h4 class="group-section-heading">Product Information</h4>
+        <div class="kv-grid-list">
+          <div class="kv-row">
+            <span class="kv-key">Product Name</span>
+            <span class="kv-value">Savings Account</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Product Code</span>
+            <span class="kv-value font-monospace">SA-REG-001</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Product Category</span>
+            <span class="kv-value">Deposit Account</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Interest Details -->
+      <section class="inspector-data-group">
+        <h4 class="group-section-heading">Interest Details</h4>
+        <div class="kv-grid-list">
+          <div class="kv-row">
+            <span class="kv-key">Current Interest Rate</span>
+            <span class="kv-value text-green font-bold">4.50%</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Previous Rate</span>
+            <span class="kv-value">4.25%</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Effective Date</span>
+            <span class="kv-value">01 Jun 2026</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Expiry Date</span>
+            <span class="kv-value">31 Dec 2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Rules -->
+      <section class="inspector-data-group">
+        <h4 class="group-section-heading">Rules</h4>
+        <div class="kv-grid-list">
+          <div class="kv-row">
+            <span class="kv-key">Minimum Amount</span>
+            <span class="kv-value">₹1,000</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Maximum Amount</span>
+            <span class="kv-value">₹10,00,000</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Minimum Duration</span>
+            <span class="kv-value">No Limit</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Maximum Duration</span>
+            <span class="kv-value">No Limit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Approval Information -->
+      <section class="inspector-data-group">
+        <h4 class="group-section-heading">Approval Information</h4>
+        <div class="kv-grid-list">
+          <div class="kv-row">
+            <span class="kv-key">Updated By</span>
+            <span class="kv-value">Super Admin</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Approved By</span>
+            <span class="kv-value">System Admin</span>
+          </div>
+          <div class="kv-row">
+            <span class="kv-key">Approval Date</span>
+            <span class="kv-value">26 Jun 2026 10:30 AM</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Interest Rate History -->
+      <section class="inspector-data-group">
+        <h4 class="group-section-heading">Interest Rate History</h4>
+        <div class="sub-table-wrapper-axis">
+          <table class="inspector-sub-table">
+            <thead>
+              <tr>
+                <th>Version</th>
+                <th>Old Rate</th>
+                <th>New Rate</th>
+                <th>Effective Date</th>
+                <th>Modified By</th>
+                <th>Approved By</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>v4.0</td>
+                <td>4.25%</td>
+                <td class="text-green font-bold">4.50%</td>
+                <td>01 Jun 2026</td>
+                <td>Super Admin</td>
+                <td>System Admin</td>
+              </tr>
+              <tr>
+                <td>v3.0</td>
+                <td>4.00%</td>
+                <td class="text-green font-bold">4.25%</td>
+                <td>01 Jan 2026</td>
+                <td>Super Admin</td>
+                <td>System Admin</td>
+              </tr>
+              <tr>
+                <td>v2.0</td>
+                <td>3.75%</td>
+                <td class="text-green font-bold">4.00%</td>
+                <td>01 Jul 2025</td>
+                <td>Super Admin</td>
+                <td>System Admin</td>
+              </tr>
+              <tr>
+                <td>v1.0</td>
+                <td>3.50%</td>
+                <td class="text-green font-bold">3.75%</td>
+                <td>01 Jan 2025</td>
+                <td>Super Admin</td>
+                <td>System Admin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 6: Future Scheduled Changes -->
+      <section class="inspector-data-group">
+        <h4 class="group-section-heading">Future Scheduled Changes</h4>
+        <div class="sub-table-wrapper-axis">
+          <table class="inspector-sub-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>New Rate</th>
+                <th>Effective Date</th>
+                <th>Approval Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Savings Account</td>
+                <td class="font-bold">4.75%</td>
+                <td>01 Jan 2027</td>
+                <td><span class="status-badge amber">Pending Approval</span></td>
+              </tr>
+              <tr>
+                <td>Fixed Deposit</td>
+                <td class="font-bold">7.50%</td>
+                <td>01 Jan 2027</td>
+                <td><span class="status-badge amber">Pending Approval</span></td>
+              </tr>
+              <tr>
+                <td>Home Loan</td>
+                <td class="font-bold">8.50%</td>
+                <td>01 Jul 2026</td>
+                <td><span class="status-badge green">Approved</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</div>
