@@ -22,24 +22,45 @@
     <main class="main-workspace">
       
       <!-- Top Left: Filter and Table Area -->
+      <section class="layout-panel table-section">
         <app-login-history-table>
-          
+          <div class="blueprint-label table-label">
+            Filter and table
+            <br><br>
+            <button (click)="toggleSidebar()" class="mock-btn">
+              Simulate 3-Dot Click (Toggle Sidebar)
+            </button>
+          </div>
         </app-login-history-table>
+      </section>
 
       <!-- Bottom Left: Responsive Analytics Row (3 Columns) -->
       <div class="analytics-row">
         
-      <app-login-activity-chart>
-            
+        <section class="layout-panel chart-panel">
+          <app-login-activity-chart>
+            <div class="blueprint-label">
+              login-activity-chart works!<br>
+              <small>these section are responsive</small>
+            </div>
           </app-login-activity-chart>
+        </section>
 
-       <app-login-distribution-chart>
-          
+        <section class="layout-panel chart-panel">
+          <app-login-distribution-chart>
+            <div class="blueprint-label">
+              login-distribution-chart works!<br>
+              <small>these section are responsive</small>
+            </div>
           </app-login-distribution-chart>
+        </section>
 
         <section class="layout-panel chart-panel">
           <app-active-sessions-list>
-           
+            <div class="blueprint-label">
+              active-sessions-list works!<br>
+              <small>these section are responsive</small>
+            </div>
           </app-active-sessions-list>
         </section>
 

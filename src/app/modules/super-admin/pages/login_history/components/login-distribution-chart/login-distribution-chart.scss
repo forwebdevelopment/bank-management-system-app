@@ -19,6 +19,8 @@ $radius: 8px;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   height: 100%;
+   max-height: 375px;
+  min-height: 375px;
 }
 
 // --- Header Styling ---
