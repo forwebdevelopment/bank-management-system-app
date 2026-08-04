@@ -1,0 +1,76 @@
+<div class="dashboard-wrapper">
+  
+  <!-- ========================================== -->
+  <!-- HEADER & KPI (Kept exactly as requested)   -->
+  <!-- ========================================== -->
+ <app-page-header>
+     
+    </app-page-header>
+
+   <app-summary-card>
+      <div class="blueprint-label">
+        Section 2: KPI Metrics (Total, Success, Failed, Locked, Active, Devices)
+      </div>
+    </app-summary-card>
+
+  <!-- ========================================== -->
+  <!-- REDESIGNED BOTTOM SECTION                  -->
+  <!-- ========================================== -->
+  <div class="content-body" [class.has-sidebar]="isSidebarOpen">
+    
+    <!-- LEFT COLUMN: Main Workspace -->
+    <main class="main-workspace">
+      
+      <!-- Top Left: Filter and Table Area -->
+        <app-login-history-table>
+          
+        </app-login-history-table>
+
+      <!-- Bottom Left: Responsive Analytics Row (3 Columns) -->
+      <div class="analytics-row">
+        
+      <app-login-activity-chart>
+            
+          </app-login-activity-chart>
+
+       <app-login-distribution-chart>
+          
+          </app-login-distribution-chart>
+
+        <section class="layout-panel chart-panel">
+          <app-active-sessions-list>
+           
+          </app-active-sessions-list>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN: Sidebar (Toggled via Table action) -->
+    <aside class="details-sidebar" *ngIf="true">
+      
+      <!-- Top Right: Login Details -->
+      <section class="layout-panel sidebar-panel top-sidebar">
+        <app-user-details-panel>
+          <div class="blueprint-label">
+            login details ,<br>
+            it will open user click on three dots of table
+            <br><br>
+            <button (click)="toggleSidebar()" class="mock-btn">Close Panel</button>
+          </div>
+        </app-user-details-panel>
+      </section>
+
+      <!-- Bottom Right: Secondary Sidebar Panel (Alerts) -->
+      <section class="layout-panel sidebar-panel bottom-sidebar">
+        <app-security-alerts-panel>
+          <div class="blueprint-label">
+            (Security Alerts)
+          </div>
+        </app-security-alerts-panel>
+      </section>
+
+    </aside>
+
+  </div>
+</div>

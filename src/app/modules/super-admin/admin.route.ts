@@ -11,6 +11,7 @@ import { ReportAndAnalyticsLayout } from './pages/report_and_analytics/report-an
 import { BankSettingLayout } from './pages/bank-settings/bank-setting-layout/bank-setting-layout';
 import { InterestRateSettings } from './pages/interest_rate/interest-rate-settings/interest-rate-settings';
 import { AuditLog } from './pages/audit-log/audit-log/audit-log';
+import { LoginHistory } from './pages/login_history/login-history/login-history';
 
 export const Admin_Routs: Routes = [
     {
@@ -27,7 +28,8 @@ export const Admin_Routs: Routes = [
             {path:'report-analytics', component:ReportAndAnalyticsLayout},
             {path:'bank-settings', component:BankSettingLayout},
             {path:'interest-rate-settings', component:InterestRateSettings},
-            {path:'audit-logs',component:AuditLog}
+            {path:'audit-logs',component:AuditLog},
+            {path:'login-history',component:LoginHistory}
         ]
     }
 

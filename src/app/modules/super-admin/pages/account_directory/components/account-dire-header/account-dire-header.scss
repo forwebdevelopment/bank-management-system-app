@@ -10,7 +10,9 @@ $font-family: 'Inter', system-ui, -apple-system, sans-serif;
   align-items: center;
   width: 100%;
   font-family: $font-family;
-  padding: 0.5rem 0;
+  padding: 1rem;
+background-color: #ffffff;
+border-radius: 10px;
 
   .title-container {
     display: flex;

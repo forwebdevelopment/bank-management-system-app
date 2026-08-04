@@ -1,0 +1,54 @@
+<div class="distribution-card">
+  
+  <!-- Header Section -->
+  <div class="card-header">
+    <h3 class="card-title">Login Distribution</h3>
+    
+    <div class="filter-wrapper">
+      <select class="time-filter">
+        <option>Today</option>
+        <option>Yesterday</option>
+        <option>This Week</option>
+      </select>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="card-body">
+    
+    <!-- Left Side: Doughnut Chart & Center Text -->
+    <div class="chart-section">
+      <div class="chart-wrapper">
+        <canvas #doughnutChart></canvas>
+        
+        <!-- Absolute positioned text in the center of the doughnut -->
+        <div class="center-text">
+          <span class="total-number">2,458</span>
+          <span class="total-label">Total Logins</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Custom HTML Legend -->
+    <div class="legend-section">
+      <!-- We slice(0,4) to only show the main 4 items in the legend as per your image -->
+      <div class="legend-item" *ngFor="let item of legendData | slice:0:4; let last = last" [class.border-bottom]="!last">
+        
+        <div class="legend-left">
+          <span class="legend-dot" [style.backgroundColor]="item.color"></span>
+          <span class="legend-label">{{ item.label }}</span>
+        </div>
+        
+        <div class="legend-right">
+          <span class="legend-percent">{{ item.percent }}</span>
+          <span class="legend-count">({{ item.count }})</span>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>

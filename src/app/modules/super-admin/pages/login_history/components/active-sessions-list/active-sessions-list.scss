@@ -1,0 +1,195 @@
+// --- Variables ---
+$bg-white: #ffffff;
+$border-color: #f3f4f6;
+$card-border: #e5e7eb;
+$text-main: #111827;
+$text-secondary: #4b5563;
+$text-muted: #9ca3af;
+$primary-blue: #2563eb;
+$hover-bg: #f9fafb;
+$radius: 8px;
+
+// --- Main Card Container ---
+.active-sessions-card {
+  background-color: $bg-white;
+  border-radius: $radius;
+  border: 1px solid $card-border;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
+
+// --- Header Styling ---
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  
+  .title-group {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+
+    .card-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: $text-main;
+    }
+
+    .session-count {
+      font-size: 13px;
+      font-weight: 500;
+      color: $text-muted;
+    }
+  }
+
+  .view-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: $primary-blue;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #eff6ff; // Light blue hover
+    }
+
+    .chevron {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+// --- Responsive Table Wrapper ---
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// --- Table Styles ---
+.sessions-table {
+  width: 100%;
+  min-width: 650px; // Forces scrolling on mobile rather than squishing columns
+  border-collapse: collapse;
+  text-align: left;
+
+  th, td {
+    padding: 12px 10px;
+    font-size: 13px;
+    white-space: nowrap; // Prevents text wrapping
+  }
+
+  th {
+    font-weight: 600;
+    color: $text-secondary;
+    border-bottom: 1px solid $border-color;
+  }
+
+  td {
+    color: $text-main;
+    font-weight: 500;
+    border-bottom: 1px solid $border-color;
+  }
+
+  tr.no-border td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: $hover-bg;
+  }
+}
+
+// --- Typography & Alignment Utilities ---
+.text-secondary { color: $text-secondary; font-weight: 400; }
+.text-center { text-align: center; }
+
+// --- User Profile Column ---
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #e2e8f0; // Neutral gray/blue bg
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  
+  .user-name { 
+    font-weight: 500; 
+  }
+}
+
+// --- Icon Column ---
+.icon-cell {
+  color: #64748b; // Slate gray
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// --- Status Badge ---
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-active {
+  background-color: #eff6ff; 
+  color: $primary-blue; 
+}
+
+// --- Action Terminate Button ---
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.2s;
+
+  &.terminate-btn {
+    color: #ef4444; // Red icon
+    
+    svg { 
+      width: 18px; 
+      height: 18px; 
+    }
+
+    &:hover { 
+      background-color: #fef2f2; // Light red background on hover
+    }
+  }
+}

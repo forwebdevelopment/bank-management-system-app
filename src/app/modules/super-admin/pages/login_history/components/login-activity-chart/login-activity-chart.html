@@ -1,0 +1,31 @@
+<div class="chart-card">
+  
+  <!-- Header Section -->
+  <div class="card-header">
+    <div class="title-group">
+      <h3 class="card-title">Login Activity</h3>
+      <span class="card-subtitle">(Last 30 Days)</span>
+    </div>
+
+    <!-- Custom Select Dropdown -->
+    <div class="filter-wrapper">
+      <select class="time-filter">
+        <option>Last 30 Days</option>
+        <option>Last 7 Days</option>
+        <option>This Year</option>
+      </select>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 
+    Chart Canvas Section 
+    CRITICAL: The canvas MUST be wrapped in this div for responsiveness to work.
+  -->
+  <div class="chart-wrapper">
+    <canvas #activityChart></canvas>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="kpi-grid">
+  <!-- Loop through the kpiData array to generate cards -->
+  <mat-card class="kpi-card" *ngFor="let kpi of kpiData">
+    <mat-card-content class="kpi-content">
+      
+      <!-- Left Side: Circular Icon -->
+      <div class="icon-container" [ngClass]="kpi.colorClass">
+        <mat-icon>{{ kpi.icon }}</mat-icon>
+      </div>
+
+      <!-- Right Side: Details -->
+      <div class="kpi-details">
+        <div class="kpi-title">{{ kpi.title }}</div>
+        <div class="kpi-value">{{ kpi.value }}</div>
+        
+        <!-- Trend Indicator (Up/Down) -->
+        <div class="kpi-trend" [ngClass]="kpi.isPositive ? 'trend-up' : 'trend-down'">
+          <mat-icon class="trend-icon">
+            {{ kpi.isPositive ? 'north_east' : 'south_west' }}
+          </mat-icon>
+          <span>{{ kpi.percent }}</span>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

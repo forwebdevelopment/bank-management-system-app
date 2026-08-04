@@ -1,0 +1,187 @@
+// --- Variables ---
+$bg-white: #ffffff;
+$border-color: #e5e7eb;
+$text-main: #111827;
+$text-secondary: #4b5563;
+$text-muted: #9ca3af;
+$radius: 8px;
+
+// --- Main Container ---
+.distribution-card {
+  background-color: $bg-white;
+  border-radius: $radius;
+  border: 1px solid $border-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
+
+// --- Header Styling ---
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  
+  .card-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: $text-main;
+  }
+}
+
+// --- Custom Filter Dropdown ---
+.filter-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .time-filter {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: $bg-white;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    padding: 6px 28px 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-main;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #2563eb;
+    }
+  }
+
+  .chevron {
+    position: absolute;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    color: $text-muted;
+    pointer-events: none;
+  }
+}
+
+// --- Layout: Chart + Legend ---
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex: 1;
+
+  // Responsive Breakpoint: Stack vertically on tablets and mobile
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+// --- Left: Chart Section ---
+.chart-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 200px;  // Fixed width to keep doughnut properly sized
+  height: 200px; 
+  
+  canvas {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1; // Stays behind the canvas so hover tooltips still work
+
+  .total-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-main;
+    line-height: 1.2;
+  }
+
+  .total-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: $text-secondary;
+  }
+}
+
+// --- Right: Custom Legend Section ---
+.legend-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0; // Handled by padding on items
+}
+
+.legend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  
+  &.border-bottom {
+    border-bottom: 1px solid #f3f4f6; // Subtle line between items
+  }
+
+  .legend-left, .legend-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .legend-left {
+    gap: 10px;
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .legend-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: $text-secondary;
+    }
+  }
+
+  .legend-right {
+    gap: 6px;
+
+    .legend-percent {
+      font-size: 13px;
+      font-weight: 600;
+      color: $text-main;
+    }
+
+    .legend-count {
+      font-size: 13px;
+      font-weight: 500;
+      color: $text-muted;
+    }
+  }
+}

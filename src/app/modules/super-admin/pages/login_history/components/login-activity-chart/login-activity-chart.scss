@@ -1,0 +1,105 @@
+// --- Variables ---
+$bg-white: #ffffff;
+$border-color: #e5e7eb;
+$text-main: #111827;
+$text-muted: #6b7280;
+$radius: 8px;
+
+// --- Main Container ---
+.chart-card {
+  background-color: $bg-white;
+  border-radius: $radius;
+  border: 1px solid $border-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+// --- Header Styling ---
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap; // Allows wrapping on extremely small mobile devices
+  gap: 12px;
+}
+
+.title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  .card-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: $text-main;
+  }
+
+  .card-subtitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-muted;
+  }
+}
+
+// --- Custom Filter Dropdown ---
+.filter-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .time-filter {
+    appearance: none; // Hides default browser styling
+    -webkit-appearance: none;
+    background-color: $bg-white;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    padding: 6px 32px 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text-main;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #2563eb;
+    }
+  }
+
+  .chevron {
+    position: absolute;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    color: $text-muted;
+    pointer-events: none; // Allows clicks to pass through to the select element
+  }
+}
+
+// ==========================================
+// RESPONSIVE CHART WRAPPER (The Magic)
+// ==========================================
+.chart-wrapper {
+  position: relative; // Required by Chart.js
+  width: 100%;        // Forces canvas to take full width of card
+  height: 250px;      // Base height for desktop screens
+  flex-grow: 1;       // Allows it to fill remaining space if card is stretched vertically
+
+  // Tablet Adjustments
+  @media (max-width: 1024px) {
+    height: 220px;
+  }
+
+  // Mobile Adjustments
+  @media (max-width: 600px) {
+    height: 180px; // Prevents the chart from taking up the entire screen on small phones
+  }
+}

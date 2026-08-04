@@ -1,0 +1,111 @@
+.page-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  // background-color: #ffffff;
+  gap: 16px;
+  
+  // --- TABLET BREAKPOINT ---
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// --- Left Side: Titles ---
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1; // Allows text area to consume available space
+
+  .page-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827; // Very dark gray/navy
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    
+    // Mobile text scaling
+    @media (max-width: 600px) {
+      font-size: 20px;
+    }
+  }
+
+  .page-subtitle {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6b7280; // Standard gray
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    line-height: 1.4;
+
+    // Mobile text scaling
+    @media (max-width: 600px) {
+      font-size: 12px;
+    }
+  }
+}
+
+// --- Right Side: Actions ---
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; // Safely wraps items if they run out of room
+
+  // --- MOBILE BREAKPOINT ---
+  @media (max-width: 600px) {
+    width: 100%;
+    flex-direction: column; // Stack buttons vertically on small screens
+    align-items: stretch;   // Stretch buttons to 100% width for easy tapping
+  }
+
+  .action-btn {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    height: 36px; // Standard height
+    
+    @media (max-width: 600px) {
+      height: 40px; // Slightly taller on mobile for better touch target
+      width: 100%;
+      display: flex;
+      justify-content: center; // Keep text centered when full-width
+    }
+
+    mat-icon {
+      margin-right: 6px;
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  // Primary Blue Button
+  .primary-btn {
+    background-color: #2563eb; 
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 0 16px;
+  }
+
+  // Outlined Secondary Buttons
+  .secondary-btn {
+    color: #374151; 
+    border-color: #d1d5db; 
+    border-radius: 6px;
+    background-color: #ffffff;
+    padding: 0 16px;
+
+    &:hover {
+      background-color: #f9fafb;
+    }
+  }
+}
