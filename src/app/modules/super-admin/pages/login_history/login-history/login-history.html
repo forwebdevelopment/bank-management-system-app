@@ -1,97 +1,31 @@
-<div class="dashboard-wrapper">
-  
-  <!-- ========================================== -->
-  <!-- HEADER & KPI (Kept exactly as requested)   -->
-  <!-- ========================================== -->
- <app-page-header>
-     
-    </app-page-header>
+<div class="workspace-viewport">
 
-   <app-summary-card>
-      <div class="blueprint-label">
-        Section 2: KPI Metrics (Total, Success, Failed, Locked, Active, Devices)
-      </div>
-    </app-summary-card>
+  <!-- Section 1: Full-Width View Header Component Container -->
 
-  <!-- ========================================== -->
-  <!-- REDESIGNED BOTTOM SECTION                  -->
-  <!-- ========================================== -->
-  <div class="content-body" [class.has-sidebar]="isSidebarOpen">
-    
-    <!-- LEFT COLUMN: Main Workspace -->
-    <main class="main-workspace">
-      
-      <!-- Top Left: Filter and Table Area -->
-      <section class="layout-panel table-section">
-        <app-login-history-table>
-          <div class="blueprint-label table-label">
-            Filter and table
-            <br><br>
-            <button (click)="toggleSidebar()" class="mock-btn">
-              Simulate 3-Dot Click (Toggle Sidebar)
-            </button>
-          </div>
-        </app-login-history-table>
-      </section>
+    <app-page-header (export)="ExportHistoryInCSV(undefined)" (exportpdf)="ExportHistoryInPdf()"></app-page-header>
 
-      <!-- Bottom Left: Responsive Analytics Row (3 Columns) -->
-      <div class="analytics-row">
-        
-        <section class="layout-panel chart-panel">
-          <app-login-activity-chart>
-            <div class="blueprint-label">
-              login-activity-chart works!<br>
-              <small>these section are responsive</small>
-            </div>
-          </app-login-activity-chart>
-        </section>
 
-        <section class="layout-panel chart-panel">
-          <app-login-distribution-chart>
-            <div class="blueprint-label">
-              login-distribution-chart works!<br>
-              <small>these section are responsive</small>
-            </div>
-          </app-login-distribution-chart>
-        </section>
+  <!-- Section 2: Full-Width KPI Summary Deck Container -->
+<app-summary-card></app-summary-card>
 
-        <section class="layout-panel chart-panel">
-          <app-active-sessions-list>
-            <div class="blueprint-label">
-              active-sessions-list works!<br>
-              <small>these section are responsive</small>
-            </div>
-          </app-active-sessions-list>
-        </section>
+  <!-- Section 3: Full-Width Filter Controls & Table Container -->
+  <app-login-history-table (export)="ExportHistoryInCSV($event)"></app-login-history-table>
 
-      </div>
-    </main>
+  <!-- Bottom Analytics Layout Channel (Fluid 4-Column Responsive Row Grid) -->
+  <footer class="analytics-responsive-grid">
 
-    <!-- RIGHT COLUMN: Sidebar (Toggled via Table action) -->
-    <aside class="details-sidebar" *ngIf="true">
-      
-      <!-- Top Right: Login Details -->
-      <section class="layout-panel sidebar-panel top-sidebar">
-        <app-user-details-panel>
-          <div class="blueprint-label">
-            login details ,<br>
-            it will open user click on three dots of table
-            <br><br>
-            <button (click)="toggleSidebar()" class="mock-btn">Close Panel</button>
-          </div>
-        </app-user-details-panel>
-      </section>
+    <!-- Block A: Login Activity -->
+   <app-login-activity-chart></app-login-activity-chart>
 
-      <!-- Bottom Right: Secondary Sidebar Panel (Alerts) -->
-      <section class="layout-panel sidebar-panel bottom-sidebar">
-        <app-security-alerts-panel>
-          <div class="blueprint-label">
-            (Security Alerts)
-          </div>
-        </app-security-alerts-panel>
-      </section>
+    <!-- Block B: Login Distribution -->
+   <app-login-distribution-chart></app-login-distribution-chart>
 
-    </aside>
+    <!-- Block C: Active Session -->
+    <app-active-sessions-list></app-active-sessions-list>
 
-  </div>
+    <!-- Block D: Security Alert -->
+    <app-security-alerts-panel></app-security-alerts-panel>
+
+  </footer>
+
 </div>

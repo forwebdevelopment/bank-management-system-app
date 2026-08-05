@@ -1,1 +1,38 @@
-<p>security-alerts-panel works!</p>
+<div class="security-alerts-card">
+
+  <!-- Header Title Panel Wrapper -->
+  <div class="card-header-bar">
+    <h3 class="title-text">Security Alerts</h3>
+    <button mat-button color="primary" class="view-all-btn">View All</button>
+  </div>
+
+  <!-- Real-time Feed Logging Container List -->
+  <ul class="alerts-log-feed">
+    <li *ngFor="let alert of alertsDataList" class="alert-feed-row">
+      
+      <!-- Left Anchor Segment: Decorative Circle Status Indicator Icons -->
+      <div class="alert-icon-wrapper" [ngClass]="alert.iconClass">
+        <mat-icon class="feed-node-icon">{{ alert.icon }}</mat-icon>
+      </div>
+
+      <!-- Center Segment: Micro Detail Layout Strings Block -->
+      <div class="alert-details-content">
+        <h4 class="incident-headline-text">{{ alert.title }}</h4>
+        <div class="incident-meta-subtitle">
+          <span class="affected-user-label">{{ alert.user }}</span>
+          <span class="meta-divider">•</span>
+          <span class="timestamp-label">{{ alert.timestamp }}</span>
+        </div>
+      </div>
+
+      <!-- Right Anchor Segment: Compact Threat Classification Badge Flags -->
+      <div class="alert-action-badge-zone">
+        <span class="severity-status-badge" [ngClass]="alert.severityClass">
+          {{ alert.severity }}
+        </span>
+      </div>
+
+    </li>
+  </ul>
+
+</div>

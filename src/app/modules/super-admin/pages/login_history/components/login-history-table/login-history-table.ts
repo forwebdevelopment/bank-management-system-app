@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { MatModule } from '../../../../../../shared/material.module';
 
 @Component({
@@ -9,7 +9,7 @@ import { MatModule } from '../../../../../../shared/material.module';
 })
 export class LoginHistoryTable {
 
-
+@Output() export = new EventEmitter<any>()
   // Tracks which row's dropdown is currently open
   activeDropdownIndex: number | null = null;
 

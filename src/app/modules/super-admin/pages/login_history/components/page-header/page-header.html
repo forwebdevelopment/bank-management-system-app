@@ -11,17 +11,17 @@
   <!-- Right Side: Action Buttons -->
   <div class="header-actions">
     
-    <button mat-flat-button color="primary" class="action-btn primary-btn">
+    <button mat-flat-button color="primary" class="action-btn primary-btn" (click)="exportHistory()">
       <mat-icon>file_upload</mat-icon>
       Export Login History
     </button>
     
-    <button mat-stroked-button class="action-btn secondary-btn">
+    <button mat-stroked-button class="action-btn secondary-btn" (click)="exportpdf.emit()">
       <mat-icon>picture_as_pdf</mat-icon>
       Download PDF
     </button>
     
-    <button mat-stroked-button class="action-btn secondary-btn">
+    <button mat-stroked-button class="action-btn secondary-btn" >
       <mat-icon>refresh</mat-icon>
       Refresh
     </button>

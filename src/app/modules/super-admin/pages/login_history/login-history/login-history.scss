@@ -1,193 +1,94 @@
-// --- Layout Variables ---
-$bg-color: #f4f7f9;
-$sidebar-width: 360px;
+// Responsive Dashboard Constants
+$wireframe-blue: #0288d1;
+$layout-padding-desktop: 24px;
+$layout-padding-mobile: 16px;
+$component-gap: 20px;
 
-// --- Blueprint Visual Variables ---
-$blueprint-border: #d32f2f; // Changed to red to match your outline
-$blueprint-bg: #eaf2fc;     // Light blue background matching your image
-$blueprint-text: #000000;
-
-:host {
-  display: block;
-  height: 100vh;
-  background-color: $bg-color;
+.workspace-viewport {
   box-sizing: border-box;
-}
-
-// Main Wrapper
-.dashboard-wrapper {
-  width: 100%; // Do NOT use 100vw
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden; // Prevent horizontal scroll on the main page body
-}
-// Top Header & KPI Blocks (Unchanged)
-.full-width-section {
   width: 100%;
-  flex-shrink: 0; 
-}
+  min-height: 100%;
+  padding: $layout-padding-desktop;
 
-// Bottom Area (Grid/Flex Container)
-.content-body {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  flex: 1; 
-  min-height: 0; 
-  transition: all 0.3s ease-in-out;
-}
-
-// LEFT COLUMN: Takes remaining width automatically
-.main-workspace {
-  flex: 1; 
-  min-width: 0; // CRITICAL: Prevents the table from stretching the whole page
-  min-height: 0; // CRITICAL: Prevents vertical blowout
+  
   display: flex;
   flex-direction: column;
-  overflow-y: auto; 
-} 
-// Table Section (Top Left) - Expands to fill available vertical space
-.table-section {
-  display: flex;
-  flex-direction: column;
-  flex: 1; // Take up remaining vertical space above the charts
-  min-height: 0; // CRITICAL: Forces inner scrollbars to work
+  gap: $component-gap;
+
+  // Responsive padding reduction for smaller tablet/mobile display boundaries
+  @media (max-width: 768px) {
+    padding: $layout-padding-mobile;
+    gap: 16px;
+  }
+}
+
+// Global Core Wireframe Component Blueprint Block
+.layout-block {
+  box-sizing: border-box;
+  width: 100%;
   background-color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  overflow: hidden; // Keeps corners clean
-}
-.table-responsive-wrapper {
-  flex: 1; // Stretches to fill the .table-section
-  overflow: auto; // This is the ONLY element that should scroll vertically
-  min-height: 0;
-}
-// Bottom Left Analytics Row (3 Columns)
-.analytics-row {
-  margin-top: 15px;
-  margin-bottom: 10px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  flex-shrink: 0; // CRITICAL: Prevents the table from squeezing this row
-  min-height: 320px; // Give the charts a guaranteed minimum height
-  
-  // Responsive fallback
-  @media (max-width: 1200px) {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-}
-// RIGHT COLUMN: Fixed Width Sidebar
-.details-sidebar {
-  width: 360px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  overflow-y: auto;
-  min-height: 0; // Prevent vertical blowout
-  
-  // Hide ugly track lines when not actively scrolling (Webkit browsers)
-  &::-webkit-scrollbar-track {
-    background: transparent; 
-  }
-}
-// Sidebar Panels
-.sidebar-panel {
-  display: flex;
-  flex-direction: column;
-}
-.top-sidebar {
-  flex: 1.5;
-  min-height: 350px;
-}
-.bottom-sidebar {
-  flex: 1;
-  min-height: 250px;
-}
-
-// --- Blueprint Visual Styles ---
-.layout-panel {
-  //border: 2px solid $blueprint-border; // Solid red border like your image
+  border: 2px solid $wireframe-blue;
   border-radius: 4px;
-//  background-color: $blueprint-bg;
-}
-
-.chart-panel {
+  position: relative;
+  padding: 24px;
   display: flex;
-  flex-direction: column;
-}
-
-.kpi-panel {
-  min-height: 110px;
-  border: 2px dashed #1a73e8; // Kept old style for unchanged header/kpi
-  background-color: rgba(26, 115, 232, 0.04);
-}
-header.layout-panel {
-  border: 2px dashed #1a73e8;
-  background-color: rgba(26, 115, 232, 0.04);
-}
-
-.blueprint-label {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  transition: all 0.2s ease-in-out;
+
+  .blueprint-overlay-tag {
+    font-size: 13px;
+    font-weight: 500;
+    color: $wireframe-blue;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  // Ensure inner dynamic angular components expand completely
+  .full-width-element {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Dedicated Scale Envelopes for full-width components
+.section-header {
+  min-height: 70px;
+}
+
+.section-kpi-deck {
+  min-height: 120px;
+}
+
+.section-data-table {
+  min-height: 400px;
+  
+  // Allows text grids/tables to remain readable via inner container scrolling on small screens
+  overflow-x: auto; 
+}
+
+// Highly Responsive 4-Column Bottom Layout Track
+.analytics-responsive-grid {
+  display: grid;
   width: 100%;
-  color: $blueprint-text;
-  font-size: 14px;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 16px;
-  box-sizing: border-box;
+  gap: $component-gap;
   
-  small {
-    margin-top: 8px;
-    color: #555;
+  // Default Layout: Desktop (4 Columns)
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  // Mid-Range Screen Adaptability: Widescreen Tablets / Small Laptops (2x2 Grid)
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  // Mobile Device Adaptability: Handsets (Sticks to a single row-by-row layout)
+  @media (max-width: 640px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
 }
 
-.mock-btn {
-  margin-top: 12px;
-  padding: 8px 16px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  
-  &:hover {
-    background-color: #eee;
-  }
-}
-
-// --- Responsive Rules (For the bottom section) ---
-@media (max-width: 1200px) {
-  // Switch charts to 1 column on mid-sized screens to prevent squishing
-  .analytics-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 992px) {
-  // Sidebar becomes an absolute drawer on tablets
-  .details-sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
-    width: 380px;
-    max-width: 90vw;
-    z-index: 1000;
-    box-shadow: -4px 0 16px rgba(0,0,0,0.15);
-    background: $bg-color;
-    padding: 16px;
-  }
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+.dynamic-card-box {
+  min-height: 240px;
 }
