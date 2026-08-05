@@ -1,48 +1,22 @@
-<div class="branch-view-workspace">
+<div class="main-workspace-root">
 
-  <!-- Left Main Container Pane: Orchestrates Sections 1, 2, and 3 -->
-  <div class="workspace-left-content">
+  <!-- Header Section (Section 1) -->
+  <app-management-header></app-management-header>
+
+  <!-- KPI Summary Deck Section (Section 2) -->
+  <app-branche-card></app-branche-card>
+
+  <!-- Split Dynamic Operational Row (Section 3 & Section 5) -->
+  <div class="operational-split-row">
     
-    <!-- SECTION 1 SLOT: Header Zone Container -->
-    <section class="layout-row section-header-zone">
-      <!-- Component tag <app-management-header></app-management-header> will go here -->
-      <!-- <div class="wireframe-box text-center">Section 1: Management Header Block View Slot</div> -->
-       <app-management-header></app-management-header>
-    </section>
+    <!-- Primary Content Area: Filters + Table Layout Slot -->
+   <app-branches></app-branches>
 
-    <!-- SECTION 2 SLOT: Summary Metrics Grid Zone Container -->
-    <section class="layout-row section-summary-zone">
-      <!-- Component tag <app-summary-card></app-summary-card> will go here -->
-      <!-- <div class="wireframe-box text-center">Section 2: Summary Metric Cards Grid Slot</div> -->
-       <app-branche-card></app-branche-card>
-    </section>
-
-    <!-- SECTION 3 SLOT: Master Data Table Grid Zone Container -->
-    <section class="layout-row section-table-zone">
-      <!-- Component tag <app-branch-table></app-branch-table> will go here -->
-      <!-- <div class="wireframe-box text-center">Section 3: Branch Management Directory Datatable Slot</div> -->
-       <app-branches></app-branches>
-    </section>
+    <!-- Side Detail Inspection Drawer Slot -->
+    <aside class=" branch-details-sidebar">
+      <app-branche-details></app-branche-details>
+    </aside>
 
   </div>
-
-  <!-- SECTION 4 SLOT: Right Collapsible Context Details Panel Pane Drawer Container -->
-  <!-- We use a CSS class modifier dynamically triggered via controller state tracking variable [isDetailsActive] -->
-  <aside class="workspace-right-drawer" [class.is-expanded]="isDetailsActive">
-    <div class="drawer-layout-container">
-      <div class="drawer-layout-header">
-        <h2>Branch Details</h2>
-        <button class="drawer-close-action-btn" (click)="toggleDetailsView()">✕</button>
-      </div>
-      <div class="drawer-layout-content">
-        <!-- Component tag <app-branch-details></app-branch-details> will go here -->
-        <!-- <div class="wireframe-box text-center">Section 4: Selected Item Meta Details Panel Readout Slot</div> -->
-         <app-branche-details></app-branche-details>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Responsive Screen Overlay Mask Block: Restricts underlying interactions on smaller viewports -->
-  <div class="view-drawer-backdrop" *ngIf="isDetailsActive" (click)="toggleDetailsView()"></div>
 
 </div>

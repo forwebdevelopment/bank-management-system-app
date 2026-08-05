@@ -24,3 +24,28 @@ export interface BranchRecordSchema {
   status: string;
   createdDate: string;
 }
+
+export interface BranchRecord {
+  code: string;
+  name: string;
+  managerName: string;
+  managerAvatar: string;
+  city: string;
+  state: string;
+  phone: string;
+  totalCustomers: string;
+  totalAccounts: string;
+  status: 'Active' | 'Inactive';
+  createdDate: string;
+}
+
+
+export interface KpiCardItem {
+  icon: string;
+  iconClass: string;
+  title: string;
+  count: string;
+  trendText: string;
+  trendDirection: 'up' | 'down';
+  trendClass: string;
+}

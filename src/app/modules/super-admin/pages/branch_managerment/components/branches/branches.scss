@@ -1,304 +1,550 @@
-@import '../../../../../../shared/layout-variables';
+$text-main-dark: #1e293b;
+$text-grey-sec: #64748b;
+$input-border-color: #cbd5e1;
+$blue-btn-accent: #2563eb;
+$row-height: 28px; // Squeezed compact horizontal standard dimension envelope
+$text-main-dark: #1e293b;
+$text-grey-sec: #64748b;
+$border-color-split: #e2e8f0;
+$blue-accent-link: #2563eb;
+$cell-padding-vertical: 5px; // Ultra-compact line limit compression rule padding parameters
+$cell-padding-horizontal: 10px;
 
-
-:host {
-  display: block;
-  width: 100%;
-}
-
-.search-filter-section-wrapper {
+.filters-panel-wrapper {
+  box-sizing: border-box;
   width: 100%;
   background-color: #ffffff;
-  border: 1px solid #f1f5f9;
-  border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
-  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+// Master Outer Grid Horizontal Packing Row Configuration
+.filters-input-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1.2fr repeat(4, 1fr) auto;
+  gap: 12px;
+  align-items: flex-end;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 576px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+}
+
+.grid-cell {
   display: flex;
   flex-direction: column;
- 
+  gap: 4px;
+  width: 100%;
+}
 
-  @include responsive-to-tablet {
-    padding: 16px;
-    gap: 16px;
+.relative-cell {
+  position: relative; // Visual anchor parent bounding box context for absolute overlays positioning
+}
+
+.actions-button-cell {
+  @media (max-width: 1400px) {
+    grid-column: 1 / -1;
+    margin-top: 4px;
   }
+}
 
-  // 5-Column structural flex matrix grid row
-  .filter-fields-row-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; // Allows fields to flow down cleanly if screen room collapses
-    gap: 16px;
-    width: 100%;
+.compact-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: $text-grey-sec;
+  letter-spacing: 0.2px;
+}
+
+// Custom Input Field Construction
+.input-icon-group {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .custom-form-input {
     box-sizing: border-box;
+    width: 100%;
+    height: $row-height;
+    padding: 0 24px 0 8px;
+    font-size: 11px;
+    color: $text-main-dark;
+    background-color: #ffffff;
+    border: 1px solid $input-border-color;
+    border-radius: 4px;
+    outline: none;
 
-    .filter-field-column {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 calc(20% - 13px); // Divides 100% horizontal space evenly into 5 distinct column parts
-      min-width: 180px; // Prevents inputs from squeezing into unreadable text widths
-
-      @include responsive-to-tablet {
-        flex: 1 1 calc(33.333% - 11px); // Drops to a 3-column rows flow matrix on intermediate tablets
-      }
-
-      @include responsive-to-mobile {
-        flex: 1 1 100%; // Scales into a vertical layout list stack on compact phones
-      }
-
-      // Exact mockup typography style mirroring for upper form labels
-      .field-custom-label {
-        font-size: 13px;
-        font-weight: 500;
-        color: #475569; // Charcoal gray tone profile
-        margin-bottom: 8px; // Separation gap from actual select/input borders
-      }
+    &:focus {
+      border-color: $blue-btn-accent;
     }
   }
 
-  // Direct layout override properties for default Angular Material Form fields bounds
-  .custom-mat-input-override {
-    width: 100%;
-    
-    ::v-vdeep .mat-mdc-form-field-wrapper {
-      padding-bottom: 0 !important; // Eliminates default material whitespace padding blocks
+  .trailing-search-icon {
+    position: absolute;
+    right: 8px;
+    font-size: 11px;
+    pointer-events: none;
+  }
+}
+
+// Modern Custom UI Trigger replaces native HTML Select fields
+.custom-dropdown-trigger {
+  box-sizing: border-box;
+  width: 100%;
+  height: $row-height;
+  padding: 0 10px;
+  background-color: #ffffff;
+  border: 1px solid $input-border-color;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+  }
+
+  &.opened {
+    border-color: $blue-btn-accent;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.06);
+  }
+
+  .truncate-value-text {
+    font-size: 11px;
+    color: $text-main-dark;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .custom-arrow-indicator {
+    font-size: 7px;
+    color: #94a3b8;
+    margin-left: 6px;
+    transition: transform 0.15s ease;
+  }
+  
+  &.opened .custom-arrow-indicator {
+    transform: rotate(180deg);
+  }
+}
+
+// Absolute Custom Dropdown Menu Floating Overlays Layer (ul)
+.dropdown-overlay-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 4px 0;
+  margin: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+
+  &.visible {
+    display: block; // Triggers visibility activation cleanly
+  }
+
+  // Squeezed Dropdown Options (li)
+  li {
+    box-sizing: border-box;
+    padding: 6px 10px;
+    font-size: 11px;
+    color: $text-main-dark;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s ease;
+
+    &:hover {
+      background-color: #f1f5f9;
     }
 
-    ::v-deep .mat-mdc-text-field-wrapper {
-      background-color: #ffffff !important;
-      height: 42px !important; // Compact input box style matching mockup
-      padding: 0 12px !important;
-      display: flex;
-      align-items: center;
-      border-radius: 6px !important;
-    }
-
-    ::v-deep .mat-mdc-form-field-infix {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      height: 42px !important;
-      display: flex;
-      align-items: center;
-    }
-
-    .search-icon-color {
-      color: #94a3b8;
+    &.active-item {
+      background-color: #e2e8f0;
+      font-weight: 600;
+      color: $blue-btn-accent;
     }
   }
 
-  // LEFT-ALIGNED ACTION CONTROLS BUTTONS BLOCK
-  .filter-action-buttons-row {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; // Keeps buttons locked left to match your blueprint picture
-    gap: 12px;
+  // Sleek minimalist utility scroll tracking aesthetics
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e2e8f0;
+    border-radius: 2px;
+  }
+}
+
+// Action Trigger Row Element Group Configurations
+.buttons-layout-alignment {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+  width: 100%;
+
+  @media (max-width: 576px) {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+}
+
+.form-btn {
+  box-sizing: border-box;
+  height: $row-height;
+  padding: 0 14px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+
+  @media (max-width: 576px) {
     width: 100%;
+  }
+}
 
-    @include responsive-to-mobile {
-      flex-direction: column;
-      button { width: 100%; }
-    }
+.reset-action-btn {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  color: $text-main-dark;
+  &:hover { background-color: #f8fafc; }
+}
 
-    button {
-      height: 38px;
-      font-weight: 500;
-      font-size: 13px;
-      border-radius: 6px;
-      padding: 0 16px;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+.submit-search-btn {
+  background-color: $blue-btn-accent;
+  color: #ffffff;
+  &:hover { background-color: darken($blue-btn-accent, 8%); }
+}
 
-      mat-icon {
-        font-size: 16px;
-        width: 16px;
-        height: 16px;
-      }
-    }
 
-    // Reset Filters Button Style (Grey border outline)
-    .btn-reset-filters {
-      color: #475569;
-      border: 1px solid #cbd5e1;
-      background-color: #ffffff;
 
-      &:hover {
-        background-color: #f8fafc;
-        border-color: #94a3b8;
-      }
-    }
 
-    // Search Button Style (Vibrant solid layout blue)
-    .btn-execute-search {
-      background-color: #2563eb; // Royal blue hue matches mockup color values exactly
-      color: #ffffff;
+.table-workspace-card {
+  box-sizing: border-box;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  
+}
 
-      &:hover {
-        background-color: #1d4ed8;
-      }
+// Fluid horizontal viewport box layout preventing data grids from expanding bounding cells layouts
+.table-scroll-viewport {
+  width: 100%;
+  overflow-x: auto;
+  flex: 1;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+  }
+}
+
+// Angular Material Grid Class Overrides Layout Definition Modifiers
+.branch-mat-grid {
+  width: 100%;
+  min-width: 1100px; // Guarantees visual column structure safety alignment bounds
+  background: transparent;
+
+  .mat-mdc-header-cell {
+    background-color: #ffffff;
+    padding: 8px $cell-padding-horizontal;
+    border-bottom: 2px solid $border-color-split;
+  }
+
+  .table-header-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: $text-grey-sec;
+    text-transform: capitalize;
+    letter-spacing: 0.2px;
+  }
+
+  .mat-mdc-cell {
+    padding: $cell-padding-vertical $cell-padding-horizontal;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+
+  .grid-row-fade-hover {
+    transition: background-color 0.1s ease;
+    &:hover {
+      background-color: #f8fafc;
     }
   }
 }
 
-.branch-table-component-container {
-  width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
-  box-sizing: border-box;
-  overflow: hidden;
+// Specific Text Fields Formatting Shortcut Variations
+.code-link-cell {
+  font-size: 11px;
+  font-weight: 600;
+  color: $blue-accent-link;
+  cursor: pointer;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.bold-text-cell {
+  font-size: 11px;
+  font-weight: 600;
+  color: $text-main-dark;
+}
+
+.standard-data-text {
+  font-size: 11px;
+  color: $text-main-dark;
+}
+
+.monospace-font {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+// Manager Profile Sub-Alignment Layout Block
+.manager-profile-cell {
   display: flex;
-  flex-direction: column;
-  margin-top: 25px;
-  max-height: 400px;
+  align-items: center;
+  gap: 8px;
 
-  // HORIZONTAL COMPRESSION PROTECTOR OVERFLOW WRAPPER CHANNEL
-  .table-scroll-viewport-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    background-color: #ffffff;
-  }
-
-  // CORE TABLE PRESENTATION LAYER MATRIX PROPERTIES
-  .custom-mockup-data-grid {
-    width: 100%;
-    min-width: 1450px; // Guarantees that columns retain full width definitions cleanly
-    background-color: #ffffff;
-    border-collapse: collapse;
-
-    // Header Styling Rules
-    th.mat-mdc-header-cell {
-      background-color: #f8fafc; // Clean gray header row background fill color mapping
-      color: #475569; // Charcoal layout label tracking profile
-      font-size: 13px;
-      font-weight: 600;
-      height: 48px;
-      padding: 0 16px;
-      border-bottom: 1px solid #e2e8f0;
-      white-space: nowrap;
-    }
-
-    // Body Row Cell Styling Rules
-    td.mat-mdc-cell {
-      font-size: 13.5px;
-      color: #334155; // Dark charcoal slate text profile
-      height: 56px; // Perfect row padding baseline breathing space
-      padding: 0 16px;
-      border-bottom: 1px solid #f1f5f9; // Delicate micro hairline separators
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-
-    // Formatting Specific Column Utilities
-    .numeric-alignment-col {
-      text-align: right;
-    }
-
-    .actions-alignment-col {
-      width: 64px;
-      text-align: center;
-      padding: 0 !important;
-
-      .actions-trigger-btn {
-        color: #94a3b8;
-        &:hover { color: #475569; }
-      }
-    }
-
-    // Colors mapping adjustments classes
-    .font-blue { color: #2563eb; font-weight: 500; }
-    .font-semibold { font-weight: 600; }
-    .font-medium { font-weight: 500; }
-    .text-dark { color: #0f172a; }
-    .text-slate { color: #475569; }
-
-    // Manager Profile Column Configuration Mappings
-    .manager-profile-badge-layout {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      .profile-avatar-circle {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background-color: #e0e7ff; // Soft indigo background tint
-        color: #4f46e5; // Rich deep violet avatar icon
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #c7d2fe;
-        flex-shrink: 0;
-
-        mat-icon {
-          font-size: 14px;
-          width: 14px;
-          height: 14px;
-        }
-      }
-      .profile-name-text { font-weight: 500; color: #1e293b; }
-    }
-
-    // Row selection hover triggers
-    .table-interactive-row {
-      cursor: pointer;
-      transition: background-color 0.12s ease;
-      &:hover { background-color: #f8fafc; }
-    }
-
-    // Micro-Status Capsule Badges
-    .mockup-status-capsule {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      min-width: 64px;
-      text-align: center;
-
-      &.state-active { background-color: #e6f4ea; color: #137333; }
-      &.state-inactive { background-color: #fce8e6; color: #c5221f; }
-    }
-  }
-
-  // BOTTOM SUB-FOOTER CONTROL PANEL STRIP
-  .table-pagination-footer-panel {
+  .avatar-mask-circle {
+    width: 22px; // Downscaled photo envelope dimension tracking settings
+    height: 22px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #e2e8f0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 8px 24px;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .avatar-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .manager-display-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: $text-main-dark;
+  }
+}
+
+// Custom High-Density Status Badges Style Definitions
+.micro-status-chip {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-align: center;
+  min-width: 46px;
+
+  &.chip-active {
+    background-color: #f0fdf4;
+    color: #16a34a;
+  }
+
+  &.chip-inactive {
+    background-color: #fef2f2;
+    color: #dc2626;
+  }
+}
+
+// Alignments Helpers Layout Classes Mapping Properties
+.numeric-alignment {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.status-alignment {
+  text-align: center;
+  justify-content: center;
+}
+
+.actions-alignment {
+  text-align: center;
+  justify-content: center;
+  
+  .row-menu-trigger-btn {
+    width: 24px !important;
+    height: 24px !important;
+    padding: 0 !important;
+    line-height: 24px !important;
+    
+    .triple-dot-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      color: $text-grey-sec;
+    }
+  }
+}
+
+// High-Density Pagination Footer Structural Bar Configuration Layout
+.custom-pagination-bar {
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border-top: 1px solid $border-color-split;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entries-counter-label {
+    font-size: 11px;
+    color: $text-grey-sec;
+    font-weight: 500;
+  }
+}
+
+.pagination-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rows-selector-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .selector-text {
+    font-size: 11px;
+    color: $text-grey-sec;
+  }
+
+  .micro-rows-dropdown {
+    height: 22px;
+    padding: 0 4px;
+    font-size: 11px;
+    border: 1px solid $border-color-split;
+    border-radius: 4px;
+    color: $text-main-dark;
     background-color: #ffffff;
-    border-top: 1px solid #e2e8f0;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+// Custom Page Listing Items Navigation Set Architecture (ul / li)
+.page-navigation-steps-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  .step-btn {
     box-sizing: border-box;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 4px;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: $text-main-dark;
+    user-select: none;
+    transition: all 0.1s ease;
 
-    @include responsive-to-mobile {
-      flex-direction: column;
-      gap: 12px;
-      padding: 16px;
-      text-align: center;
+    &:hover:not(.step-arrow-disabled):not(.active-numeric-page):not(.step-ellipsis) {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
     }
+  }
 
-    .records-counter-readout {
-      font-size: 13px;
-      color: #64748b;
-      font-weight: 500;
+  .active-numeric-page {
+    background-color: $blue-accent-link;
+    border-color: $blue-accent-link;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: default;
+  }
+
+  .step-arrow-disabled {
+    color: #cbd5e1;
+    border-color: #f1f5f9;
+    cursor: not-allowed;
+    background-color: #f8fafc;
+  }
+
+  .step-ellipsis {
+    border-color: transparent;
+    cursor: default;
+    color: $text-grey-sec;
+  }
+}
+
+// Downscaled Overrides Targeting the MatMenu Dropdown Container Items
+::v-deep .compact-mat-dropdown-menu {
+  min-width: 130px !important;
+  
+  .mat-mdc-menu-item {
+    min-height: 30px !important;
+    height: 30px !important;
+    padding: 0 12px !important;
+    
+    .mat-icon {
+      font-size: 14px !important;
+      width: 14px !important;
+      height: 14px !important;
+      margin-right: 8px !important;
     }
-
-    .clean-paginator-override {
-      background: transparent;
-      font-size: 13px;
-      color: #64748b;
-
-      ::v-deep .mat-mdc-paginator-container {
-        padding: 0;
-        min-height: auto;
-      }
+    
+    span {
+      font-size: 11px !important;
+      color: $text-main-dark;
     }
   }
 }

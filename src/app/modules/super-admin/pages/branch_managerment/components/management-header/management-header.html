@@ -1,28 +1,29 @@
-<div class="header-component-wrapper">
+<div class="header-action-container">
   
-  <!-- Left Side: Title and Subtitle Block Content Segment -->
-  <div class="title-meta-group">
-    <h1 class="main-title">Branch Management</h1>
-    <p class="subtitle-text">Manage all bank branches across the organization.</p>
+  <!-- Left Side: Title and Subtitle -->
+  <div class="title-group-pane">
+    <h2 class="main-heading-text">Branch Management</h2>
+    <p class="subtitle-caption-text">Manage all bank branches across the organization.</p>
   </div>
 
-  <!-- Right Side: Angular Material Action Controls Button Group -->
-  <div class="action-control-group">
+  <!-- Right Side: Action Tool Buttons -->
+  <div class="actions-button-group">
     
-    <button mat-flat-button color="primary" class="action-btn btn-add">
-      <mat-icon class="mat-icon-sharp">add</mat-icon>
-      <span class="btn-label">Add Branch</span>
+    <button mat-flat-button color="primary" class="dense-action-btn primary-add-btn" (click)="onAddBranch()">
+      <mat-icon class="btn-micro-icon">add</mat-icon>
+      <span>Add Branch</span>
     </button>
 
-    <button mat-stroked-button class="action-btn btn-export">
-      <mat-icon class="mat-icon-sharp">download</mat-icon>
-      <span class="btn-label">Export</span>
+    <button mat-stroked-button class="dense-action-btn utility-btn" (click)="onExport()">
+      <mat-icon class="btn-micro-icon">ios_share</mat-icon>
+      <span>Export</span>
     </button>
 
-    <button mat-icon-button class="btn-refresh" aria-label="Refresh branch data directory table">
-      <mat-icon class="mat-icon-sharp">refresh</mat-icon> 
+    <button mat-stroked-button class="dense-action-btn utility-btn" (click)="onRefresh()">
+      <mat-icon class="btn-micro-icon">refresh</mat-icon>
+      <span>Refresh</span>
     </button>
-    
+
   </div>
 
 </div>

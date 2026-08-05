@@ -1,147 +1,80 @@
-@import '../../../../../shared/layout-variables';
+$wireframe-blue-line: #00a0e9; // Blue border matching your blueprint layout image lines
+$layout-spacing: 16px;
+$compact-padding: 20px;
 
-.branch-view-workspace {
-  display: flex;
+.main-workspace-root {
+  box-sizing: border-box;
   width: 100%;
-  height: 100%; 
-  overflow: hidden;
+  min-height: 100%;
+  padding: $layout-spacing;
+  // background-color: #ffffff;
+  
+  display: flex;
+  flex-direction: column;
+  gap: $layout-spacing;
+}
+
+// Universal Blue Blueprint Panel Helper Definitions
+.blueprint-panel {
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 2px solid $wireframe-blue-line;
   position: relative;
-  background-color: #f8fafc;
+  padding: $compact-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
 
-  // Handles left-aligned main dashboard operational feeds fluid structures
-  .workspace-left-content {
-    flex: 1;
-    height: 100%;
-    overflow-y: auto; // Ensures data overflow scrolls internally cleanly
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-    gap: 24px;
-    box-sizing: border-box;
-
-    @include responsive-to-tablet {
-      padding: 16px;
-      gap: 16px;
-    }
-  }
-
-  // Placeholder block layouts used to establish boundaries for child sections
-  .layout-row {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .wireframe-box {
-    background-color: #ffffff;
-    border: 2px dashed #cbd5e1;
-    border-radius: 8px;
-    color: #64748b;
-    padding: 32px 16px;
+  .blueprint-marker-tag {
+    font-size: 13px;
     font-weight: 500;
-    font-size: 14px;
-  }
-
-  .text-center {
+    color: $wireframe-blue-line;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
     text-align: center;
   }
+}
 
-  // SECTION 4 DESIGN: The Sliding Right Sidebar Panel Context Canvas Box Structure
-  .workspace-right-drawer {
-    width: 400px;
-    height: 100%;
-    background-color: #ffffff;
-    border-left: 1px solid #e2e8f0;
-    box-sizing: border-box;
-    
-    // Desktop Flow Design Behavior rulesets
-    position: relative;
-    margin-right: -400px; // Standard hidden layout margin position values
-    transition: margin-right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 50;
+// Height parameters matching structural view hierarchy
+.header-full-width {
+  min-height: 65px;
+}
 
-    &.is-expanded {
-      margin-right: 0; // Slides column row smoothly adjacent into view without screen clipping
-    }
+.kpi-cards-full-width {
+  min-height: 110px;
+}
 
-    // Adapt layout context tracking behaviors for Tablet view lines
-    @include responsive-to-tablet {
-      position: absolute;
-      top: 0;
-      right: -100%; // Moves panel layer absolutely out of view track margins
-      width: 380px;
-      margin-right: 0 !important; // Overwrites desktop relative margins configuration settings
-      box-shadow: -6px 0 24px rgba(15, 23, 42, 0.12);
-      transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 100;
+// Split Row Configuration using CSS Grid for dynamic table container resizing
+.operational-split-row {
+  display: grid;
+  // minmax(0, 1fr) ensures the table component recalculates size cleanly when sidebars move
+  grid-template-columns: minmax(0, 1fr) 360px; 
+  gap: $layout-spacing;
+  width: 100%;
+  align-items: start;
+  flex: 1;
 
-      &.is-expanded {
-        right: 0; // Slides on top overlay style
-      }
-    }
-
-    // Adapt layout behaviors for full mobile takeover space adjustments
-    @include responsive-to-mobile {
-      width: 100%; // Maximizes readability on compact mobile touch devices
-    }
-
-    // Internal scroll encapsulation architecture mechanics within the drawer
-    .drawer-layout-container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-
-      .drawer-layout-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px 24px;
-        border-bottom: 1px solid #e2e8f0;
-
-        h2 {
-          margin: 0;
-          font-size: 16px;
-          font-weight: 600;
-          color: #0f172a;
-        }
-
-        .drawer-close-action-btn {
-          border: none;
-          background: transparent;
-          cursor: pointer;
-          font-size: 16px;
-          color: #94a3b8;
-          padding: 4px;
-          transition: color 0.15s ease;
-
-          &:hover {
-            color: #475569;
-          }
-        }
-      }
-
-      .drawer-layout-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 24px;
-        box-sizing: border-box;
-      }
-    }
+  // Tablet/Mobile Breakdown: Stacks elements into rows on smaller screens
+  @media (max-width: 1024px) {
+    grid-template-columns: minmax(0, 1fr);
   }
+}
 
-  // Visual dark backdrop filter rules applied when Section 4 is opened on tablets or phones
-  .view-drawer-backdrop {
-    display: none;
+// Main operational workspace table wrapper size configuration
+.filters-table-container {
+  min-height: 480px;
+  width: 100%;
+  
+  // Allows native internal content scrolling inside the layout box boundaries
+  overflow-x: auto; 
+}
 
-    @include responsive-to-tablet {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(15, 23, 42, 0.4);
-      backdrop-filter: blur(1.5px);
-      z-index: 90;
-    }
-  }
+// Right panel side drawer size configuration
+.branch-details-sidebar {
+  min-height: 480px;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  max-height: 611px;
 }
