@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DashboardMetric } from '../../../../../components/models/dashboard-summary.model';
+import { DashboardMetric } from '../../../../../models/dashboard-summary.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

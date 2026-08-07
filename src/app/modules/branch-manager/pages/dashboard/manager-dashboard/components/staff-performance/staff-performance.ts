@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StaffPerformanceModel } from '../../../../../components/models/staff-perfomance.model';
+import { StaffPerformanceModel } from '../../../../../models/staff-perfomance.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

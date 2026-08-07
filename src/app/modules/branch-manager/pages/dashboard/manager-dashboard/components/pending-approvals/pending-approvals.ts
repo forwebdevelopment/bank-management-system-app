@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PendingApproval } from '../../../../../components/models/pending-approval.model';
+import { PendingApproval } from '../../../../../models/pending-approval.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatModule } from '../../../../shared/material.module';
-import { TopbarMessage, TopbarNotification } from '../../components/models/top.model';
+import { TopbarMessage, TopbarNotification } from '../../models/top.model';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SidebarMenu } from '../../components/models/sidebar.model';
+import { SidebarMenu } from '../../models/sidebar.model';
 import { MatModule } from '../../../../shared/material.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 

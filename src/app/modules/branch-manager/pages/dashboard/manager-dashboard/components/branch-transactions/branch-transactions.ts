@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TransactionPeriod, TransactionSeries } from '../../../../../components/models/branch-transactin.model';
+import { TransactionPeriod, TransactionSeries } from '../../../../../models/branch-transactin.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

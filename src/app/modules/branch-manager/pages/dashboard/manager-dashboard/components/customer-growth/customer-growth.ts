@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GrowthPeriod, GrowthSeries } from '../../../../../components/models/customer-growth.model';
+import { GrowthPeriod, GrowthSeries } from '../../../../../models/customer-growth.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

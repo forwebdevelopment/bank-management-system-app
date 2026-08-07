@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CashPositionItem, PendingTask, PerformanceFactor } from '../../../../../components/models/branch-status-overview.model';
+import { CashPositionItem, PendingTask, PerformanceFactor } from '../../../../../models/branch-status-overview.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

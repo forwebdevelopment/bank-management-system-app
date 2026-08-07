@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AtmMachine } from '../../../../../components/models/atm.status.model';
+import { AtmMachine } from '../../../../../models/atm.status.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({

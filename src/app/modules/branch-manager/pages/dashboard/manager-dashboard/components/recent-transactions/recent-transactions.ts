@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RecentTransaction, TransactionType } from '../../../../../components/models/recent.model';
+import { RecentTransaction, TransactionType } from '../../../../../models/recent.model';
 import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({
