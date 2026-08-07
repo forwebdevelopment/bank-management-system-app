@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { MatModule } from '../../../../../../../shared/material.module';
+
 import { BankingProductRate } from '../../../../../models/interest_rate';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatModule } from '../../../../../../../shared/material.module';
 
 @Component({
   selector: 'app-edit-interest',

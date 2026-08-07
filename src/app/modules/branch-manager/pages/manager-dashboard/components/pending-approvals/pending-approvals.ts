@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { PendingApproval } from '../../../../../models/pending-approval.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+
+import { MatModule } from '../../../../../../shared/material.module';
+import { PendingApproval } from '../../../../models/pending-approval.model';
 
 @Component({
   selector: 'app-pending-approvals',

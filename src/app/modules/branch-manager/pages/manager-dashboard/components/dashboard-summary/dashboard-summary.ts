@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { DashboardMetric } from '../../../../../models/dashboard-summary.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+import { MatModule } from '../../../../../../shared/material.module';
+import { DashboardMetric } from '../../../../models/dashboard-summary.model';
+
 
 @Component({
   selector: 'app-dashboard-summary',

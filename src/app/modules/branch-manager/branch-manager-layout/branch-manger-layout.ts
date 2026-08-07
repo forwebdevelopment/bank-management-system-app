@@ -3,7 +3,7 @@ import { MatModule } from '../../../shared/material.module';
 import { BranchManagerSidebar } from './branch-manager-sidebar/branch-manager-sidebar';
 import { Topbar } from './topbar/topbar';
 import { Footer } from './footer/footer';
-import { ManagerDashboard } from '../pages/dashboard/manager-dashboard/manager-dashboard';
+import { ManagerDashboard } from '../pages/manager-dashboard/manager-dashboard';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

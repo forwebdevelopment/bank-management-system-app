@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatModule } from '../../../../../../../shared/material.module';
+import { MatModule } from '../../../../../../shared/material.module';
 
 @Component({
   selector: 'app-loan-overview',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CashPositionItem, PendingTask, PerformanceFactor } from '../../../../../models/branch-status-overview.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+
+import { MatModule } from '../../../../../../shared/material.module';
+import { CashPositionItem, PendingTask, PerformanceFactor } from '../../../../models/branch-status-overview.model';
 
 @Component({
   selector: 'app-branch-status-overview',

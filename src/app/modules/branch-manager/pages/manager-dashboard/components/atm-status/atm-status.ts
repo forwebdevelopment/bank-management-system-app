@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AtmMachine } from '../../../../../models/atm.status.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+
+import { MatModule } from '../../../../../../shared/material.module';
+import { AtmMachine } from '../../../../models/atm.status.model';
 
 @Component({
   selector: 'app-atm-status',

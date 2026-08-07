@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RecentTransaction, TransactionType } from '../../../../../models/recent.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+import { RecentTransaction, TransactionType } from '../../../../models/recent.model';
+import { MatModule } from '../../../../../../shared/material.module';
+
 
 @Component({
   selector: 'app-recent-transactions',

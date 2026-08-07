@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { GrowthPeriod, GrowthSeries } from '../../../../../models/customer-growth.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+
+import { MatModule } from '../../../../../../shared/material.module';
+import { GrowthPeriod, GrowthSeries } from '../../../../models/customer-growth.model';
 
 @Component({
   selector: 'app-customer-growth',

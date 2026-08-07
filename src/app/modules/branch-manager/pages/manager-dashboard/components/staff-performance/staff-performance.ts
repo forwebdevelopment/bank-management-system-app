@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { StaffPerformanceModel } from '../../../../../models/staff-perfomance.model';
-import { MatModule } from '../../../../../../../shared/material.module';
+import { StaffPerformanceModel } from '../../../../models/staff-perfomance.model';
+import { MatModule } from '../../../../../../shared/material.module';
+
 
 @Component({
   selector: 'app-staff-performance',
