@@ -7,8 +7,13 @@
     </h2>
 
     <div class="branch-location">
-      <mat-icon>location_on</mat-icon>
-      <span>{{ branchName }}</span>
+      <span>{{ branchName  }} {{isAccountNumberShow? accountNumber:offAccount}}</span>
+
+      @if (!isAccountNumberShow) {
+        <mat-icon (click)="ShowHideAccount()">visibility_off</mat-icon>
+      }@else {
+         <mat-icon (click)="ShowHideAccount()">visibility</mat-icon>
+      }
     </div>
   </div>
 
@@ -44,8 +49,7 @@
   <!-- Right section -->
   <div class="topbar-actions">
     <div class="current-date">
-      {{ sharedService.currentDate| date: 'EEEE, dd MMMM yyyy' }} <br/>
-      <small> {{ sharedService.currentDate| date: 'HH:mm:ss' }}</small>
+      {{ this.sharedService.currentDate  | date: 'EEEE, dd MMMM yyyy' }}
     </div>
 
     <div class="vertical-divider"></div>
@@ -104,7 +108,7 @@
       <div class="profile-content">
         <strong>{{ managerName }}</strong>
 
-        <span>{{ managerRole }}</span>
+   
 
         <small>
           <span class="online-dot"></span>
@@ -240,7 +244,7 @@
 
     <div>
       <strong>{{ managerName }}</strong>
-      <span>{{ managerRole }}</span>
+   
       <small>{{ branchName }}</small>
     </div>
   </div>

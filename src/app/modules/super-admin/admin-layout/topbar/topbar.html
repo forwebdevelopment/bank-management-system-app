@@ -80,11 +80,11 @@
 
       <div class="date-information">
         <strong>
-          {{ currentDate|date:'dd-MM-yyyy' }}
+          {{ sharedService.currentDate|date:'dd-MM-yyyy' }}
         </strong>
 
         <span>
-          {{  times| date:'HH:mm:ss'}}
+          {{  sharedService.currentDate| date:'HH:mm:ss'}}
         </span>
       </div>
     </div>

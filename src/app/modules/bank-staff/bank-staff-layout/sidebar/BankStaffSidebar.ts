@@ -16,178 +16,100 @@ export class BankStaffSidebar {
 
   readonly dashboardRoute = '/bank-staff/dashboard';
 
-  menuGroups: SidebarMenuGroup[] = [
-    {
-      items: [
-        {
-          label: 'Dashboard',
-          icon: 'dashboard',
-          route: '/bank-staff/dashboard'
-        }
-      ]
-    },
-    {
-      title: 'Customer',
-      items: [
-        {
-          label: 'Customer List',
-          icon: 'group',
-          route: '/bank-staff/customers'
-        },
-        {
-          label: 'Add Customer',
-          icon: 'person_add',
-          route: '/bank-staff/customers/add'
-        },
-        {
-          label: 'Edit Customer',
-          icon: 'manage_accounts',
-          route: '/bank-staff/customers/edit'
-        },
-        {
-          label: 'Customer Details',
-          icon: 'badge',
-          route: '/bank-staff/customers/details'
-        }
-      ]
-    },
-    {
-      title: 'KYC',
-      items: [
-        {
-          label: 'Upload Documents',
-          icon: 'upload_file',
-          route: '/bank-staff/kyc/upload'
-        },
-        {
-          label: 'Verify KYC',
-          icon: 'verified_user',
-          route: '/bank-staff/kyc/verify'
-        }
-      ]
-    },
-    {
-      title: 'Account',
-      items: [
-        {
-          label: 'Account List',
-          icon: 'account_balance_wallet',
-          route: '/bank-staff/accounts'
-        },
-        {
-          label: 'Open Account',
-          icon: 'add_card',
-          route: '/bank-staff/accounts/open'
-        },
-        {
-          label: 'Edit Account',
-          icon: 'edit_note',
-          route: '/bank-staff/accounts/edit'
-        },
-        {
-          label: 'Account Details',
-          icon: 'description',
-          route: '/bank-staff/accounts/details'
-        }
-      ]
-    },
-    {
-      title: 'Transactions',
-      items: [
-        {
-          label: 'Deposit',
-          icon: 'south_west',
-          route: '/bank-staff/transactions/deposit'
-        },
-        {
-          label: 'Withdrawal',
-          icon: 'north_east',
-          route: '/bank-staff/transactions/withdrawal'
-        },
-        {
-          label: 'Fund Transfer',
-          icon: 'swap_horiz',
-          route: '/bank-staff/transactions/fund-transfer'
-        },
-        {
-          label: 'Transaction History',
-          icon: 'history',
-          route: '/bank-staff/transactions/history'
-        }
-      ]
-    },
-    {
-      title: 'ATM',
-      items: [
-        {
-          label: 'ATM Card Issue',
-          icon: 'credit_card',
-          route: '/bank-staff/atm/card-issue'
-        }
-      ]
-    },
-    {
-      title: 'Cheque',
-      items: [
-        {
-          label: 'Cheque Book Issue',
-          icon: 'menu_book',
-          route: '/bank-staff/cheque/book-issue'
-        }
-      ]
-    },
-    {
-      title: 'Loan',
-      items: [
-        {
-          label: 'Loan Application',
-          icon: 'request_quote',
-          route: '/bank-staff/loans/application'
-        }
-      ]
-    },
-    {
-      title: 'FD/RD',
-      items: [
-        {
-          label: 'Create Fixed Deposit',
-          icon: 'savings',
-          route: '/bank-staff/deposits/fixed-deposit'
-        },
-        {
-          label: 'Create Recurring Deposit',
-          icon: 'event_repeat',
-          route: '/bank-staff/deposits/recurring-deposit'
-        }
-      ]
-    },
-    {
-      title: 'Reports',
-      items: [
-        {
-          label: 'Customer Report',
-          icon: 'assessment',
-          route: '/bank-staff/reports/customer'
-        },
-        {
-          label: 'Transaction Report',
-          icon: 'analytics',
-          route: '/bank-staff/reports/transaction'
-        }
-      ]
-    },
-    {
-      title: 'Profile',
-      items: [
-        {
-          label: 'Profile Settings',
-          icon: 'settings',
-          route: '/bank-staff/profile/settings'
-        }
-      ]
-    }
-  ];
-
+ menuGroups: SidebarMenuGroup[] = [
+  {
+    
+    items: [
+      {
+        label: 'Dashboard',
+        icon: 'grid_view',
+        route: '/bank-staff/dashboard'
+      }
+    ]
+  },
+  {
+    title: 'Customer',
+    icon: 'group',
+    items: [
+      { label: 'Customer List', route: '/bank-staff/customers' },
+      { label: 'Add Customer', route: '/bank-staff/customers/add' },
+      { label: 'Edit Customer', route: '/bank-staff/customers/edit' },
+      { label: 'Customer Details', route: '/bank-staff/customers/details' }
+    ]
+  },
+  {
+    title: 'KYC',
+    icon: 'verified_user',
+    items: [
+      { label: 'Upload Documents', route: '/bank-staff/kyc/upload' },
+      { label: 'Verify KYC', route: '/bank-staff/kyc/verify' }
+    ]
+  },
+  {
+    title: 'Account',
+    icon: 'account_balance',
+    items: [
+      { label: 'Account List', route: '/bank-staff/accounts' },
+      { label: 'Open Account', route: '/bank-staff/accounts/open' },
+      { label: 'Edit Account', route: '/bank-staff/accounts/edit' },
+      { label: 'Account Details', route: '/bank-staff/accounts/details' }
+    ]
+  },
+  {
+    title: 'Transactions',
+    icon: 'account_balance_wallet',
+    items: [
+      { label: 'Deposit', route: '/bank-staff/transactions/deposit' },
+      { label: 'Withdrawal', route: '/bank-staff/transactions/withdrawal' },
+      { label: 'Fund Transfer', route: '/bank-staff/transactions/fund-transfer' },
+      { label: 'Transaction History', route: '/bank-staff/transactions/history' }
+    ]
+  },
+  {
+    title: 'ATM',
+    icon: 'credit_card',
+    items: [
+      { label: 'ATM Card Issue', route: '/bank-staff/atm/card-issue' }
+    ]
+  },
+  {
+    title: 'Cheque',
+    icon: 'subtitles',
+    items: [
+      { label: 'Cheque Book Issue', route: '/bank-staff/cheque/book-issue' }
+    ]
+  },
+  {
+    title: 'Loan',
+    icon: 'real_estate_agent',
+    items: [
+      { label: 'Loan Application', route: '/bank-staff/loans/application' }
+    ]
+  },
+  {
+    title: 'FD/RD',
+    icon: 'savings',
+    items: [
+      { label: 'Create Fixed Deposit', route: '/bank-staff/deposits/fixed-deposit' },
+      { label: 'Create Recurring Deposit', route: '/bank-staff/deposits/recurring-deposit' }
+    ]
+  },
+  {
+    title: 'Reports',
+    icon: 'description',
+    items: [
+      { label: 'Customer Report', route: '/bank-staff/reports/customer' },
+      { label: 'Transaction Report', route: '/bank-staff/reports/transaction' }
+    ]
+  },
+  {
+    title: 'Profile',
+    icon: 'person',
+    items: [
+      { label: 'Profile Settings', route: '/bank-staff/profile/settings' }
+    ]
+  }
+];
   constructor(private router: Router) {}
 
   toggleSidebar(): void {

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SidebarMenu } from '../../models/sidebar.model';
 import { MatModule } from '../../../../shared/material.module';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SharedService } from '../../../../shared/shared.service';
 
 @Component({
   selector: 'app-branch-manager-sidebar',
@@ -13,7 +14,7 @@ export class BranchManagerSidebar {
 
 
   isCollapsed = false;
-
+ sharedService = inject(SharedService)
   menuItems: SidebarMenu[] = [
     {
       label: 'Dashboard',

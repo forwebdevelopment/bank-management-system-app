@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MatModule } from '../../../../shared/material.module';
 import { ChangeDetectorRef } from '@angular/core';
+import { SharedService } from '../../../../shared/shared.service';
 
 @Component({
   selector: 'app-topbar',
@@ -12,7 +13,7 @@ export class Topbar {
 
 
    @Output() sidebarToggle = new EventEmitter<void>();
-
+   sharedService = inject(SharedService)
    constructor(private cd:ChangeDetectorRef){
   
    }
@@ -58,7 +59,7 @@ export class Topbar {
 
  currentTimes(): void {
  setInterval(() => {
-    this.times = new Date(); // update property
+    this.sharedService.currentDate = new Date(); // update property
       this.cd.detectChanges()
   }, 1000);
 }

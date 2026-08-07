@@ -1,172 +1,270 @@
-<mat-toolbar class="bank-topbar">
+<header class="topbar">
+  <!-- Left section -->
+  <div class="welcome-section">
+    <h2>
+      Welcome,
+      <span>{{ managerName }}</span>
+    </h2>
 
-  <!-- Left Section -->
-  <div class="topbar-left">
-
-    <button
-      mat-icon-button
-      class="menu-btn"
-      (click)="toggleSidebar.emit()">
-
-      <mat-icon>menu</mat-icon>
-
-    </button>
-
-    <div class="branch-info">
-
-      <h3>Chandigarh Branch</h3>
-
-      <div class="user-info">
-        <span class="welcome">
-          Welcome,
-          <strong>Priya Sharma</strong>
-        </span>
-
-        <span class="dot"></span>
-
-        <span class="designation">
-          Customer Service Executive
-        </span>
-      </div>
-
+    <div class="branch-location">
+      <mat-icon>location_on</mat-icon>
+      <span>{{ branchName }}</span>
     </div>
-
   </div>
 
-  <!-- Center -->
-  <div class="topbar-search">
-
-    <mat-form-field
-      appearance="outline"
-      class="search-field">
-
-      <mat-icon matPrefix>
-        search
-      </mat-icon>
+  <!-- Search section -->
+  <div class="search-section">
+    <form class="search-box" (ngSubmit)="search()">
+      <mat-icon class="search-icon">search</mat-icon>
 
       <input
-        matInput
-        placeholder="Search customers, accounts, transactions..." />
+        type="text"
+        name="searchText"
+        [(ngModel)]="searchText"
+        placeholder="Search for customers, accounts, transactions..."
+        autocomplete="off"
+      />
 
-    </mat-form-field>
+      <button
+        *ngIf="searchText"
+        type="button"
+        class="clear-search"
+        aria-label="Clear search"
+        (click)="clearSearch()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
 
+      <div class="search-shortcut">
+        Ctrl + K
+      </div>
+    </form>
   </div>
 
-  <!-- Right -->
-  <div class="topbar-right">
-
-    <!-- Date -->
-    <div class="date-card">
-
-      <mat-icon>calendar_today</mat-icon>
-
-      <div>
-
-        <span class="date">
-          26 Jul 2026
-        </span>
-
-        <span class="time">
-          10:45 AM
-        </span>
-
-      </div>
-
+  <!-- Right section -->
+  <div class="topbar-actions">
+    <div class="current-date">
+      {{ this.sharedService.currentDate | date: 'EEEE, dd MMMM yyyy' }}
     </div>
 
-    <!-- Notification -->
+    <div class="vertical-divider"></div>
 
+    <!-- Notifications -->
     <button
       mat-icon-button
-      matBadge="3"
-      matBadgeColor="warn"
-      class="action-btn">
-
-      <mat-icon>
-        notifications
+      class="icon-button"
+      [matMenuTriggerFor]="notificationMenu"
+      matTooltip="Notifications"
+    >
+      <mat-icon
+        [matBadge]="unreadNotificationCount"
+        [matBadgeHidden]="unreadNotificationCount === 0"
+        matBadgeColor="warn"
+        matBadgeSize="small"
+      >
+        notifications_none
       </mat-icon>
-
     </button>
 
     <!-- Messages -->
-
     <button
       mat-icon-button
-      matBadge="5"
-      matBadgeColor="accent"
-      class="action-btn">
-
-      <mat-icon>
-        mail
+      class="icon-button"
+      [matMenuTriggerFor]="messageMenu"
+      matTooltip="Messages"
+    >
+      <mat-icon
+        [matBadge]="unreadMessageCount"
+        [matBadgeHidden]="unreadMessageCount === 0"
+        matBadgeColor="warn"
+        matBadgeSize="small"
+      >
+        chat_bubble_outline
       </mat-icon>
-
     </button>
 
     <!-- Profile -->
-
     <button
-      mat-button
+      type="button"
+      class="profile-button"
       [matMenuTriggerFor]="profileMenu"
-      class="profile-btn">
-
-      <div class="avatar">
-
+    >
+      <div class="profile-image-wrapper">
         <img
-          src="assets/images/avatar.jpg"
-          alt="User">
+          [src]="profileImage"
+          [alt]="managerName"
+          class="profile-image"
+          alt=""
+        />
 
-        <span class="online"></span>
-
+        <span class="online-indicator"></span>
       </div>
 
-      <div class="profile-details">
+      <div class="profile-content">
+        <strong>{{ managerName }}</strong>
 
-        <span class="name">
-          Priya Sharma
-        </span>
+        <span>{{ managerRole }}</span>
 
-        <span class="role">
-          Bank Staff
-        </span>
-
+        <small>
+          <span class="online-dot"></span>
+          Online
+        </small>
       </div>
 
-      <mat-icon>
-        expand_more
+      <mat-icon class="profile-arrow">
+        keyboard_arrow_down
       </mat-icon>
-
     </button>
+  </div>
+</header>
 
+<!-- Notification menu -->
+<mat-menu
+  #notificationMenu="matMenu"
+  class="topbar-dropdown-menu"
+  xPosition="before"
+>
+  <div class="dropdown-container" (click)="$event.stopPropagation()">
+    <div class="dropdown-header">
+      <div>
+        <h3>Notifications</h3>
+        <span>{{ unreadNotificationCount }} unread notifications</span>
+      </div>
+
+      <button
+        type="button"
+        class="view-all-button"
+        (click)="viewAllNotifications()"
+      >
+        View all
+      </button>
+    </div>
+
+    <div class="dropdown-list">
+      <button
+        type="button"
+        class="dropdown-item"
+        *ngFor="let notification of notifications"
+        [class.unread]="!notification.read"
+        (click)="markNotificationAsRead(notification)"
+      >
+        <div class="item-icon notification-icon">
+          <mat-icon>{{ notification.icon }}</mat-icon>
+        </div>
+
+        <div class="item-content">
+          <div class="item-title-row">
+            <strong>{{ notification.title }}</strong>
+            <span
+              *ngIf="!notification.read"
+              class="unread-dot"
+            ></span>
+          </div>
+
+          <p>{{ notification.message }}</p>
+          <small>{{ notification.time }}</small>
+        </div>
+      </button>
+    </div>
+
+    <div
+      class="empty-state"
+      *ngIf="notifications.length === 0"
+    >
+      <mat-icon>notifications_off</mat-icon>
+      <p>No notifications found</p>
+    </div>
+  </div>
+</mat-menu>
+
+<!-- Message menu -->
+<mat-menu
+  #messageMenu="matMenu"
+  class="topbar-dropdown-menu"
+  xPosition="before"
+>
+  <div class="dropdown-container" (click)="$event.stopPropagation()">
+    <div class="dropdown-header">
+      <div>
+        <h3>Messages</h3>
+        <span>{{ unreadMessageCount }} unread messages</span>
+      </div>
+
+      <button type="button" class="view-all-button">
+        View all
+      </button>
+    </div>
+
+    <div class="dropdown-list">
+      <button
+        type="button"
+        class="dropdown-item"
+        *ngFor="let message of messages"
+        [class.unread]="!message.read"
+        (click)="markMessageAsRead(message)"
+      >
+        <div class="avatar-placeholder">
+          {{ message.sender.charAt(0) }}
+        </div>
+
+        <div class="item-content">
+          <div class="item-title-row">
+            <strong>{{ message.sender }}</strong>
+
+            <span
+              *ngIf="!message.read"
+              class="unread-dot"
+            ></span>
+          </div>
+
+          <p>{{ message.message }}</p>
+          <small>{{ message.time }}</small>
+        </div>
+      </button>
+    </div>
+  </div>
+</mat-menu>
+
+<!-- Profile menu -->
+<mat-menu
+  #profileMenu="matMenu"
+  class="profile-dropdown-menu"
+  xPosition="before"
+>
+  <div
+    class="profile-menu-header"
+    (click)="$event.stopPropagation()"
+  >
+    <img [src]="profileImage" [alt]="managerName" alt="" />
+
+    <div>
+      <strong>{{ managerName }}</strong>
+      <span>{{ managerRole }}</span>
+      <small>{{ branchName }}</small>
+    </div>
   </div>
 
-</mat-toolbar>
+  <mat-divider></mat-divider>
 
-<mat-menu #profileMenu="matMenu">
-
-  <button mat-menu-item>
-
-    <mat-icon>person</mat-icon>
-
-    <span>Profile</span>
-
+  <button mat-menu-item (click)="openProfile()">
+    <mat-icon>person_outline</mat-icon>
+    <span>My Profile</span>
   </button>
 
-  <button mat-menu-item>
-
+  <button mat-menu-item (click)="openSettings()">
     <mat-icon>settings</mat-icon>
-
     <span>Settings</span>
+  </button>
 
+  <button mat-menu-item (click)="changePassword()">
+    <mat-icon>lock_outline</mat-icon>
+    <span>Change Password</span>
   </button>
 
   <mat-divider></mat-divider>
 
-  <button mat-menu-item>
-
+  <button mat-menu-item class="logout-menu-item" (click)="logout()">
     <mat-icon>logout</mat-icon>
-
     <span>Logout</span>
-
   </button>
-
 </mat-menu>

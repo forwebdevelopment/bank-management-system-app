@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject , ChangeDetectorRef } from '@angular/core';
 import { MatModule } from '../../../../shared/material.module';
 import { TopbarMessage, TopbarNotification } from '../../models/top.model';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../../shared/shared.service';
 
 @Component({
   selector: 'app-topbar',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class Topbar {
 
+  sharedService = inject(SharedService)
 
+    constructor(private router: Router , private cd:ChangeDetectorRef ) {}
     managerName = 'Rahul Sharma';
   managerRole = 'Branch Manager';
   branchName = 'Chandigarh Branch 9';
@@ -21,7 +24,7 @@ export class Topbar {
 
   searchText = '';
 
-  currentDate = new Date();
+     
 
   notifications: TopbarNotification[] = [
     {
@@ -74,7 +77,7 @@ export class Topbar {
     }
   ];
 
-  constructor(private router: Router) {}
+
 
   get unreadNotificationCount(): number {
     return this.notifications.filter(notification => !notification.read)
@@ -132,5 +135,12 @@ export class Topbar {
     localStorage.removeItem('user');
 
     this.router.navigate(['/login']);
+  }
+
+  changetime(){
+    setInterval(() => {
+        this.sharedService.currentDate = new Date()
+        this.cd.detectChanges()
+    }, 1000);
   }
 }

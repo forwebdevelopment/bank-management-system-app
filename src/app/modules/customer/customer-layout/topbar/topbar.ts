@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, inject } from '@angular/core';
+import { Component, EventEmitter, inject } from '@angular/core';
 import { MatModule } from '../../../../shared/material.module';
 import { TopbarMessage, TopbarNotification } from '../../../branch-manager/models/top.model';
 import { Router } from '@angular/router';
@@ -12,21 +12,18 @@ import { SharedService } from '../../../../shared/shared.service';
 })
 export class Topbar {
 
-  sharedService = inject(SharedService)
-  constructor( private cd: ChangeDetectorRef , private router: Router){
-
-  }
-
+     sharedService = inject(SharedService)
+  accountNumber:number = 9865875425487
+  offAccount:string = `xxxxx ${this.accountNumber.toString().slice(-4)}`
     managerName = 'Rahul Sharma';
-  managerRole = 'Branch Manager';
-  branchName = 'Chandigarh Branch 9';
+  branchName = `Saving Account: `;
 
   profileImage =
     'https://randomuser.me/api/portraits/men/32.jpg';
 
   searchText = '';
 
-  currentDate = new Date();
+
 
   notifications: TopbarNotification[] = [
     {
@@ -79,7 +76,7 @@ export class Topbar {
     }
   ];
 
-
+  constructor(private router: Router) {}
 
   get unreadNotificationCount(): number {
     return this.notifications.filter(notification => !notification.read)
@@ -90,6 +87,10 @@ export class Topbar {
     return this.messages.filter(message => !message.read).length;
   }
 
+  isAccountNumberShow:boolean = false;
+  ShowHideAccount(){
+  this.isAccountNumberShow = !this.isAccountNumberShow
+  }
   search(): void {
     const value = this.searchText.trim();
 
@@ -104,14 +105,6 @@ export class Topbar {
     });
   }
 
-
-   changeTime(){
-    setInterval(() => {
-       this.sharedService.currentDate = new Date()
-       this.cd.detectChanges()
-    }, 1000);
-   
-  }
   clearSearch(): void {
     this.searchText = '';
   }
